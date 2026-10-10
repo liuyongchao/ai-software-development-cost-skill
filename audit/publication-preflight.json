@@ -35,8 +35,8 @@
   ],
   "source_pdf_ocr_images_included": false,
   "install_entrypoints": 1,
-  "remote_install": "pending",
+  "remote_install": "passed; see remote-install-verification.json",
   "public_content_scan": "passed",
-  "relative_links_checked": 151,
+  "relative_links_checked": 153,
   "missing_links": []
 }

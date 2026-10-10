@@ -13,6 +13,8 @@
 https://github.com/liuyongchao/ai-software-development-cost-skill/tree/main/skills/ai-software-development-cost-draft
 ```
 
+**已验证**：匿名访问、官方skill-installer下载、30文件哈希和安装副本的3项计算器检查全部通过，见[发布验证](PUBLICATION.md)。
+
 链接指向完整技能目录。需要安装其中全部SKILL.md、references、resources和编译清单，不能只复制SKILL.md。安装完成后下一轮对话可使用。
 
 也可下载[独立技能ZIP](dist/ai-software-development-cost-draft-0.1.0.zip)，将完整同名文件夹复制到已配置的技能目录；Codex通常为`~/.codex/skills/`，自定义CODEX_HOME时使用其skills子目录。GitHub的Code → Download ZIP提供整个仓库和全部文档。
