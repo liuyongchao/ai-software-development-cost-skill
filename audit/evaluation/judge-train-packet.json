@@ -1,0 +1,1698 @@
+[
+  {
+    "case_id": "v02-boundary",
+    "prompt": "预算一笔“数据清洗”援引7.3.3放主体功能，另一份按6.2放数据处理；没明确合同边界或采用条款。能否把两笔都相加？输出double_count_allowed和classification_needs_basis。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+    "bounded_expected_criteria": [
+      {
+        "kind": "json_equals",
+        "value": "$.double_count_allowed",
+        "expected": false
+      },
+      {
+        "kind": "json_equals",
+        "value": "$.classification_needs_basis",
+        "expected": true
+      }
+    ],
+    "responses": {
+      "vB": {
+        "double_count_allowed": false,
+        "classification_needs_basis": true,
+        "classification_status": "待确认",
+        "conflict_id": "N01",
+        "required_basis": [
+          "两笔活动的承担方、成果、期间及合同边界",
+          "项目采用6.2或7.3.3的条款与管理依据",
+          "同一实际工作是否被重复报价的证据"
+        ],
+        "notes": "依据本技能所据2026-08-18征求意见稿4.1及分类卡，费用避免重复列支。6.2与7.3.3存在分类冲突，不能静默择一。现有证据不足以将两笔直接相加，也不足以断言是两个独立成果；暂停定类与相加，核清边界后，同一工作仅列一次，独立工具开发和实际清洗可分别列支。"
+      },
+      "vA": {
+        "double_count_allowed": false,
+        "classification_needs_basis": true,
+        "result": "不能直接将两笔相加。现有信息不能证明两笔对应不同且已交付的工作；同一项清洗劳动只能计入一次。",
+        "review_matrix": [
+          {
+            "item": "工作范围",
+            "known": "两笔均名为数据清洗",
+            "missing": "数据集、处理步骤、交付成果、责任方、是否同一工作",
+            "decision": "先按潜在重复项挂起合计"
+          },
+          {
+            "item": "归类",
+            "known": "分别援引7.3.3与6.2",
+            "missing": "条款全文、适用版本、合同选用依据",
+            "decision": "归类待核，不能仅凭条款编号认定"
+          },
+          {
+            "item": "计费",
+            "known": "存在两笔预算",
+            "missing": "已计金额、服务边界及排重记录",
+            "decision": "同一任务保留一笔；确为不同工作才分别计入"
+          }
+        ],
+        "notes": "题面没有条款原文，7.3.3及6.2的具体规定未知。归属不同科目不代表可重复计费。先确认边界和适用依据；必要时重分类，不能以两种归类为由叠加同一成本。"
+      }
+    }
+  },
+  {
+    "case_id": "v03-normal",
+    "prompt": "拆解页面开发、清洗200份文档、RAG配置三项工作，并安排测试和项目管理。数据量虽知，质量与周期未知。输出三项对应main_function/data_processing/model_building的task_categories数组，及testing_management_must_be_allocated。另给各任务成果和待补矩阵。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+    "bounded_expected_criteria": [
+      {
+        "kind": "json_equals",
+        "value": "$.task_categories",
+        "expected": [
+          "main_function",
+          "data_processing",
+          "model_building"
+        ]
+      },
+      {
+        "kind": "json_equals",
+        "value": "$.testing_management_must_be_allocated",
+        "expected": true
+      }
+    ],
+    "responses": {
+      "vB": {
+        "task_categories": [
+          "main_function",
+          "data_processing",
+          "model_building"
+        ],
+        "testing_management_must_be_allocated": true,
+        "task_matrix": [
+          {
+            "task_id": "T1",
+            "task": "页面开发",
+            "category": "main_function",
+            "deliverable": "满足页面需求的界面代码、交互及功能交付件",
+            "acceptance": "待补页面范围、功能清单和验收用例",
+            "method": "主体功能规模测算的外部方法接口",
+            "dependencies": "需求及接口确定",
+            "responsible": "待指定",
+            "schedule": "待补",
+            "missing": [
+              "需求版本与页面功能边界",
+              "功能规模与测算依据",
+              "承担方、质量标准及交付周期"
+            ],
+            "computable": false
+          },
+          {
+            "task_id": "T2",
+            "task": "清洗200份文档",
+            "category": "data_processing",
+            "quantity": 200,
+            "unit": "份文档",
+            "deliverable": "清洗后200份文档及清洗、质检记录",
+            "acceptance": "待补目标质量、抽检方法、合格定义及返工边界",
+            "method": "取得稳定且适用的每份工时后计件；或取得匹配任务范围的基准后估算",
+            "dependencies": "原始文档、清洗规则、工具和质量标准",
+            "responsible": "待指定",
+            "schedule": "待补",
+            "missing": [
+              "文档类型格式及单份规模",
+              "现状质量与目标质量",
+              "人工、自动化、质检返工范围",
+              "单位工时或适用基准与来源",
+              "交付周期"
+            ],
+            "computable": false
+          },
+          {
+            "task_id": "T3",
+            "task": "RAG配置",
+            "category": "model_building",
+            "deliverable": "可交付的检索增强配置、配置说明与质量评测记录",
+            "acceptance": "待补检索和生成质量指标及验收数据集",
+            "method": "范围及模型任务参数确认后作方程情景估算",
+            "dependencies": "清洗数据、模型服务及部署环境",
+            "responsible": "待指定",
+            "schedule": "待补",
+            "missing": [
+              "模型或智能体对象及独立边界",
+              "配置、部署和复用外包范围",
+              "性能目标、任务基准、调整因素及来源"
+            ],
+            "computable": false
+          }
+        ],
+        "support_allocation": [
+          {
+            "task": "测试",
+            "deliverable": "页面、数据质量与RAG测试报告及缺陷关闭记录",
+            "allocation": "T1功能测试、T2清洗质检、T3检索生成评测分别确认已含工时；跨任务集成测试单列后分摊一次",
+            "missing": "测试范围、用例、工时及分摊依据"
+          },
+          {
+            "task": "项目管理",
+            "deliverable": "计划、进度和风险记录、交付验收协调记录",
+            "allocation": "核各任务已含管理工作后，对未覆盖部分按确认依据分摊到T1—T3一次",
+            "missing": "管理责任、工时、周期及分摊规则"
+          }
+        ],
+        "notes": "依据征求意见稿5.2—5.4、6.2.2及附录A说明。数量已知不等于费用可计算；质量、周期、基准和费率尚缺。本矩阵完成任务分解，不能据典型任务列表宣称完整估价，支持工作不默认免费。"
+      },
+      "vA": {
+        "task_categories": [
+          "main_function",
+          "data_processing",
+          "model_building"
+        ],
+        "testing_management_must_be_allocated": true,
+        "task_matrix": [
+          {
+            "task": "页面开发",
+            "category": "main_function",
+            "deliverables": [
+              "页面及交互实现",
+              "接口接入与异常状态处理",
+              "可复核的页面验收记录"
+            ],
+            "known": "需要页面开发",
+            "missing": [
+              "页面数量与复杂度",
+              "设计稿、权限和接口范围",
+              "验收口径与周期"
+            ]
+          },
+          {
+            "task": "清洗200份文档",
+            "category": "data_processing",
+            "deliverables": [
+              "200份文档的清洗结果",
+              "去重、格式转换及异常处理记录",
+              "质量抽检报告"
+            ],
+            "known": "文档数量200份",
+            "missing": [
+              "格式、页数及文件大小",
+              "扫描件/OCR占比与质量",
+              "清洗规则、抽检标准、返工率和周期"
+            ]
+          },
+          {
+            "task": "RAG配置",
+            "category": "model_building",
+            "deliverables": [
+              "切分、向量化与检索配置",
+              "知识库索引及配置版本记录",
+              "检索和回答评测结果"
+            ],
+            "known": "需要RAG配置",
+            "missing": [
+              "模型与向量库选型",
+              "权限和更新机制",
+              "检索及回答质量阈值",
+              "用量、部署要求和周期"
+            ]
+          }
+        ],
+        "allocation": [
+          {
+            "work": "测试",
+            "allocation": "页面分配功能、交互和接口测试；清洗分配规则校验与抽检；RAG分配检索、回答质量和集成测试。统一验收的共用测试只计一次。",
+            "effort": null
+          },
+          {
+            "work": "项目管理",
+            "allocation": "将需求确认、排期、协调、变更及验收管理分配到三项工作；公共管理形成独立工作包，按可核实的工时或约定分配规则归集一次。",
+            "effort": null
+          }
+        ],
+        "notes": "该分类按任务主要成果作工作拆解，不代表已验证某规范条款。RAG配置不自动包含模型训练。200份只是数量，缺少质量、单份复杂度及周期，不能可靠给出总工时；测试与管理应纳入工作范围，避免遗漏与交叉重复。"
+      }
+    }
+  },
+  {
+    "case_id": "v05-boundary",
+    "prompt": "计件效率波动很大，只有“5条/人时”，总量和样本口径都未知。输出can_compute_total和needs_stability_review，总量不要编造。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+    "bounded_expected_criteria": [
+      {
+        "kind": "json_equals",
+        "value": "$.can_compute_total",
+        "expected": false
+      },
+      {
+        "kind": "json_equals",
+        "value": "$.needs_stability_review",
+        "expected": true
+      }
+    ],
+    "responses": {
+      "vB": {
+        "can_compute_total": false,
+        "needs_stability_review": true,
+        "total_person_hours": null,
+        "rate_items_per_person_hour": 5,
+        "algebraic_unit_hours_per_item": 0.2,
+        "required_inputs": [
+          "总处理数量及计量对象",
+          "速率或样本的完成状态、质量和代表性口径",
+          "人工自动化范围、质检和返工覆盖",
+          "效率波动原因及适用于目标批次的稳定性证据"
+        ],
+        "notes": "依据6.2.3.2式1：5条/人时仅可形式换成0.2人时/条，不代表可外推的适用单位工时。总量未知且效率大幅波动，停止总工时计算，不能用5直接乘数量，也不能虚构总量或样本。"
+      },
+      "vA": {
+        "can_compute_total": false,
+        "needs_stability_review": true,
+        "total_quantity": null,
+        "total_person_hours": null,
+        "formula": "总人时=总条数÷已验证的合格产出效率（条/人时）",
+        "missing": [
+          "总量",
+          "5条/人时的样本量及抽样范围",
+          "任务复杂度和质量口径",
+          "效率波动与返工记录"
+        ],
+        "notes": "仅有5条/人时不能算总工时。效率波动很大，需按任务难度、人员与质量要求复核样本，必要时分层采用效率或区间。不能把单点效率当作稳定代表值，也不编造总量。"
+      }
+    }
+  },
+  {
+    "case_id": "v06-normal",
+    "prompt": "整个数据处理包DBE=36人天、AF=1.2、DRDF=0.35，组织确认适用；同一包被3个模型共同使用，不存在额外专属工作。输出person_days与package_count。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+    "bounded_expected_criteria": [
+      {
+        "kind": "json_number",
+        "value": "$.person_days",
+        "expected": 15.12,
+        "abs_tol": 1e-06
+      },
+      {
+        "kind": "json_number",
+        "value": "$.package_count",
+        "expected": 1,
+        "abs_tol": 1e-06
+      }
+    ],
+    "responses": {
+      "vB": {
+        "person_days": 15.12,
+        "package_count": 1,
+        "calculation": "DPE=36人天×1.2×0.35=15.12人天",
+        "shared_model_count": 3,
+        "notes": "依据6.2.3.2式2。题给组织确认整体数据处理包及参数适用，AF与DRDF按题意各作用一次；同一成果由3个模型共享且无额外专属工作，因此不乘3，不对子任务再套整体基准。此结果为该包工时，未含未给定费率的金额。"
+      },
+      "vA": {
+        "person_days": 15.12,
+        "package_count": 1,
+        "calculation": "36×1.2×0.35=15.12人天",
+        "notes": "按题面已确认适用的基准工作量和两项乘法修正因子计算。该数覆盖整个共享数据包；3个模型共用且没有额外专属工作，因此数据包只计1次，不再乘3。未提供规范原文，计算不构成对条款适用性的独立核验。"
+      }
+    }
+  },
+  {
+    "case_id": "v06-boundary",
+    "prompt": "请求按附录给整体数据包估工时，但未确认任务粒度、DBE与复用因子。能否直接用附录中值并默认缺项1？输出defaults_allowed与person_days。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+    "bounded_expected_criteria": [
+      {
+        "kind": "json_equals",
+        "value": "$.defaults_allowed",
+        "expected": false
+      },
+      {
+        "kind": "json_equals",
+        "value": "$.person_days",
+        "expected": null
+      }
+    ],
+    "responses": {
+      "vB": {
+        "defaults_allowed": false,
+        "person_days": null,
+        "required_inputs": [
+          "任务包成果与覆盖粒度",
+          "适用DBE数值、时间单位、版本与来源",
+          "AF及其采用依据",
+          "DRDF及组成和来源；若采用分解则需DR与DDT",
+          "因素是否已含在基准及共享排重证据"
+        ],
+        "formula": "DPE=DBE×AF×DRDF",
+        "notes": "依据6.2.3.2式2及资料性附录C。整体包与单任务基准不可混用；附录中值、缺项默认1均缺项目依据，故暂停数值计算。null表示待补，不能当零；整体基准确认后也只对该包作用一次。"
+      },
+      "vA": {
+        "defaults_allowed": false,
+        "person_days": null,
+        "missing": [
+          "整体包的任务边界与粒度",
+          "DBE数值、单位和来源",
+          "复用因子的定义、取值与适用范围",
+          "附录版本、取值区间及采用中值的依据",
+          "其他调整因子的适用性"
+        ],
+        "notes": "任务边界尚未确定，无法判断整体包和基准工作量是否同口径。未提供附录原文，也未确认缺项等于1，不能直接套中值或用1填补未知。需确认任务拆解、基准与因子后计算。"
+      }
+    }
+  },
+  {
+    "case_id": "v07-normal",
+    "prompt": "数据任务A16人时PF0.95，B3人天PF1.0；不重叠，约定8小时/天、20天/月、综合费率24000元/月，来源已确认。输出total_person_days及total_cost_yuan，逐项列计算。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+    "bounded_expected_criteria": [
+      {
+        "kind": "json_number",
+        "value": "$.total_person_days",
+        "expected": 5,
+        "abs_tol": 1e-06
+      },
+      {
+        "kind": "json_number",
+        "value": "$.total_cost_yuan",
+        "expected": 5880,
+        "abs_tol": 1e-06
+      }
+    ],
+    "responses": {
+      "vB": {
+        "total_person_days": 5,
+        "total_cost_yuan": 5880,
+        "items": [
+          {
+            "task": "A",
+            "original_effort": "16人时",
+            "person_days": 2,
+            "person_months": 0.1,
+            "pf": 0.95,
+            "cost_yuan": 2280,
+            "calculation": "16÷8=2人天；2÷20×0.95×24000=2280元"
+          },
+          {
+            "task": "B",
+            "original_effort": "3人天",
+            "person_days": 3,
+            "person_months": 0.15,
+            "pf": 1,
+            "cost_yuan": 3600,
+            "calculation": "3÷20×1.0×24000=3600元"
+          }
+        ],
+        "conversion": {
+          "hours_per_day": 8,
+          "days_per_month": 20,
+          "uhc_yuan_per_person_month": 24000,
+          "source": "题给项目约定且来源已确认"
+        },
+        "notes": "依据6.2.3.3式4，分项C=DPE×PF×UHC，工时合计2+3=5人天，不乘PF；费用2280+3600=5880元。题明两任务不重叠，综合费率已含相应间接成本，不再重复加收。"
+      },
+      "vA": {
+        "total_person_days": 4.9,
+        "total_cost_yuan": 5880,
+        "items": [
+          {
+            "task": "A",
+            "base_person_hours": 16,
+            "base_person_days": 2,
+            "PF": 0.95,
+            "adjusted_person_days": 1.9,
+            "cost_yuan": 2280,
+            "calculation": "16÷8×0.95=1.9人天；1.9÷20×24000=2280元"
+          },
+          {
+            "task": "B",
+            "base_person_days": 3,
+            "PF": 1,
+            "adjusted_person_days": 3,
+            "cost_yuan": 3600,
+            "calculation": "3×1.0=3人天；3÷20×24000=3600元"
+          }
+        ],
+        "daily_rate_yuan": 1200,
+        "calculation": "总修正人天=1.9+3=4.9；总费用=2280+3600=5880元",
+        "notes": "按题面PF作为乘法修正因子，使用已确认的8小时/天、20天/月和综合费率。两项不重叠，可直接合计。未修正的基础工时合计为5人天，4.9为经PF修正后的等效人天；不能再对总额重复应用PF。"
+      }
+    }
+  },
+  {
+    "case_id": "v07-boundary",
+    "prompt": "数据工时10人天，费率2万元/人月，PF1，但没有本项目人天到人月换算依据。能否默认21.75？输出default_21_75_allowed和cost_yuan。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+    "bounded_expected_criteria": [
+      {
+        "kind": "json_equals",
+        "value": "$.default_21_75_allowed",
+        "expected": false
+      },
+      {
+        "kind": "json_equals",
+        "value": "$.cost_yuan",
+        "expected": null
+      }
+    ],
+    "responses": {
+      "vB": {
+        "default_21_75_allowed": false,
+        "cost_yuan": null,
+        "known_person_days": 10,
+        "uhc_yuan_per_person_month": 20000,
+        "pf": 1,
+        "conditional_formula": "若项目确认每人月为d人天（d>0），则费用=10÷d×1×20000元",
+        "required_inputs": [
+          "本项目人天与人月转换值及来源、适用依据"
+        ],
+        "notes": "依据6.2.3.3式4。工时与费率分母单位不同，缺项目转换关系则不能出金额。21.75是附录案例的采用值，不是本项目默认常数；null表示金额待补，非零成本。"
+      },
+      "vA": {
+        "default_21_75_allowed": false,
+        "cost_yuan": null,
+        "formula": "设项目确认每人月折算D人天，费用=10×1÷D×20000=200000/D元",
+        "missing": [
+          "本项目人天与人月的换算口径及来源"
+        ],
+        "notes": "人月费率与人天工作量不能在缺少换算依据时直接相乘。21.75不能自动作为本项目每人月的生产工作天数；换算口径确认前只保留公式，不给确定金额。"
+      }
+    }
+  },
+  {
+    "case_id": "v10-normal",
+    "prompt": "项目明确选式5作假设情景，已另行确认TBE40人天、TF1.2、SR0.75、TS0.5、SF1.3、MRDF0.8。输出person_days及predictive_validity_proven，展示乘法。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+    "bounded_expected_criteria": [
+      {
+        "kind": "json_number",
+        "value": "$.person_days",
+        "expected": 18.72,
+        "abs_tol": 1e-06
+      },
+      {
+        "kind": "json_equals",
+        "value": "$.predictive_validity_proven",
+        "expected": false
+      }
+    ],
+    "responses": {
+      "vA": {
+        "person_days": 18.72,
+        "predictive_validity_proven": false,
+        "equation_status": "项目明确选用正文式5的假设情景",
+        "calculation": "TE=40×1.2×0.75×0.5×1.3×0.8=18.72人天",
+        "parameters": {
+          "TBE_person_days": 40,
+          "TF": 1.2,
+          "SR": 0.75,
+          "TS": 0.5,
+          "SF": 1.3,
+          "MRDF": 0.8,
+          "source": "题设：已另行确认"
+        },
+        "global_factors_application_count": 1,
+        "calculation_record": "calculation-result.json",
+        "notes": "依据6.3.3.2a式5，只执行项目所选假设方程的乘法，所有因子各使用一次，中间未舍入。结果可复算不等于方程经过回归验证或已证明真实项目预测效度；现实报价还需任务范围、参数来源及适用性档案。"
+      },
+      "vB": {
+        "person_days": 18.72,
+        "predictive_validity_proven": false,
+        "calculation": "40×1.2×0.75×0.5×1.3×0.8=18.72人天",
+        "steps": [
+          48,
+          36,
+          18,
+          23.4,
+          18.72
+        ],
+        "notes": "这是题面指定式5及已确认参数构成的假设情景计算。乘法可复算不等于已验证预测效果；没有实际工时、独立样本、误差分析与适用范围验证，不能认定预测有效性已获证明。"
+      }
+    }
+  },
+  {
+    "case_id": "v11-normal",
+    "prompt": "全局因子已确认SF1=1.4,SF2=1.1,MRDF1=1,MRDF2=0.9。两任务TE已经按式5含全局因素，分别8、12人天。输出SF、MRDF、total_person_days。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+    "bounded_expected_criteria": [
+      {
+        "kind": "json_number",
+        "value": "$.SF",
+        "expected": 1.54,
+        "abs_tol": 1e-06
+      },
+      {
+        "kind": "json_number",
+        "value": "$.MRDF",
+        "expected": 0.9,
+        "abs_tol": 1e-06
+      },
+      {
+        "kind": "json_number",
+        "value": "$.total_person_days",
+        "expected": 20,
+        "abs_tol": 1e-06
+      }
+    ],
+    "responses": {
+      "vB": {
+        "SF": 1.54,
+        "MRDF": 0.9,
+        "total_person_days": 20,
+        "calculations": [
+          "SF=1.4×1.1=1.54",
+          "MRDF=1×0.9=0.9",
+          "TME=8+12=20人天"
+        ],
+        "tasks": [
+          {
+            "id": "T1",
+            "person_days": 8,
+            "global_factors_already_included": true,
+            "additional_application_count": 0
+          },
+          {
+            "id": "T2",
+            "person_days": 12,
+            "global_factors_already_included": true,
+            "additional_application_count": 0
+          }
+        ],
+        "notes": "依据6.3.3.2的全局组合规则与式6，四子因子来源按题给确认。SF/MRDF已在两任务式5中各作用一次；合计20人天后不再乘1.54或0.9，也不重复乘其子因子。"
+      },
+      "vA": {
+        "SF": null,
+        "MRDF": null,
+        "total_person_days": 20,
+        "calculation": "总人天=8+12=20",
+        "conditional_factor_calculation": {
+          "condition": "仅当采用的规则明确要求同组分因子相乘",
+          "SF": 1.54,
+          "MRDF": 0.9,
+          "calculation": "SF=1.4×1.1=1.54；MRDF=1×0.9=0.9"
+        },
+        "notes": "两项TE已含全局因素，合计20人天，不再乘任何全局因子。题面给出分因子值但未提供SF、MRDF的汇总定义或式5原文，因此不能确定其应取乘积、极值或其他规则；顶层SF、MRDF保留未知，附条件乘法示例不视为已确认规则。"
+      }
+    }
+  },
+  {
+    "case_id": "v11-boundary",
+    "prompt": "有人将恰好200ms性能默认归附录高档，且技术8个月工具2个月自动取同一成熟度档；没有更多适用说明。输出automatic_unique_bucketing_allowed和needs_parameter_basis。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+    "bounded_expected_criteria": [
+      {
+        "kind": "json_equals",
+        "value": "$.automatic_unique_bucketing_allowed",
+        "expected": false
+      },
+      {
+        "kind": "json_equals",
+        "value": "$.needs_parameter_basis",
+        "expected": true
+      }
+    ],
+    "responses": {
+      "vB": {
+        "automatic_unique_bucketing_allowed": false,
+        "needs_parameter_basis": true,
+        "SF2": null,
+        "MRDF2": null,
+        "required_basis": [
+          {
+            "parameter": "性能档位",
+            "fact": "恰好200ms",
+            "missing": "附录适用版本、200ms边界包含规则、性能指标定义和项目采用依据；不能仅凭边界值默认高档"
+          },
+          {
+            "parameter": "技术与工具成熟度",
+            "fact": "技术8个月、工具2个月",
+            "missing": "分别判断两项事实对应条件、混合成熟度的合成或选档规则、适用性确认；不能自动合成一个相同档位"
+          }
+        ],
+        "notes": "依据全局因素卡及资料性附录D.2边界要求：边界和多事实不能唯一分档时保留待确认，不自行取高档、平均档或中档。缺依据时不产生SF2、MRDF2数值，更不默认1。"
+      },
+      "vA": {
+        "automatic_unique_bucketing_allowed": false,
+        "needs_parameter_basis": true,
+        "parameter_matrix": [
+          {
+            "parameter": "性能200ms",
+            "value": 200,
+            "unit": "ms",
+            "missing": "档位区间的端点归属、性能指标定义、测量环境与适用条件",
+            "decision": "高档归属未确认"
+          },
+          {
+            "parameter": "技术成熟度",
+            "value": 8,
+            "unit": "月",
+            "missing": "成熟度分档阈值及起算时间",
+            "decision": "单独确认档位"
+          },
+          {
+            "parameter": "工具成熟度",
+            "value": 2,
+            "unit": "月",
+            "missing": "工具的分档阈值、起算与技术成熟度合并规则",
+            "decision": "不能自动与8个月技术同档"
+          }
+        ],
+        "notes": "没有附录原文，无法断言恰好200ms落在哪档。技术与工具是不同对象，8个月和2个月不能只因同属成熟度就合并取同档。需明确阈值含等号的方向及每项参数的取值依据。"
+      }
+    }
+  },
+  {
+    "case_id": "v12-normal",
+    "prompt": "模型任务已排重且含全局因素：6人天PF1.2、14人天PF1.5，综合费率28000元/月，20天/月；外购模型任务人力已从这些数剔除，另合同5000元。输出labor_cost_yuan和external_service_yuan。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+    "bounded_expected_criteria": [
+      {
+        "kind": "json_number",
+        "value": "$.labor_cost_yuan",
+        "expected": 39480,
+        "abs_tol": 1e-06
+      },
+      {
+        "kind": "json_number",
+        "value": "$.external_service_yuan",
+        "expected": 5000,
+        "abs_tol": 1e-06
+      }
+    ],
+    "responses": {
+      "vA": {
+        "labor_cost_yuan": 39480,
+        "external_service_yuan": 5000,
+        "total_person_days": 20,
+        "items": [
+          {
+            "id": "M1",
+            "person_days": 6,
+            "pf": 1.2,
+            "cost_yuan": 10080,
+            "calculation": "6÷20×1.2×28000=10080元"
+          },
+          {
+            "id": "M2",
+            "person_days": 14,
+            "pf": 1.5,
+            "cost_yuan": 29400,
+            "calculation": "14÷20×1.5×28000=29400元"
+          }
+        ],
+        "external_service": {
+          "category": "model_services",
+          "contract_yuan": 5000,
+          "internal_effort_status": "题给TE已剔除外购任务人力，不再次扣减"
+        },
+        "notes": "依据6.3.3.3式6、式7及外购扣减要求。采用题给20人天/人月和综合费率，模型人力合计10080+29400=39480元；外购服务5000元另列直接非人力。TE已含全局因素，不重乘；工时20人天不乘PF。金额为题给两项及合同的测算，不宣称完整项目总成本。"
+      },
+      "vB": {
+        "labor_cost_yuan": 39480,
+        "external_service_yuan": 5000,
+        "items": [
+          {
+            "person_days": 6,
+            "PF": 1.2,
+            "adjusted_person_days": 7.2,
+            "cost_yuan": 10080,
+            "calculation": "6×1.2÷20×28000=10080元"
+          },
+          {
+            "person_days": 14,
+            "PF": 1.5,
+            "adjusted_person_days": 21,
+            "cost_yuan": 29400,
+            "calculation": "14×1.5÷20×28000=29400元"
+          }
+        ],
+        "adjusted_person_days": 28.2,
+        "total_yuan": 44480,
+        "notes": "按题面PF作为乘法修正因子，人工费=(6×1.2+14×1.5)÷20×28000=39480元。TE已含全局因素且已排重，不重复修正；外购模型的人力已剔除，不再扣除。合同5000元单列外部服务费；本题两类合计44480元。"
+      }
+    }
+  },
+  {
+    "case_id": "v12-boundary",
+    "prompt": "模型TE已经通过SR剔除外包份额。评审想再把同一外包的人天扣一次。输出deduct_again_allowed和needs_deduction_trace。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+    "bounded_expected_criteria": [
+      {
+        "kind": "json_equals",
+        "value": "$.deduct_again_allowed",
+        "expected": false
+      },
+      {
+        "kind": "json_equals",
+        "value": "$.needs_deduction_trace",
+        "expected": true
+      }
+    ],
+    "responses": {
+      "vA": {
+        "deduct_again_allowed": false,
+        "needs_deduction_trace": true,
+        "deduction_record": {
+          "position": "式5中的SR",
+          "already_deducted": true,
+          "additional_deduction_person_days": 0,
+          "retain": "保留现有剩余TE，外购合同另列模型服务费",
+          "evidence_needed": [
+            "原始任务范围与TBE",
+            "SR中的外包与复用组成",
+            "对应合同成果、承担方与工时范围",
+            "扣减前后计算链和既有扣减记录"
+          ]
+        },
+        "notes": "依据6.3.3.3c及模型人力卡：同一外包份额已通过SR剔除，不得从剩余TE再扣一次。这里额外扣减为0表示明确不重复操作，不表示外包成本为0。保留扣减位置追溯以检查外购、人力及复用范围。"
+      },
+      "vB": {
+        "deduct_again_allowed": false,
+        "needs_deduction_trace": true,
+        "result": "保留已经通过SR剔除后的TE，不再减去同一外包份额。",
+        "deduction_trace_fields": [
+          "原始工作范围及工作量",
+          "外包任务标识和合同范围",
+          "SR定义、取值依据及计算过程",
+          "调整前后TE",
+          "已剔除的人天及其与合同服务的对应关系"
+        ],
+        "notes": "题面明确同一外包份额已经剔除，再扣一次会低估内部人工。应保留可核对的扣减记录；只有另有尚未剔除且证据明确的份额时，才可另作调整，不能以审查为由重复扣减。"
+      }
+    }
+  },
+  {
+    "case_id": "v13-normal",
+    "prompt": "3台项目专用设备，同规格同服务的三份正式可比报价每台8000、9000、11000元，无异常，项目明确取排序中间值。输出selected_unit_yuan和total_yuan，并保存取价记录。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+    "bounded_expected_criteria": [
+      {
+        "kind": "json_number",
+        "value": "$.selected_unit_yuan",
+        "expected": 9000,
+        "abs_tol": 1e-06
+      },
+      {
+        "kind": "json_number",
+        "value": "$.total_yuan",
+        "expected": 27000,
+        "abs_tol": 1e-06
+      }
+    ],
+    "responses": {
+      "vA": {
+        "selected_unit_yuan": 9000,
+        "total_yuan": 27000,
+        "quantity": 3,
+        "quantity_unit": "台",
+        "pricing_record": {
+          "item": "项目专用设备",
+          "comparability": "题设确认同规格、同服务、三家正式可比报价",
+          "quotes": [
+            {
+              "id": "报价1",
+              "unit_yuan": 8000,
+              "status": "保留"
+            },
+            {
+              "id": "报价2",
+              "unit_yuan": 9000,
+              "status": "保留并采用"
+            },
+            {
+              "id": "报价3",
+              "unit_yuan": 11000,
+              "status": "保留"
+            }
+          ],
+          "anomalies": "题设确认无异常，无剔除",
+          "sorted_unit_prices_yuan": [
+            8000,
+            9000,
+            11000
+          ],
+          "selection_rule": "项目明确采用排序中间值",
+          "calculation": "9000元/台×3台=27000元",
+          "evidence_source": "本题给定报价；未独立验证报价附件",
+          "archive_fields_to_fill": [
+            "实际供应商及正式报价附件编号",
+            "报价日期与有效期",
+            "规格服务及税费口径的正式记录"
+          ]
+        },
+        "notes": "依据7.1.3市场询价路径。本题按正式可比报价已确认的条件进行参考取价，保存的记录不虚构供应商信息；中值不是强制成交价，正式采购档案还须附原始材料。"
+      },
+      "vB": {
+        "selected_unit_yuan": 9000,
+        "total_yuan": 27000,
+        "pricing_record": {
+          "item": "项目专用设备",
+          "quantity": 3,
+          "currency": "CNY",
+          "unit": "元/台",
+          "quotes": [
+            {
+              "quote_id": "题面报价1",
+              "unit_yuan": 8000
+            },
+            {
+              "quote_id": "题面报价2",
+              "unit_yuan": 9000
+            },
+            {
+              "quote_id": "题面报价3",
+              "unit_yuan": 11000
+            }
+          ],
+          "comparability": "题面确认同规格、同服务、正式报价且无异常",
+          "ordered_unit_prices": [
+            8000,
+            9000,
+            11000
+          ],
+          "rule": "项目明确取排序中间值",
+          "selected_position": 2,
+          "calculation": "9000×3=27000元",
+          "supplier_names": null,
+          "quote_document_ids": null,
+          "quote_dates": null
+        },
+        "notes": "取价记录已随本JSON保存。三份报价排序后中间值为9000元/台，数量3台，总价27000元。供应商名称、报价单编号和日期未提供，留空而不编造；结论以题面已确认的可比口径为边界。"
+      }
+    }
+  },
+  {
+    "case_id": "v13-boundary",
+    "prompt": "采购市场询价只有两份正式报价，另有一个无规格网店截图。可否认定满足三家正式可比报价？输出three_formal_quotes_satisfied，列缺项。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+    "bounded_expected_criteria": [
+      {
+        "kind": "json_equals",
+        "value": "$.three_formal_quotes_satisfied",
+        "expected": false
+      }
+    ],
+    "responses": {
+      "vB": {
+        "three_formal_quotes_satisfied": false,
+        "confirmed_formal_quote_count": 2,
+        "third_material": {
+          "type": "无规格网店截图",
+          "formal_comparable": false,
+          "reason": "缺正式报价属性和规格，无法证明与其他报价同产品权益及服务范围"
+        },
+        "missing": [
+          "至少第三家单位的正式报价及附件引用",
+          "第三份报价的品牌型号、配置、裸机或整机、授权与服务质保范围",
+          "各报价单位、税费、日期和有效期及同口径可比性核查",
+          "供应商信息、异常筛选证据和取价规则的询价记录"
+        ],
+        "selected_unit_yuan": null,
+        "notes": "依据7.1.3，采购市场询价须至少三家正式且可比报价。两份正式报价加一张缺规格截图不满足该条件；须补足并核可比性后才确认该询价路径参考价。不将三家门槛推广至其他取价方法。"
+      },
+      "vA": {
+        "three_formal_quotes_satisfied": false,
+        "formal_quote_count": 2,
+        "missing": [
+          "第三份正式报价",
+          "第三方供应商身份和可核验的报价凭据",
+          "设备规格、配置、数量和单位",
+          "税费、运输、安装、质保及服务范围等一致比较口径",
+          "报价日期与有效期"
+        ],
+        "notes": "无规格网店截图无法证明与两份正式报价同规格、同服务，也不能自动算作第三家正式报价。当前只能确认2份正式报价。需取得可核验且可比的第三份，并复核三家主体是否独立。"
+      }
+    }
+  },
+  {
+    "case_id": "v14-normal",
+    "prompt": "资源购价90000元、资金成本0、折旧3年、运维6000元/台年且已扣免费期；项目确认按12月均摊、租1台4个月，无其他费。只算租价，安全迁移资料另核。输出annual_unit_yuan、monthly_unit_yuan、total_yuan。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+    "bounded_expected_criteria": [
+      {
+        "kind": "json_number",
+        "value": "$.annual_unit_yuan",
+        "expected": 36000,
+        "abs_tol": 1e-06
+      },
+      {
+        "kind": "json_number",
+        "value": "$.monthly_unit_yuan",
+        "expected": 3000,
+        "abs_tol": 1e-06
+      },
+      {
+        "kind": "json_number",
+        "value": "$.total_yuan",
+        "expected": 12000,
+        "abs_tol": 1e-06
+      }
+    ],
+    "responses": {
+      "vB": {
+        "annual_unit_yuan": 36000,
+        "monthly_unit_yuan": 3000,
+        "total_yuan": 12000,
+        "calculation": [
+          "年度单价=(90000+0)÷3+6000=36000元/台年",
+          "按题给12个月均摊：36000÷12=3000元/台月",
+          "租赁费=3000×1台×4个月=12000元"
+        ],
+        "maintenance_status": "6000元/台年已扣免费运维期，不再重复扣",
+        "other_fees": "题设确认无其他费",
+        "safety_migration_status": "按题意另核资料，本结果仅为租价情景",
+        "notes": "依据7.2.1式9及期间一致原则。折旧、运维统一年度口径，月度均摊来自项目明确约定；没有自行选择折旧期或资金成本。安全要求、到期迁移责任及发生时点仍待资料，故不以租价算出宣称合同评估完整。"
+      },
+      "vA": {
+        "annual_unit_yuan": 36000,
+        "monthly_unit_yuan": 3000,
+        "total_yuan": 12000,
+        "calculation": [
+          "年折旧=90000÷3=30000元/台年",
+          "年租价=30000+6000+0=36000元/台年",
+          "月租价=36000÷12=3000元/台月",
+          "总租价=3000×1×4=12000元"
+        ],
+        "notes": "按题面资金成本为0、运维已扣免费期、无其他费及每年12个月均摊计算，不重复扣免费期。安全与迁移资料尚待另核，本次12000元仅为题面口径租价，不表示相关条件已经核实或相关费用为0。"
+      }
+    }
+  },
+  {
+    "case_id": "v15-normal",
+    "prompt": "已确认专用基础设施子项SC120000元，适用外部费率R0.06，S1.2，F1，来源齐全。输出integration_yuan；另说明这个值只覆盖该子项。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+    "bounded_expected_criteria": [
+      {
+        "kind": "json_number",
+        "value": "$.integration_yuan",
+        "expected": 8640,
+        "abs_tol": 1e-06
+      }
+    ],
+    "responses": {
+      "vB": {
+        "integration_yuan": 8640,
+        "scope": "仅该已确认的专用基础设施集成子项",
+        "calculation": "SC×R×S×F=120000元×0.06×1.2×1=8640元",
+        "parameters": {
+          "SC_yuan": 120000,
+          "R": 0.06,
+          "S": 1.2,
+          "F": 1,
+          "source": "题设：适用外部来源齐全"
+        },
+        "notes": "依据7.3.2.3及式10。该值只覆盖题给子项，不能表示全部基础设施集成费或项目总价；SC为取费基数，不再加入集成金额。其他对象、应用接口或数据工作有各自边界，不由此值自动覆盖。"
+      },
+      "vA": {
+        "integration_yuan": 8640,
+        "calculation": "120000×0.06×1.2×1=8640元",
+        "coverage": "仅覆盖已确认的专用基础设施子项SC=120000元所对应的集成费用。",
+        "notes": "采用题面已确认适用且来源齐全的R、S、F作乘法计算；8640元不代表整个项目的集成费。其他子项是否存在、适用何种基数和费率，不能由本值外推。"
+      }
+    }
+  },
+  {
+    "case_id": "v15-boundary",
+    "prompt": "集成基数10万元，未给地方或行业费率及系数，也未拆人工任务。请求按惯例取5%。输出can_default_five_percent及integration_yuan。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+    "bounded_expected_criteria": [
+      {
+        "kind": "json_equals",
+        "value": "$.can_default_five_percent",
+        "expected": false
+      },
+      {
+        "kind": "json_equals",
+        "value": "$.integration_yuan",
+        "expected": null
+      }
+    ],
+    "responses": {
+      "vB": {
+        "can_default_five_percent": false,
+        "integration_yuan": null,
+        "known_basis_yuan": 100000,
+        "required_inputs": [
+          {
+            "method": "比例法",
+            "inputs": [
+              "适用地方或行业费率R及版本和适用证据",
+              "规模系数S与特性因素F及依据",
+              "专用集成对象、要求及购置基数覆盖范围"
+            ]
+          },
+          {
+            "method": "经验法",
+            "inputs": [
+              "可验收的集成子任务与分步工时",
+              "人员级别及同单位单价",
+              "工具费与调整依据",
+              "方案设计、测试验证及已含服务边界"
+            ]
+          }
+        ],
+        "notes": "依据7.3.2.3及式10，本稿不提供通用5%费率，S/F也不能默认1。只有10万元基数不足以计算；经验法所需任务及工时同样缺失。待取得一种适用方法的完整证据后测算，未知金额不填零。"
+      },
+      "vA": {
+        "can_default_five_percent": false,
+        "integration_yuan": null,
+        "missing": [
+          "适用地方或行业费率及文件来源",
+          "调整系数的定义与取值依据",
+          "集成基数的构成和适用范围",
+          "若按人工计费则需任务、工时、费率及换算依据"
+        ],
+        "notes": "仅有10万元基数，不能以惯例将5%作为已确认费率。当前既没有可支持的费率法参数，也没有人工任务明细，集成费用未知。100000×5%=5000只是未经支持的假设，不能作为本项目核定金额。"
+      }
+    }
+  },
+  {
+    "case_id": "v16-normal",
+    "prompt": "外购开发期数据标注3000条，两个正式同规格报价都3元/条，质量、授权和周期已明且委托方接受，内部未重复做。输出cost_yuan及source_requires_three_quotes。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+    "bounded_expected_criteria": [
+      {
+        "kind": "json_number",
+        "value": "$.cost_yuan",
+        "expected": 9000,
+        "abs_tol": 1e-06
+      },
+      {
+        "kind": "json_equals",
+        "value": "$.source_requires_three_quotes",
+        "expected": false
+      }
+    ],
+    "responses": {
+      "vA": {
+        "cost_yuan": 9000,
+        "source_requires_three_quotes": false,
+        "category": "data_services",
+        "calculation": "3000条×3元/条=9000元",
+        "pricing_record": {
+          "service": "开发期外购数据标注",
+          "quantity": 3000,
+          "unit": "条",
+          "quotes": [
+            {
+              "id": "报价1",
+              "unit_yuan": 3,
+              "formal": true,
+              "comparable": true
+            },
+            {
+              "id": "报价2",
+              "unit_yuan": 3,
+              "formal": true,
+              "comparable": true
+            }
+          ],
+          "selection_basis": "两份同规格正式报价一致，委托方接受3元/条；不虚构供应商",
+          "scope_basis": "题给质量、授权和交付周期已明",
+          "internal_duplicate_work": false
+        },
+        "notes": "依据7.4及4.3.4，本稿外购数据服务没有统一不少于三家报价的硬门槛；不能移植采购或模型服务的规则。按题给已接受的单价计算并保留询价取价记录；不宣称两份报价普遍证明市场合理，也不替代项目另有采购要求。相同内部标注不重复列支。"
+      },
+      "vB": {
+        "cost_yuan": 9000,
+        "source_requires_three_quotes": null,
+        "calculation": "3000条×3元/条=9000元",
+        "evidence": {
+          "formal_comparable_quote_count": 2,
+          "prices_yuan_per_item": [
+            3,
+            3
+          ],
+          "quality_authorization_schedule": "题面已明确",
+          "client_acceptance": true,
+          "internal_duplicate_work": false
+        },
+        "notes": "可按题面已接受的3元/条计算开发期外购标注费9000元，内部未重复计费。未提供所指来源、条款或采购规则，无法确定该来源是否强制三份报价，故该字段为未知；不能把其他采购类别的三家要求自动移用到本项。"
+      }
+    }
+  },
+  {
+    "case_id": "v17-normal",
+    "prompt": "已拿三份可比正式报价并选合同：月费600元含20万token，超额1元/千token，精确按量且不向上整块取整、不结转。两月用量30万、10万，开发期内。输出month_costs与total_yuan。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+    "bounded_expected_criteria": [
+      {
+        "kind": "json_equals",
+        "value": "$.month_costs",
+        "expected": [
+          700,
+          600
+        ]
+      },
+      {
+        "kind": "json_number",
+        "value": "$.total_yuan",
+        "expected": 1300,
+        "abs_tol": 1e-06
+      }
+    ],
+    "responses": {
+      "vA": {
+        "month_costs": [
+          700,
+          600
+        ],
+        "total_yuan": 1300,
+        "currency": "CNY",
+        "monthly_detail": [
+          {
+            "month": 1,
+            "usage_tokens": 300000,
+            "quota_tokens": 200000,
+            "excess_tokens": 100000,
+            "base_yuan": 600,
+            "excess_yuan": 100,
+            "cost_yuan": 700,
+            "calculation": "600+max(300000−200000,0)÷1000×1=700元"
+          },
+          {
+            "month": 2,
+            "usage_tokens": 100000,
+            "quota_tokens": 200000,
+            "excess_tokens": 0,
+            "base_yuan": 600,
+            "excess_yuan": 0,
+            "cost_yuan": 600,
+            "calculation": "600+max(100000−200000,0)÷1000×1=600元"
+          }
+        ],
+        "quotation_status": "题给三份正式可比报价并已选合同",
+        "billing": "每月独立额度、不结转，按精确用量计价、不向上整块取整",
+        "review_pending": [
+          "存档授权模式、边界与周期材料",
+          "核对合同覆盖任务与内部保留集成验收任务，确认无重复人力或重复扣减"
+        ],
+        "notes": "依据7.5及合同套餐分支，两个月均在开发期，分别计算后相加700+600=1300元。第二个月未用完额度不抵第一月超额。结果为给定套餐与用量的服务费，不能用算术结果替代授权和内外部分工审查。"
+      },
+      "vB": {
+        "month_costs": [
+          700,
+          600
+        ],
+        "total_yuan": 1300,
+        "items": [
+          {
+            "month": 1,
+            "tokens": 300000,
+            "included_tokens": 200000,
+            "excess_tokens": 100000,
+            "base_yuan": 600,
+            "excess_yuan": 100,
+            "total_yuan": 700,
+            "calculation": "600+max(300000-200000,0)÷1000×1=700元"
+          },
+          {
+            "month": 2,
+            "tokens": 100000,
+            "included_tokens": 200000,
+            "excess_tokens": 0,
+            "base_yuan": 600,
+            "excess_yuan": 0,
+            "total_yuan": 600,
+            "calculation": "600+max(100000-200000,0)÷1000×1=600元"
+          }
+        ],
+        "notes": "逐月按所选合同计费，超额精确按量计算；第2月未用额度不结转，也不抵扣第1月超额。两月均在开发期内，总额700+600=1300元。"
+      }
+    }
+  },
+  {
+    "case_id": "v17-boundary",
+    "prompt": "模型服务只给一个月费标签，未给套餐含量、超额计价或实际用量且只有一份正式询价。输出can_confirm_total与needs_more_quotes。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+    "bounded_expected_criteria": [
+      {
+        "kind": "json_equals",
+        "value": "$.can_confirm_total",
+        "expected": false
+      },
+      {
+        "kind": "json_equals",
+        "value": "$.needs_more_quotes",
+        "expected": true
+      }
+    ],
+    "responses": {
+      "vA": {
+        "can_confirm_total": false,
+        "needs_more_quotes": true,
+        "total_yuan": null,
+        "formal_quote_count": 1,
+        "minimum_additional_formal_comparable_quotes": 2,
+        "required_inputs": [
+          "月费金额及计费周期、开发使用期间",
+          "套餐额度和计量单位",
+          "超额单价、计费单位及精确或整块取整规则",
+          "每月实际或有依据的预测用量",
+          "是否结转、阶梯、最低收费及附加费",
+          "模型授权模式、范围、许可周期和服务内容",
+          "补齐至少三家正式可比报价并形成询价和取价记录"
+        ],
+        "notes": "依据7.5.3和模型服务卡，月费标签不等于完整支出。缺额度、超额计价、用量等关键输入，不能假设纯包月无限量或超额为零；仅一份正式询价也未满足该市场询价路径三家正式可比报价要求。"
+      },
+      "vB": {
+        "can_confirm_total": false,
+        "needs_more_quotes": true,
+        "total_yuan": null,
+        "missing": [
+          "套餐包含量和服务范围",
+          "超额单价、计量单位及取整规则",
+          "实际或经确认的预计用量",
+          "服务期限",
+          "同范围可比的其他正式报价"
+        ],
+        "notes": "月费标签不能覆盖未知超额用量，只有一份报价也缺少价格对比依据。应补充正式可比报价与合同计费明细；题面未提供适用采购来源，具体必须补至几家未知，不据此宣称某规范统一要求三家。"
+      }
+    }
+  },
+  {
+    "case_id": "v18-boundary",
+    "prompt": "其他费没有产品/服务说明，直接按总价8%计。输出automatic_percent_allowed和needs_specific_service。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+    "bounded_expected_criteria": [
+      {
+        "kind": "json_equals",
+        "value": "$.automatic_percent_allowed",
+        "expected": false
+      },
+      {
+        "kind": "json_equals",
+        "value": "$.needs_specific_service",
+        "expected": true
+      }
+    ],
+    "responses": {
+      "vB": {
+        "automatic_percent_allowed": false,
+        "needs_specific_service": true,
+        "other_cost_yuan": null,
+        "rejected_proposal": "无具体产品或服务依据，直接按总价8%计其他费",
+        "required_inputs": [
+          "具体产品或服务、用途、承担方及开发期",
+          "数量单位、需求和委托方确认记录",
+          "为何归其他直接非人力及与综合人力和其他科目排重",
+          "经验任务量价、可比报价合同，或适用定额版本、基数和费率",
+          "金额属于估算、核定上限还是实际支出"
+        ],
+        "notes": "依据7.6.3，应明确使用其他费用的产品或服务。原稿没有统一8%加成；没有用途和取价依据时不予自动计入，也不把未纳入的8%解释为真实费用确定为零。"
+      },
+      "vA": {
+        "automatic_percent_allowed": false,
+        "needs_specific_service": true,
+        "other_cost_yuan": null,
+        "missing": [
+          "具体产品或服务名称",
+          "必要性及项目范围对应关系",
+          "数量、单价与计价周期",
+          "报价或合同依据",
+          "与其他费用科目的排重记录"
+        ],
+        "notes": "没有产品或服务说明，无法核实费用是否发生、是否必要及是否已在其他科目计入。8%缺少适用依据，不能自动计取；应明确服务并取得计费证据后逐项归集。"
+      }
+    }
+  },
+  {
+    "case_id": "v19-normal",
+    "prompt": "同范围数据工作量两法80、100人天。组织约定差异以较小值为基数、≤30%合理，权重0.25/0.75。输出relative_difference与combined_person_days。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+    "bounded_expected_criteria": [
+      {
+        "kind": "json_number",
+        "value": "$.relative_difference",
+        "expected": 0.25,
+        "abs_tol": 1e-06
+      },
+      {
+        "kind": "json_number",
+        "value": "$.combined_person_days",
+        "expected": 95,
+        "abs_tol": 1e-06
+      }
+    ],
+    "responses": {
+      "vA": {
+        "relative_difference": 0.25,
+        "relative_difference_percent": 25,
+        "combined_person_days": 95,
+        "reasonable_under_project_rule": true,
+        "calculation": [
+          "相对差异=(100−80)÷80=0.25=25%",
+          "25%≤组织约定30%，满足包含边界的合理性判据",
+          "权重和=0.25+0.75=1",
+          "合成=80×0.25+100×0.75=95人天"
+        ],
+        "notes": "依据6.2.1数据处理分支；题给两法同范围同单位，合理阈值、较小值基数和权重均由组织约定，故可条件合成。30%与该权重不是本稿通用规则，95人天也不构成预测效度或统计置信区间证明。"
+      },
+      "vB": {
+        "relative_difference": 0.25,
+        "combined_person_days": 95,
+        "difference_reasonable": true,
+        "calculation": [
+          "相对差异=(100-80)÷80=0.25=25%",
+          "25%≤30%，满足本组织约定",
+          "组合工作量=80×0.25+100×0.75=20+75=95人天"
+        ],
+        "notes": "差异分母采用题面约定的较小值80；权重按题目顺序对应80和100，合计为1。该阈值与权重为本组织约定，不外推为其他项目默认规则。"
+      }
+    }
+  },
+  {
+    "case_id": "v19-boundary",
+    "prompt": "模型费用40和100万元、项目认为差异大，但没有权重或合理阈值。请求直接平均成70。输出automatic_mean_allowed和needs_review。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+    "bounded_expected_criteria": [
+      {
+        "kind": "json_equals",
+        "value": "$.automatic_mean_allowed",
+        "expected": false
+      },
+      {
+        "kind": "json_equals",
+        "value": "$.needs_review",
+        "expected": true
+      }
+    ],
+    "responses": {
+      "vB": {
+        "automatic_mean_allowed": false,
+        "needs_review": true,
+        "estimates_wan": [
+          40,
+          100
+        ],
+        "absolute_difference_wan": 60,
+        "adopted_estimate_wan": null,
+        "status": "已整理差异，模型费用采用值未定",
+        "review_matrix": [
+          {
+            "topic": "范围",
+            "question": "是否覆盖同一模型任务、成果、开发期间，外包复用是否一致？"
+          },
+          {
+            "topic": "方法与来源",
+            "question": "各估算方法、基准及参数版本和适用依据是什么，是否共享同一错误来源？"
+          },
+          {
+            "topic": "敏感参数",
+            "question": "模型数量、TBE、TF、SR、TS、SF、MRDF分别如何取值，有无重复作用或扣减？"
+          },
+          {
+            "topic": "费用换算",
+            "question": "岗位PF、综合费率、单位及人天换算是否一致？"
+          },
+          {
+            "topic": "采用结论",
+            "question": "核查并重估后，由适当专家评审形成采用依据及责任记录。"
+          }
+        ],
+        "notes": "依据5.5、6.3.1的模型/整体复核分支，100−40=60万元；直接算术均值70万元不等于可采用估价。本题缺判据与权重且项目已认定分歧大，应核查重估。6.2.1的数据有条件加权规则不能直接推广为模型费用自动平均。"
+      },
+      "vA": {
+        "automatic_mean_allowed": false,
+        "needs_review": true,
+        "adopted_cost_wan": null,
+        "arithmetic_mean_wan": 70,
+        "review_matrix": [
+          {
+            "check": "估算范围与口径",
+            "reason": "核对功能、数据、模型服务、周期和税费是否一致"
+          },
+          {
+            "check": "方法与参数",
+            "reason": "核对各自工作量、费率、复用及外包扣减，找出60万元差额来源"
+          },
+          {
+            "check": "组合依据",
+            "reason": "确认合理差异阈值、适用条件和权重；必要时重估"
+          }
+        ],
+        "notes": "(40+100)÷2=70万元只是算术事实。项目已认为差异大，不能默认两法等权并将70万元确认为预算；先审查差异来源、修正口径，再依据明确规则决定是否组合。"
+      }
+    }
+  },
+  {
+    "case_id": "v20-normal",
+    "prompt": "单位万元：主体[20,22,24]、数据[2,3,4]、模型[7,8,9]；六类非人力都有证据确认不发生。九科目已核查。输出total_range与complete_total。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+    "bounded_expected_criteria": [
+      {
+        "kind": "json_equals",
+        "value": "$.total_range",
+        "expected": [
+          29,
+          33,
+          37
+        ]
+      },
+      {
+        "kind": "json_equals",
+        "value": "$.complete_total",
+        "expected": true
+      }
+    ],
+    "responses": {
+      "vA": {
+        "total_range": [
+          29,
+          33,
+          37
+        ],
+        "complete_total": true,
+        "currency_unit": "万元",
+        "range_order": [
+          "下限",
+          "中值",
+          "上限"
+        ],
+        "cost_table": [
+          {
+            "id": "main_function",
+            "name": "主体功能",
+            "range": [
+              20,
+              22,
+              24
+            ],
+            "status": "已知金额"
+          },
+          {
+            "id": "data_processing",
+            "name": "数据处理",
+            "range": [
+              2,
+              3,
+              4
+            ],
+            "status": "已知金额"
+          },
+          {
+            "id": "model_building",
+            "name": "模型建设",
+            "range": [
+              7,
+              8,
+              9
+            ],
+            "status": "已知金额"
+          },
+          {
+            "id": "purchase",
+            "name": "软硬件采购",
+            "range": [
+              0,
+              0,
+              0
+            ],
+            "status": "确认不发生",
+            "evidence": "题给有证据且九科目已核查"
+          },
+          {
+            "id": "rental",
+            "name": "资源租赁",
+            "range": [
+              0,
+              0,
+              0
+            ],
+            "status": "确认不发生",
+            "evidence": "题给有证据且九科目已核查"
+          },
+          {
+            "id": "integration",
+            "name": "基础设施集成",
+            "range": [
+              0,
+              0,
+              0
+            ],
+            "status": "确认不发生",
+            "evidence": "题给有证据且九科目已核查"
+          },
+          {
+            "id": "data_services",
+            "name": "数据资源与服务",
+            "range": [
+              0,
+              0,
+              0
+            ],
+            "status": "确认不发生",
+            "evidence": "题给有证据且九科目已核查"
+          },
+          {
+            "id": "model_services",
+            "name": "模型服务",
+            "range": [
+              0,
+              0,
+              0
+            ],
+            "status": "确认不发生",
+            "evidence": "题给有证据且九科目已核查"
+          },
+          {
+            "id": "other",
+            "name": "其他",
+            "range": [
+              0,
+              0,
+              0
+            ],
+            "status": "确认不发生",
+            "evidence": "题给有证据且九科目已核查"
+          }
+        ],
+        "labor_subtotal": [
+          29,
+          33,
+          37
+        ],
+        "nonlabor_subtotal": [
+          0,
+          0,
+          0
+        ],
+        "calculations": [
+          "下限=20+2+7=29万元",
+          "中值=22+3+8=33万元",
+          "上限=24+4+9=37万元"
+        ],
+        "notes": "依据5.5及汇总卡，九类均已核查，六类零值有题给不发生证据，故在给定范围和口径下可作为完整总计。区间为分项逐列相加，不是统计置信区间；不自动加±20%。未读取外部报告规程，不据此宣称正式报告合规。"
+      },
+      "vB": {
+        "total_range": [
+          29,
+          33,
+          37
+        ],
+        "complete_total": true,
+        "unit": "万元",
+        "scenario_matrix": [
+          {
+            "scenario": "低值",
+            "main": 20,
+            "data": 2,
+            "model": 7,
+            "nonlabor": 0,
+            "total": 29,
+            "calculation": "20+2+7+0=29"
+          },
+          {
+            "scenario": "中值",
+            "main": 22,
+            "data": 3,
+            "model": 8,
+            "nonlabor": 0,
+            "total": 33,
+            "calculation": "22+3+8+0=33"
+          },
+          {
+            "scenario": "高值",
+            "main": 24,
+            "data": 4,
+            "model": 9,
+            "nonlabor": 0,
+            "total": 37,
+            "calculation": "24+4+9+0=37"
+          }
+        ],
+        "notes": "按三个数组同序情景逐项相加，总额为[29,33,37]万元，即低高范围29—37万元，中值33万元。九科目已核查，六类非人力均有证据确认不发生，因此可记0并形成题面范围内的完整总额。"
+      }
+    }
+  },
+  {
+    "case_id": "v20-boundary",
+    "prompt": "仅知主体10万元、数据2万元、模型5万元，六类非人力没说明。输出known_subtotal_wan、complete_total、unknown_is_zero。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+    "bounded_expected_criteria": [
+      {
+        "kind": "json_number",
+        "value": "$.known_subtotal_wan",
+        "expected": 17,
+        "abs_tol": 1e-06
+      },
+      {
+        "kind": "json_equals",
+        "value": "$.complete_total",
+        "expected": false
+      },
+      {
+        "kind": "json_equals",
+        "value": "$.unknown_is_zero",
+        "expected": false
+      }
+    ],
+    "responses": {
+      "vB": {
+        "known_subtotal_wan": 17,
+        "complete_total": false,
+        "unknown_is_zero": false,
+        "complete_project_total_wan": null,
+        "calculation": "10+2+5=17万元（已知综合人力小计）",
+        "cost_table": [
+          {
+            "id": "main_function",
+            "name": "主体功能",
+            "amount_wan": 10,
+            "status": "已知点值"
+          },
+          {
+            "id": "data_processing",
+            "name": "数据处理",
+            "amount_wan": 2,
+            "status": "已知点值"
+          },
+          {
+            "id": "model_building",
+            "name": "模型建设",
+            "amount_wan": 5,
+            "status": "已知点值"
+          },
+          {
+            "id": "purchase",
+            "name": "软硬件采购",
+            "amount_wan": null,
+            "status": "未知，未说明"
+          },
+          {
+            "id": "rental",
+            "name": "资源租赁",
+            "amount_wan": null,
+            "status": "未知，未说明"
+          },
+          {
+            "id": "integration",
+            "name": "基础设施集成",
+            "amount_wan": null,
+            "status": "未知，未说明"
+          },
+          {
+            "id": "data_services",
+            "name": "数据资源与服务",
+            "amount_wan": null,
+            "status": "未知，未说明"
+          },
+          {
+            "id": "model_services",
+            "name": "模型服务",
+            "amount_wan": null,
+            "status": "未知，未说明"
+          },
+          {
+            "id": "other",
+            "name": "其他",
+            "amount_wan": null,
+            "status": "未知，未说明"
+          }
+        ],
+        "required_inputs": "逐项确认六类直接非人力是否发生；发生则补范围、金额及来源，不发生则提供确认依据。还需完整范围与排重核查。",
+        "notes": "依据5.5及汇总卡，只能报17万元已知小计，不能称完整项目总成本。六类非人力未知不等于零；现有数字仅为点值，没有依据时不人为扩成区间，也不因原稿示例暂不考虑非人力而在本题省略。"
+      },
+      "vA": {
+        "known_subtotal_wan": 17,
+        "complete_total": false,
+        "unknown_is_zero": false,
+        "total_wan": null,
+        "calculation": "已知小计=10+2+5=17万元",
+        "nonlabor_status": {
+          "unexplained_categories": 6,
+          "cost": null,
+          "required": "逐类核实是否发生、金额及依据；不发生也需确认记录"
+        },
+        "notes": "17万元仅为主体、数据、模型三项已知小计。六类非人力未说明，属于未知而非已确认不发生，不能全部记0，也不能将17万元标为完整总价。"
+      }
+    }
+  }
+]

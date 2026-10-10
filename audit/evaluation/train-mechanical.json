@@ -1,0 +1,452 @@
+[
+  {
+    "case_id": "v02-boundary",
+    "variant": "new_skill",
+    "label": "vB",
+    "passed": true,
+    "assertion_pass": 2,
+    "assertion_total": 2,
+    "sha256": "e5b4e43ca3718acaab731dde0b9b55d6dcb61656e5532b70f0a7bbe04887de0b"
+  },
+  {
+    "case_id": "v02-boundary",
+    "variant": "without_skill",
+    "label": "vA",
+    "passed": true,
+    "assertion_pass": 2,
+    "assertion_total": 2,
+    "sha256": "13d68205501bb1e8ce46689011759d011cc8273a1b09a437c618450140cf595f"
+  },
+  {
+    "case_id": "v03-normal",
+    "variant": "new_skill",
+    "label": "vB",
+    "passed": true,
+    "assertion_pass": 2,
+    "assertion_total": 2,
+    "sha256": "4a401cce9994aed0ce8ec1039f2a79b08b60666817c7a3ff4b54ea6559b2b8d4"
+  },
+  {
+    "case_id": "v03-normal",
+    "variant": "without_skill",
+    "label": "vA",
+    "passed": true,
+    "assertion_pass": 2,
+    "assertion_total": 2,
+    "sha256": "71ccb00777f9015a2b67082126acfdf601ccae283820f1986129f4af0174ce4c"
+  },
+  {
+    "case_id": "v05-boundary",
+    "variant": "new_skill",
+    "label": "vB",
+    "passed": true,
+    "assertion_pass": 2,
+    "assertion_total": 2,
+    "sha256": "3f3983211819e754ec69bcf78f43d84fa31f7c9de42d6b25b069c1b651183d57"
+  },
+  {
+    "case_id": "v05-boundary",
+    "variant": "without_skill",
+    "label": "vA",
+    "passed": true,
+    "assertion_pass": 2,
+    "assertion_total": 2,
+    "sha256": "db559d9bbf639b0e229be2a075a09d23752e586962dc36c6e62acc53c46a5322"
+  },
+  {
+    "case_id": "v06-normal",
+    "variant": "new_skill",
+    "label": "vB",
+    "passed": true,
+    "assertion_pass": 2,
+    "assertion_total": 2,
+    "sha256": "a3e13767c20c44cada353a9126511808407c8fb88af093aae1ac4515272bba17"
+  },
+  {
+    "case_id": "v06-normal",
+    "variant": "without_skill",
+    "label": "vA",
+    "passed": true,
+    "assertion_pass": 2,
+    "assertion_total": 2,
+    "sha256": "cb19c81cba6876863afc900c9c3f4b8f8b12fd79be481903ba4d5a5d12355399"
+  },
+  {
+    "case_id": "v06-boundary",
+    "variant": "new_skill",
+    "label": "vB",
+    "passed": true,
+    "assertion_pass": 2,
+    "assertion_total": 2,
+    "sha256": "744c300c9931d2023679b8ba74c5d51f24c5a19a6bb150cf89ee0e2415ac3ead"
+  },
+  {
+    "case_id": "v06-boundary",
+    "variant": "without_skill",
+    "label": "vA",
+    "passed": true,
+    "assertion_pass": 2,
+    "assertion_total": 2,
+    "sha256": "3f2f398968a09c127b4e6800800523d725276e292242d7ddabc75f02116196ee"
+  },
+  {
+    "case_id": "v07-normal",
+    "variant": "new_skill",
+    "label": "vB",
+    "passed": true,
+    "assertion_pass": 2,
+    "assertion_total": 2,
+    "sha256": "b586d8f09494161bfb52c9aab41b73f1ae36c5a9ef26839141d4891914e68039"
+  },
+  {
+    "case_id": "v07-normal",
+    "variant": "without_skill",
+    "label": "vA",
+    "passed": false,
+    "assertion_pass": 1,
+    "assertion_total": 2,
+    "sha256": "4adde1be742e0f2ad5c3f680a0becbd47cabc63731b967a25a607da908caffca"
+  },
+  {
+    "case_id": "v07-boundary",
+    "variant": "new_skill",
+    "label": "vB",
+    "passed": true,
+    "assertion_pass": 2,
+    "assertion_total": 2,
+    "sha256": "939b44b7a49c697bb62b88e4b4635cde6abb976861db0d719612eda57379262e"
+  },
+  {
+    "case_id": "v07-boundary",
+    "variant": "without_skill",
+    "label": "vA",
+    "passed": true,
+    "assertion_pass": 2,
+    "assertion_total": 2,
+    "sha256": "230b166d6bd7eab60d14551be9af00acf987512da1bd290cc27b21ce600089f7"
+  },
+  {
+    "case_id": "v10-normal",
+    "variant": "new_skill",
+    "label": "vA",
+    "passed": true,
+    "assertion_pass": 2,
+    "assertion_total": 2,
+    "sha256": "d66496e8fe07ec7f6c127424b4d2fd0ec93b1d1aea48dfd84d9f4dcbc64bee43"
+  },
+  {
+    "case_id": "v10-normal",
+    "variant": "without_skill",
+    "label": "vB",
+    "passed": true,
+    "assertion_pass": 2,
+    "assertion_total": 2,
+    "sha256": "8b8e75ba8f5ed758b29c68dc916b839f04052b03aa0525cd09f610e73e86388b"
+  },
+  {
+    "case_id": "v11-normal",
+    "variant": "new_skill",
+    "label": "vB",
+    "passed": true,
+    "assertion_pass": 3,
+    "assertion_total": 3,
+    "sha256": "2e95fba112b1339146bec968993fe3a4fa1ed00a46fdd1bae7957c71d99c1be7"
+  },
+  {
+    "case_id": "v11-normal",
+    "variant": "without_skill",
+    "label": "vA",
+    "passed": false,
+    "assertion_pass": 1,
+    "assertion_total": 3,
+    "sha256": "45ef64fcb09dc336b5660730b4ec7b7fc3d44f8dfb71589e37640584f3fbb6e3"
+  },
+  {
+    "case_id": "v11-boundary",
+    "variant": "new_skill",
+    "label": "vB",
+    "passed": true,
+    "assertion_pass": 2,
+    "assertion_total": 2,
+    "sha256": "4a42cca7845fe20f528aff218eaca9538698f6ebc528630f3a7a45e373f22927"
+  },
+  {
+    "case_id": "v11-boundary",
+    "variant": "without_skill",
+    "label": "vA",
+    "passed": true,
+    "assertion_pass": 2,
+    "assertion_total": 2,
+    "sha256": "27610a595ab74857552b94aa096c1976460f0ac1c20fada0dd1f23432e99be5e"
+  },
+  {
+    "case_id": "v12-normal",
+    "variant": "new_skill",
+    "label": "vA",
+    "passed": true,
+    "assertion_pass": 2,
+    "assertion_total": 2,
+    "sha256": "e649d540e3ce4626c4d4ab47cb6a201299f3defabffb0589244d27235b73792f"
+  },
+  {
+    "case_id": "v12-normal",
+    "variant": "without_skill",
+    "label": "vB",
+    "passed": true,
+    "assertion_pass": 2,
+    "assertion_total": 2,
+    "sha256": "c36c90f98828601d56c7bb1681f007d6ca4e3311039c141f4f03c5596d98c8fd"
+  },
+  {
+    "case_id": "v12-boundary",
+    "variant": "new_skill",
+    "label": "vA",
+    "passed": true,
+    "assertion_pass": 2,
+    "assertion_total": 2,
+    "sha256": "f21d41e7e57ea93fa077f4a04b6ebe2c3fcd1a7834f1452766abd02d05fc09cb"
+  },
+  {
+    "case_id": "v12-boundary",
+    "variant": "without_skill",
+    "label": "vB",
+    "passed": true,
+    "assertion_pass": 2,
+    "assertion_total": 2,
+    "sha256": "9513d8be0a4978e40f8b46ba198ef8eee4defe41b451493e5c80f8bd9314e1bf"
+  },
+  {
+    "case_id": "v13-normal",
+    "variant": "new_skill",
+    "label": "vA",
+    "passed": true,
+    "assertion_pass": 2,
+    "assertion_total": 2,
+    "sha256": "062bdde915779ce89a2fbed0cc2ec5bfcb988fcbff4f274a06a22b91b0f17b0a"
+  },
+  {
+    "case_id": "v13-normal",
+    "variant": "without_skill",
+    "label": "vB",
+    "passed": true,
+    "assertion_pass": 2,
+    "assertion_total": 2,
+    "sha256": "c9f6c07f6c2eab94ecff4042ea519095278188459ec8a02fb73cf7878a2de80c"
+  },
+  {
+    "case_id": "v13-boundary",
+    "variant": "new_skill",
+    "label": "vB",
+    "passed": true,
+    "assertion_pass": 1,
+    "assertion_total": 1,
+    "sha256": "69f1b0922ac5393d48a5a9ae7c000b457660f4e3e30abc51e0df466a1e28364f"
+  },
+  {
+    "case_id": "v13-boundary",
+    "variant": "without_skill",
+    "label": "vA",
+    "passed": true,
+    "assertion_pass": 1,
+    "assertion_total": 1,
+    "sha256": "de880610e4d05f2cfc87921a2d72f24303e9604372a6987e9ca50a247b82879e"
+  },
+  {
+    "case_id": "v14-normal",
+    "variant": "new_skill",
+    "label": "vB",
+    "passed": true,
+    "assertion_pass": 3,
+    "assertion_total": 3,
+    "sha256": "0ad4d1b5139dfbd32c027b877f0b61866874fc34564a8fb645f47e3620efebbb"
+  },
+  {
+    "case_id": "v14-normal",
+    "variant": "without_skill",
+    "label": "vA",
+    "passed": true,
+    "assertion_pass": 3,
+    "assertion_total": 3,
+    "sha256": "0726ea94730d0cf05374676b60cd6f8549faf09c5858346b901a51f93f61211f"
+  },
+  {
+    "case_id": "v15-normal",
+    "variant": "new_skill",
+    "label": "vB",
+    "passed": true,
+    "assertion_pass": 1,
+    "assertion_total": 1,
+    "sha256": "ea6f9280fbf298d4834c77b50ba1583810e48d3db1992aa5cf1af4fc58498949"
+  },
+  {
+    "case_id": "v15-normal",
+    "variant": "without_skill",
+    "label": "vA",
+    "passed": true,
+    "assertion_pass": 1,
+    "assertion_total": 1,
+    "sha256": "84abde8a1f0a7dcf58304b1942ed32ac98eb86632ecb0cfabbf59607edd7bf3a"
+  },
+  {
+    "case_id": "v15-boundary",
+    "variant": "new_skill",
+    "label": "vB",
+    "passed": true,
+    "assertion_pass": 2,
+    "assertion_total": 2,
+    "sha256": "38ceff484a46b7f6d43e5df71fad4337de99bd6729ce8e0e5f4c46ec5fbe45ee"
+  },
+  {
+    "case_id": "v15-boundary",
+    "variant": "without_skill",
+    "label": "vA",
+    "passed": true,
+    "assertion_pass": 2,
+    "assertion_total": 2,
+    "sha256": "6bf4fe93208c813b292a83db056e4f1fd1f581db569e5e96a11be2703e79d059"
+  },
+  {
+    "case_id": "v16-normal",
+    "variant": "new_skill",
+    "label": "vA",
+    "passed": true,
+    "assertion_pass": 2,
+    "assertion_total": 2,
+    "sha256": "ec63becd3794cf09c7de69faf83eae886a47753b0dc9249a91844a7cc8af270d"
+  },
+  {
+    "case_id": "v16-normal",
+    "variant": "without_skill",
+    "label": "vB",
+    "passed": false,
+    "assertion_pass": 1,
+    "assertion_total": 2,
+    "sha256": "99c6d074f394ded1cf2ea3ca185643c6e2416ef608e6a07ece403a88277aac31"
+  },
+  {
+    "case_id": "v17-normal",
+    "variant": "new_skill",
+    "label": "vA",
+    "passed": true,
+    "assertion_pass": 2,
+    "assertion_total": 2,
+    "sha256": "5ccd40b4fd935cf2afaabb8b5e3d1621f1af5660e98a195ba5d6c2839b80c2c4"
+  },
+  {
+    "case_id": "v17-normal",
+    "variant": "without_skill",
+    "label": "vB",
+    "passed": true,
+    "assertion_pass": 2,
+    "assertion_total": 2,
+    "sha256": "b0fac825a0d04a0a286c74076d05ed93f24039baae055ec8438f34d263c2619f"
+  },
+  {
+    "case_id": "v17-boundary",
+    "variant": "new_skill",
+    "label": "vA",
+    "passed": true,
+    "assertion_pass": 2,
+    "assertion_total": 2,
+    "sha256": "4b97668a0ea6773aa659785dc3c9095f0afe1395f8bbbf552bb17ec3ba45fa18"
+  },
+  {
+    "case_id": "v17-boundary",
+    "variant": "without_skill",
+    "label": "vB",
+    "passed": true,
+    "assertion_pass": 2,
+    "assertion_total": 2,
+    "sha256": "6a16b9df44f63d7688102ea6153de3cc1de48663ad5ff5d5d253c80b25be23fb"
+  },
+  {
+    "case_id": "v18-boundary",
+    "variant": "new_skill",
+    "label": "vB",
+    "passed": true,
+    "assertion_pass": 2,
+    "assertion_total": 2,
+    "sha256": "b68f72a63754bb73b3e4b6dec984fd1c5c1adf6c3e0a3a42474dad0e3206e0fb"
+  },
+  {
+    "case_id": "v18-boundary",
+    "variant": "without_skill",
+    "label": "vA",
+    "passed": true,
+    "assertion_pass": 2,
+    "assertion_total": 2,
+    "sha256": "4512d4c586df277ed9cc5761ba8adc0f2512a961b4dd185995f3d13e9119aa3c"
+  },
+  {
+    "case_id": "v19-normal",
+    "variant": "new_skill",
+    "label": "vA",
+    "passed": true,
+    "assertion_pass": 2,
+    "assertion_total": 2,
+    "sha256": "5e005ca72fac819b60edf6719439f84497c70963780b09ccbb2b0bfc1c14efd4"
+  },
+  {
+    "case_id": "v19-normal",
+    "variant": "without_skill",
+    "label": "vB",
+    "passed": true,
+    "assertion_pass": 2,
+    "assertion_total": 2,
+    "sha256": "1f301792cb8f1e7421e1a121791a66d38d4971a2faa7099587a8fbe73d41eca8"
+  },
+  {
+    "case_id": "v19-boundary",
+    "variant": "new_skill",
+    "label": "vB",
+    "passed": true,
+    "assertion_pass": 2,
+    "assertion_total": 2,
+    "sha256": "9b015e075a9fba72815fb5726e611091043225f43207780c13d5d2b394dfe836"
+  },
+  {
+    "case_id": "v19-boundary",
+    "variant": "without_skill",
+    "label": "vA",
+    "passed": true,
+    "assertion_pass": 2,
+    "assertion_total": 2,
+    "sha256": "29416cb9abe2b1a1a4203aa0cc4e1f4437deaeadb01f004581223792f7381310"
+  },
+  {
+    "case_id": "v20-normal",
+    "variant": "new_skill",
+    "label": "vA",
+    "passed": true,
+    "assertion_pass": 2,
+    "assertion_total": 2,
+    "sha256": "a554c7e0be381e4c8fa9788b0adf62c07dc780023a80ad5138b6f5941354d412"
+  },
+  {
+    "case_id": "v20-normal",
+    "variant": "without_skill",
+    "label": "vB",
+    "passed": true,
+    "assertion_pass": 2,
+    "assertion_total": 2,
+    "sha256": "ce97d2ab8715ad727bec32933ce13235536c5ecd6468076e58ca989c5d69cdc1"
+  },
+  {
+    "case_id": "v20-boundary",
+    "variant": "new_skill",
+    "label": "vB",
+    "passed": true,
+    "assertion_pass": 3,
+    "assertion_total": 3,
+    "sha256": "12a9193cec875ff2705a0e06d095d9f4f18f46b4ad9069cb5a27a273249eaf10"
+  },
+  {
+    "case_id": "v20-boundary",
+    "variant": "without_skill",
+    "label": "vA",
+    "passed": true,
+    "assertion_pass": 3,
+    "assertion_total": 3,
+    "sha256": "9e17824adf0ffbb5a677287b92e03200c21476e09dd8f12ce5853c1aee2c70c6"
+  }
+]

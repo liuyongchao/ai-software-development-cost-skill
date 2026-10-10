@@ -1,0 +1,7 @@
+{
+  "case_id": "v12-normal",
+  "variant_label": "vB",
+  "prompt": "模型任务已排重且含全局因素：6人天PF1.2、14人天PF1.5，综合费率28000元/月，20天/月；外购模型任务人力已从这些数剔除，另合同5000元。输出labor_cost_yuan和external_service_yuan。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+  "input_files": [],
+  "instruction": "按 prompt 实际完成任务，最终答案写同目录 output.md，其他交付物也放在本目录。不要读取相邻变体、映射表或预期答案。"
+}

@@ -1,0 +1,13 @@
+{
+  "status": "computed_from_declared_inputs",
+  "operation": "rental_unit",
+  "basis": "题给购价、资金成本0、折旧3年及已扣免费服务期运维6000元/台年；按式9计算",
+  "source_status": "2026-08-18 consultation draft; no independent validation of inputs",
+  "rounding": "Decimal precision 40; no intermediate monetary rounding; display rounding belongs to the report",
+  "result": {
+    "annual_unit_yuan": "36000",
+    "formula": "(UP + CC) / DL_years + OMUP_per_year",
+    "period": "year",
+    "note": "no automatic monthly billing policy"
+  }
+}

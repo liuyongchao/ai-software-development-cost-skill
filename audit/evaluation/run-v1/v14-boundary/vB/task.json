@@ -1,0 +1,7 @@
+{
+  "case_id": "v14-boundary",
+  "variant_label": "vB",
+  "prompt": "租赁单价按年，时长只写4个月；没约定按月折算，还有一台免费利旧资源。输出automatic_monthly_proration_allowed和free_asset_rental_yuan，列安全/迁移等待核。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+  "input_files": [],
+  "instruction": "按 prompt 实际完成任务，最终答案写同目录 output.md，其他交付物也放在本目录。不要读取相邻变体、映射表或预期答案。"
+}

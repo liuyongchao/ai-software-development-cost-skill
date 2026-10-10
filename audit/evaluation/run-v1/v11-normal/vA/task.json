@@ -1,0 +1,7 @@
+{
+  "case_id": "v11-normal",
+  "variant_label": "vA",
+  "prompt": "全局因子已确认SF1=1.4,SF2=1.1,MRDF1=1,MRDF2=0.9。两任务TE已经按式5含全局因素，分别8、12人天。输出SF、MRDF、total_person_days。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+  "input_files": [],
+  "instruction": "按 prompt 实际完成任务，最终答案写同目录 output.md，其他交付物也放在本目录。不要读取相邻变体、映射表或预期答案。"
+}

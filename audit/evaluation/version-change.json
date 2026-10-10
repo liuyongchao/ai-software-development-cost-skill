@@ -1,0 +1,9 @@
+{
+  "from": "v1 frozen train",
+  "to": "v2 frozen and accepted within agreed scope",
+  "reason": "quote_median must count distinct suppliers, not rows",
+  "changed": "supplier_id required; duplicate valid supplier rejected; guide aligned; affected capabilities V13/V14/V17 revision2",
+  "expectations_changed": false,
+  "regression": "37 calculator checks and 5 affected actual train tasks passed; 17 holdout tasks passed",
+  "runtime_changed_after_holdout": false
+}

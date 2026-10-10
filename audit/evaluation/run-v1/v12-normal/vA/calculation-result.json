@@ -1,0 +1,24 @@
+{
+  "status": "computed_from_declared_inputs",
+  "operation": "labor_total",
+  "basis": "题给模型TE已排重且含全局因素，外购任务人力已经剔除；按给定PF、费率及20天/月情景计算",
+  "source_status": "2026-08-18 consultation draft; no independent validation of inputs",
+  "rounding": "Decimal precision 40; no intermediate monetary rounding; display rounding belongs to the report",
+  "result": {
+    "items": [
+      {
+        "id": "M1",
+        "person_months": "0.3",
+        "cost_yuan": "10080.00"
+      },
+      {
+        "id": "M2",
+        "person_months": "0.7",
+        "cost_yuan": "29400.00"
+      }
+    ],
+    "total_person_months": "1.0",
+    "total_cost_yuan": "39480.00",
+    "formula": "sum(effort converted to person_months * PF * UHC)"
+  }
+}

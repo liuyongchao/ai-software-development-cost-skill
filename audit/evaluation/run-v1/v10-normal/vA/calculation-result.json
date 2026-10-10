@@ -1,0 +1,13 @@
+{
+  "status": "computed_from_declared_inputs",
+  "operation": "model_task",
+  "basis": "项目明确选正文式5作假设情景且另行确认全部题给参数；不是预测效度证明",
+  "source_status": "2026-08-18 consultation draft; no independent validation of inputs",
+  "rounding": "Decimal precision 40; no intermediate monetary rounding; display rounding belongs to the report",
+  "result": {
+    "person_days": "18.720000",
+    "global_factors_applied": true,
+    "formula": "TBE * TF * SR * TS * SF * MRDF",
+    "model_status": "selected_hypothetical_scenario_not_predictive_validation"
+  }
+}

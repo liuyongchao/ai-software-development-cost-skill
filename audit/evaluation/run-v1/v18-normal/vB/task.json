@@ -1,0 +1,7 @@
+{
+  "case_id": "v18-normal",
+  "variant_label": "vB",
+  "prompt": "开发期评审差旅，委托方确认3人2天，适用核定上限400元/人天；无实际凭证。输出approved_cap_yuan和actual_settlement_yuan。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+  "input_files": [],
+  "instruction": "按 prompt 实际完成任务，最终答案写同目录 output.md，其他交付物也放在本目录。不要读取相邻变体、映射表或预期答案。"
+}

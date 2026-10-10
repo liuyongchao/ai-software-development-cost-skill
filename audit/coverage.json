@@ -1,0 +1,1873 @@
+[
+  {
+    "task_id": "T01",
+    "title": "适用范围",
+    "raw_ids": [
+      "f01",
+      "f03",
+      "f04",
+      "f19",
+      "f24",
+      "p01",
+      "p02",
+      "p15",
+      "p19",
+      "ce01",
+      "ce02",
+      "ce14",
+      "ce24",
+      "g01",
+      "g05",
+      "g08",
+      "g20",
+      "g23"
+    ],
+    "verified_ids": [
+      "V01"
+    ],
+    "reference_ids": [
+      "R01",
+      "R02"
+    ],
+    "review_ids": [
+      "N14"
+    ],
+    "source_pages": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      22,
+      23,
+      24,
+      26,
+      27,
+      29
+    ],
+    "scope_status": "bounded_method_covered_with_project_inputs",
+    "limitation": "方法支持限定任务；现实项目仍需合法范围、单位及取值证据，对应正常与边界任务已实测；不代表参数有预测效度。",
+    "actual_stage15_paths": [
+      "verified.md",
+      "references.md",
+      "needs-review.md",
+      ".cangjie/verification/candidate-decisions.json"
+    ],
+    "final_skill_delivery_status": "compiled_and_tested_within_agreed_scope",
+    "actual_final_paths": [
+      "skills/ai-software-development-cost-draft/references/capabilities/scope-check.md"
+    ],
+    "actual_reference_paths": [
+      "skills/ai-software-development-cost-draft/references/glossary.md",
+      "skills/ai-software-development-cost-draft/references/overview.md"
+    ],
+    "actual_review_path": "skills/ai-software-development-cost-draft/references/overview.md",
+    "actual_output_test_cases": [
+      "v01-boundary",
+      "v01-normal"
+    ]
+  },
+  {
+    "task_id": "T02",
+    "title": "费用归类",
+    "raw_ids": [
+      "f01",
+      "f02",
+      "f03",
+      "f04",
+      "f22",
+      "f24",
+      "f25",
+      "p02",
+      "p03",
+      "p04",
+      "p05",
+      "p06",
+      "p09",
+      "p12",
+      "p16",
+      "p17",
+      "p18",
+      "p19",
+      "p66",
+      "p74",
+      "c04",
+      "c12",
+      "ce02",
+      "ce03",
+      "ce04",
+      "ce05",
+      "ce09",
+      "ce13",
+      "ce14",
+      "ce24",
+      "g01",
+      "g02",
+      "g03",
+      "g20",
+      "g21",
+      "g22",
+      "g23"
+    ],
+    "verified_ids": [
+      "V02",
+      "V20"
+    ],
+    "reference_ids": [
+      "R01",
+      "R02",
+      "R07",
+      "R08"
+    ],
+    "review_ids": [
+      "N01",
+      "N04",
+      "N05",
+      "N06",
+      "N08",
+      "N11",
+      "N14"
+    ],
+    "source_pages": [
+      4,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      16,
+      18,
+      19,
+      20,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      30,
+      39,
+      40,
+      41,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52
+    ],
+    "scope_status": "partial_with_explicit_dependencies",
+    "limitation": "争议数据活动分类保留N01，不能声称口径全无冲突。",
+    "actual_stage15_paths": [
+      "verified.md",
+      "references.md",
+      "needs-review.md",
+      ".cangjie/verification/candidate-decisions.json"
+    ],
+    "final_skill_delivery_status": "compiled_and_tested_within_agreed_scope",
+    "actual_final_paths": [
+      "skills/ai-software-development-cost-draft/references/capabilities/cost-classification.md",
+      "skills/ai-software-development-cost-draft/references/capabilities/cost-summary.md"
+    ],
+    "actual_reference_paths": [
+      "skills/ai-software-development-cost-draft/references/glossary.md",
+      "skills/ai-software-development-cost-draft/references/overview.md",
+      "skills/ai-software-development-cost-draft/references/overview.md",
+      "skills/ai-software-development-cost-draft/references/overview.md"
+    ],
+    "actual_review_path": "skills/ai-software-development-cost-draft/references/overview.md",
+    "actual_output_test_cases": [
+      "v02-boundary",
+      "v02-normal",
+      "v20-boundary",
+      "v20-normal"
+    ]
+  },
+  {
+    "task_id": "T03",
+    "title": "重复计费与边界",
+    "raw_ids": [
+      "f02",
+      "f03",
+      "f05",
+      "f06",
+      "f08",
+      "f09",
+      "f11",
+      "f12",
+      "f13",
+      "f14",
+      "f17",
+      "f18",
+      "f19",
+      "f21",
+      "f22",
+      "f23",
+      "p03",
+      "p06",
+      "p07",
+      "p08",
+      "p10",
+      "p12",
+      "p13",
+      "p14",
+      "p16",
+      "p25",
+      "p26",
+      "p27",
+      "p34",
+      "p41",
+      "p43",
+      "p60",
+      "p63",
+      "p66",
+      "p72",
+      "p84",
+      "c04",
+      "c11",
+      "ce03",
+      "ce04",
+      "ce05",
+      "ce06",
+      "ce07",
+      "ce08",
+      "ce09",
+      "ce10",
+      "ce11",
+      "ce13",
+      "ce14",
+      "ce15",
+      "ce18",
+      "ce19",
+      "ce20",
+      "ce21",
+      "g02",
+      "g03",
+      "g04",
+      "g05",
+      "g06",
+      "g08",
+      "g09",
+      "g10",
+      "g13",
+      "g15",
+      "g17",
+      "g20",
+      "g21",
+      "g22"
+    ],
+    "verified_ids": [
+      "V02",
+      "V04",
+      "V06"
+    ],
+    "reference_ids": [
+      "R01",
+      "R02",
+      "R05",
+      "R07"
+    ],
+    "review_ids": [
+      "N01",
+      "N04",
+      "N06",
+      "N07",
+      "N10",
+      "N11",
+      "N12",
+      "N13",
+      "N14"
+    ],
+    "source_pages": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      22,
+      23,
+      24,
+      25,
+      26,
+      28,
+      29,
+      31,
+      32,
+      33,
+      35,
+      36,
+      39,
+      40,
+      41,
+      45,
+      46,
+      47,
+      48,
+      50,
+      51,
+      52
+    ],
+    "scope_status": "partial_with_explicit_dependencies",
+    "limitation": "重计检查可执行，争议分类与扣减额度需要项目依据。",
+    "actual_stage15_paths": [
+      "verified.md",
+      "references.md",
+      "needs-review.md",
+      ".cangjie/verification/candidate-decisions.json"
+    ],
+    "final_skill_delivery_status": "compiled_and_tested_within_agreed_scope",
+    "actual_final_paths": [
+      "skills/ai-software-development-cost-draft/references/capabilities/cost-classification.md",
+      "skills/ai-software-development-cost-draft/references/capabilities/functional-cost-handoff.md",
+      "skills/ai-software-development-cost-draft/references/capabilities/data-baseline.md"
+    ],
+    "actual_reference_paths": [
+      "skills/ai-software-development-cost-draft/references/glossary.md",
+      "skills/ai-software-development-cost-draft/references/overview.md",
+      "skills/ai-software-development-cost-draft/references/overview.md",
+      "skills/ai-software-development-cost-draft/references/overview.md"
+    ],
+    "actual_review_path": "skills/ai-software-development-cost-draft/references/overview.md",
+    "actual_output_test_cases": [
+      "v02-boundary",
+      "v02-normal",
+      "v04-boundary",
+      "v04-normal",
+      "v06-boundary",
+      "v06-normal"
+    ]
+  },
+  {
+    "task_id": "T04",
+    "title": "任务分解与方法选择",
+    "raw_ids": [
+      "f01",
+      "f04",
+      "f10",
+      "f11",
+      "f25",
+      "p20",
+      "p21",
+      "ce03",
+      "ce06",
+      "ce12",
+      "ce16",
+      "ce22",
+      "g11",
+      "g12"
+    ],
+    "verified_ids": [
+      "V03"
+    ],
+    "reference_ids": [
+      "R01"
+    ],
+    "review_ids": [
+      "N10",
+      "N11",
+      "N12",
+      "N14"
+    ],
+    "source_pages": [
+      4,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      24,
+      28,
+      29,
+      30,
+      31,
+      32,
+      34,
+      52
+    ],
+    "scope_status": "bounded_method_covered_with_project_inputs",
+    "limitation": "方法支持限定任务；现实项目仍需合法范围、单位及取值证据，对应正常与边界任务已实测；不代表参数有预测效度。",
+    "actual_stage15_paths": [
+      "verified.md",
+      "references.md",
+      "needs-review.md",
+      ".cangjie/verification/candidate-decisions.json"
+    ],
+    "final_skill_delivery_status": "compiled_and_tested_within_agreed_scope",
+    "actual_final_paths": [
+      "skills/ai-software-development-cost-draft/references/capabilities/work-breakdown.md"
+    ],
+    "actual_reference_paths": [
+      "skills/ai-software-development-cost-draft/references/glossary.md"
+    ],
+    "actual_review_path": "skills/ai-software-development-cost-draft/references/overview.md",
+    "actual_output_test_cases": [
+      "v03-boundary",
+      "v03-normal"
+    ]
+  },
+  {
+    "task_id": "T05",
+    "title": "主体功能外部方法衔接",
+    "raw_ids": [
+      "f05",
+      "p04",
+      "p08",
+      "p24",
+      "p25",
+      "p26",
+      "p27",
+      "p71",
+      "p91",
+      "p92",
+      "c04",
+      "c05",
+      "ce05",
+      "ce08",
+      "ce13",
+      "ce15",
+      "g03",
+      "g13",
+      "g21"
+    ],
+    "verified_ids": [
+      "V04"
+    ],
+    "reference_ids": [
+      "R01",
+      "R03",
+      "R07",
+      "R09"
+    ],
+    "review_ids": [
+      "N01",
+      "N04",
+      "N05",
+      "N06",
+      "N09",
+      "N11"
+    ],
+    "source_pages": [
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      16,
+      18,
+      19,
+      24,
+      25,
+      28,
+      29,
+      39,
+      40,
+      41,
+      45,
+      46,
+      47,
+      48,
+      49
+    ],
+    "scope_status": "partial_with_explicit_dependencies",
+    "limitation": "只覆盖范围与输入输出接口；完整计数/成本方法依赖外部材料N11。",
+    "actual_stage15_paths": [
+      "verified.md",
+      "references.md",
+      "needs-review.md",
+      ".cangjie/verification/candidate-decisions.json"
+    ],
+    "final_skill_delivery_status": "compiled_and_tested_within_agreed_scope",
+    "actual_final_paths": [
+      "skills/ai-software-development-cost-draft/references/capabilities/functional-cost-handoff.md"
+    ],
+    "actual_reference_paths": [
+      "skills/ai-software-development-cost-draft/references/glossary.md",
+      "skills/ai-software-development-cost-draft/references/overview.md",
+      "skills/ai-software-development-cost-draft/references/overview.md",
+      "skills/ai-software-development-cost-draft/references/overview.md"
+    ],
+    "actual_review_path": "skills/ai-software-development-cost-draft/references/overview.md",
+    "actual_output_test_cases": [
+      "v04-boundary",
+      "v04-normal"
+    ]
+  },
+  {
+    "task_id": "T06",
+    "title": "数据任务与验收",
+    "raw_ids": [
+      "f02",
+      "f06",
+      "f07",
+      "f08",
+      "f12",
+      "f13",
+      "p05",
+      "p20",
+      "p29",
+      "p33",
+      "p51",
+      "p76",
+      "c01",
+      "c02",
+      "c06",
+      "ce06",
+      "ce17",
+      "ce22",
+      "g03",
+      "g04",
+      "g06",
+      "g07",
+      "g11",
+      "g14"
+    ],
+    "verified_ids": [
+      "V03"
+    ],
+    "reference_ids": [
+      "R01",
+      "R04",
+      "R07"
+    ],
+    "review_ids": [
+      "N01",
+      "N07",
+      "N10",
+      "N13"
+    ],
+    "source_pages": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      25,
+      28,
+      29,
+      31,
+      32,
+      33,
+      34,
+      41,
+      42,
+      43,
+      49,
+      50
+    ],
+    "scope_status": "partial_with_explicit_dependencies",
+    "limitation": "任务准备可执行，数据规模实验设计不完整见N13。",
+    "actual_stage15_paths": [
+      "verified.md",
+      "references.md",
+      "needs-review.md",
+      ".cangjie/verification/candidate-decisions.json"
+    ],
+    "final_skill_delivery_status": "compiled_and_tested_within_agreed_scope",
+    "actual_final_paths": [
+      "skills/ai-software-development-cost-draft/references/capabilities/work-breakdown.md"
+    ],
+    "actual_reference_paths": [
+      "skills/ai-software-development-cost-draft/references/glossary.md",
+      "skills/ai-software-development-cost-draft/references/overview.md",
+      "skills/ai-software-development-cost-draft/references/overview.md"
+    ],
+    "actual_review_path": "skills/ai-software-development-cost-draft/references/overview.md",
+    "actual_output_test_cases": [
+      "v03-boundary",
+      "v03-normal"
+    ]
+  },
+  {
+    "task_id": "T07",
+    "title": "数据计件与样本测算",
+    "raw_ids": [
+      "f06",
+      "f07",
+      "f10",
+      "f26",
+      "p28",
+      "p30",
+      "p31",
+      "p80",
+      "c01",
+      "ce16",
+      "ce17",
+      "g04",
+      "g12",
+      "g14"
+    ],
+    "verified_ids": [
+      "V05"
+    ],
+    "reference_ids": [
+      "R01",
+      "R07"
+    ],
+    "review_ids": [
+      "N10",
+      "N12",
+      "N13",
+      "N14"
+    ],
+    "source_pages": [
+      5,
+      8,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      24,
+      28,
+      29,
+      31,
+      32,
+      33,
+      34,
+      49,
+      50
+    ],
+    "scope_status": "bounded_method_covered_with_project_inputs",
+    "limitation": "方法支持限定任务；现实项目仍需合法范围、单位及取值证据，对应正常与边界任务已实测；不代表参数有预测效度。",
+    "actual_stage15_paths": [
+      "verified.md",
+      "references.md",
+      "needs-review.md",
+      ".cangjie/verification/candidate-decisions.json"
+    ],
+    "final_skill_delivery_status": "compiled_and_tested_within_agreed_scope",
+    "actual_final_paths": [
+      "skills/ai-software-development-cost-draft/references/capabilities/data-piecework.md"
+    ],
+    "actual_reference_paths": [
+      "skills/ai-software-development-cost-draft/references/glossary.md",
+      "skills/ai-software-development-cost-draft/references/overview.md"
+    ],
+    "actual_review_path": "skills/ai-software-development-cost-draft/references/overview.md",
+    "actual_output_test_cases": [
+      "v05-boundary",
+      "v05-normal"
+    ]
+  },
+  {
+    "task_id": "T08",
+    "title": "数据基准与调整",
+    "raw_ids": [
+      "f06",
+      "f08",
+      "f10",
+      "f26",
+      "p07",
+      "p08",
+      "p28",
+      "p32",
+      "p33",
+      "p34",
+      "p51",
+      "p75",
+      "p77",
+      "p78",
+      "p79",
+      "c02",
+      "c06",
+      "ce05",
+      "ce08",
+      "ce16",
+      "ce23",
+      "g04",
+      "g11",
+      "g12",
+      "g15"
+    ],
+    "verified_ids": [
+      "V06"
+    ],
+    "reference_ids": [
+      "R01",
+      "R02",
+      "R04",
+      "R07"
+    ],
+    "review_ids": [
+      "N07",
+      "N10",
+      "N12",
+      "N13",
+      "N14"
+    ],
+    "source_pages": [
+      5,
+      8,
+      9,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      24,
+      28,
+      29,
+      31,
+      32,
+      33,
+      34,
+      41,
+      42,
+      43,
+      49,
+      50
+    ],
+    "scope_status": "partial_with_explicit_dependencies",
+    "limitation": "给定适用基准可算；资料性整体基准/分档不自动套用。",
+    "actual_stage15_paths": [
+      "verified.md",
+      "references.md",
+      "needs-review.md",
+      ".cangjie/verification/candidate-decisions.json"
+    ],
+    "final_skill_delivery_status": "compiled_and_tested_within_agreed_scope",
+    "actual_final_paths": [
+      "skills/ai-software-development-cost-draft/references/capabilities/data-baseline.md"
+    ],
+    "actual_reference_paths": [
+      "skills/ai-software-development-cost-draft/references/glossary.md",
+      "skills/ai-software-development-cost-draft/references/overview.md",
+      "skills/ai-software-development-cost-draft/references/overview.md",
+      "skills/ai-software-development-cost-draft/references/overview.md"
+    ],
+    "actual_review_path": "skills/ai-software-development-cost-draft/references/overview.md",
+    "actual_output_test_cases": [
+      "v06-boundary",
+      "v06-normal"
+    ]
+  },
+  {
+    "task_id": "T09",
+    "title": "数据岗位费用",
+    "raw_ids": [
+      "f09",
+      "f17",
+      "p11",
+      "p13",
+      "p35",
+      "p36",
+      "p37",
+      "p71",
+      "p73",
+      "p80",
+      "c06",
+      "ce04",
+      "ce05",
+      "ce10",
+      "g02",
+      "g14",
+      "g19"
+    ],
+    "verified_ids": [
+      "V07"
+    ],
+    "reference_ids": [
+      "R01",
+      "R03",
+      "R07"
+    ],
+    "review_ids": [
+      "N14"
+    ],
+    "source_pages": [
+      7,
+      8,
+      9,
+      10,
+      11,
+      14,
+      15,
+      16,
+      20,
+      26,
+      28,
+      29,
+      32,
+      33,
+      41,
+      42,
+      43,
+      49,
+      50
+    ],
+    "scope_status": "bounded_method_covered_with_project_inputs",
+    "limitation": "方法支持限定任务；现实项目仍需合法范围、单位及取值证据，对应正常与边界任务已实测；不代表参数有预测效度。",
+    "actual_stage15_paths": [
+      "verified.md",
+      "references.md",
+      "needs-review.md",
+      ".cangjie/verification/candidate-decisions.json"
+    ],
+    "final_skill_delivery_status": "compiled_and_tested_within_agreed_scope",
+    "actual_final_paths": [
+      "skills/ai-software-development-cost-draft/references/capabilities/data-labor-cost.md"
+    ],
+    "actual_reference_paths": [
+      "skills/ai-software-development-cost-draft/references/glossary.md",
+      "skills/ai-software-development-cost-draft/references/overview.md",
+      "skills/ai-software-development-cost-draft/references/overview.md"
+    ],
+    "actual_review_path": "skills/ai-software-development-cost-draft/references/overview.md",
+    "actual_output_test_cases": [
+      "v07-boundary",
+      "v07-normal"
+    ]
+  },
+  {
+    "task_id": "T10",
+    "title": "独立模型/智能体计数",
+    "raw_ids": [
+      "f12",
+      "f13",
+      "p47",
+      "p48",
+      "p49",
+      "p50",
+      "p51",
+      "p86",
+      "ce18",
+      "ce19",
+      "g09",
+      "g10"
+    ],
+    "verified_ids": [
+      "V08",
+      "V09"
+    ],
+    "reference_ids": [
+      "R01",
+      "R05"
+    ],
+    "review_ids": [
+      "N03"
+    ],
+    "source_pages": [
+      4,
+      5,
+      19,
+      20,
+      29,
+      35
+    ],
+    "scope_status": "bounded_method_covered_with_project_inputs",
+    "limitation": "方法支持限定任务；现实项目仍需合法范围、单位及取值证据，对应正常与边界任务已实测；不代表参数有预测效度。",
+    "actual_stage15_paths": [
+      "verified.md",
+      "references.md",
+      "needs-review.md",
+      ".cangjie/verification/candidate-decisions.json"
+    ],
+    "final_skill_delivery_status": "compiled_and_tested_within_agreed_scope",
+    "actual_final_paths": [
+      "skills/ai-software-development-cost-draft/references/capabilities/model-count.md",
+      "skills/ai-software-development-cost-draft/references/capabilities/agent-count.md"
+    ],
+    "actual_reference_paths": [
+      "skills/ai-software-development-cost-draft/references/glossary.md",
+      "skills/ai-software-development-cost-draft/references/overview.md"
+    ],
+    "actual_review_path": "skills/ai-software-development-cost-draft/references/overview.md",
+    "actual_output_test_cases": [
+      "v08-boundary",
+      "v08-normal",
+      "v09-boundary",
+      "v09-normal"
+    ]
+  },
+  {
+    "task_id": "T11",
+    "title": "模型任务成果分解",
+    "raw_ids": [
+      "f02",
+      "f06",
+      "f11",
+      "f12",
+      "f13",
+      "f14",
+      "f15",
+      "f26",
+      "p09",
+      "p20",
+      "p39",
+      "p40",
+      "p41",
+      "p71",
+      "p72",
+      "c07",
+      "c08",
+      "c09",
+      "c10",
+      "c11",
+      "ce06",
+      "ce18",
+      "ce19",
+      "ce22",
+      "g03",
+      "g04",
+      "g05",
+      "g06",
+      "g07",
+      "g08",
+      "g09",
+      "g10",
+      "g11",
+      "g16",
+      "g17"
+    ],
+    "verified_ids": [
+      "V03"
+    ],
+    "reference_ids": [
+      "R01",
+      "R03",
+      "R05",
+      "R07"
+    ],
+    "review_ids": [
+      "N01",
+      "N02",
+      "N03",
+      "N07",
+      "N10",
+      "N12",
+      "N13"
+    ],
+    "source_pages": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      25,
+      28,
+      29,
+      31,
+      32,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      50,
+      51,
+      52
+    ],
+    "scope_status": "partial_with_explicit_dependencies",
+    "limitation": "可建立任务成果矩阵；完整WBS和缺项参数需项目补齐N10。",
+    "actual_stage15_paths": [
+      "verified.md",
+      "references.md",
+      "needs-review.md",
+      ".cangjie/verification/candidate-decisions.json"
+    ],
+    "final_skill_delivery_status": "compiled_and_tested_within_agreed_scope",
+    "actual_final_paths": [
+      "skills/ai-software-development-cost-draft/references/capabilities/work-breakdown.md"
+    ],
+    "actual_reference_paths": [
+      "skills/ai-software-development-cost-draft/references/glossary.md",
+      "skills/ai-software-development-cost-draft/references/overview.md",
+      "skills/ai-software-development-cost-draft/references/overview.md",
+      "skills/ai-software-development-cost-draft/references/overview.md"
+    ],
+    "actual_review_path": "skills/ai-software-development-cost-draft/references/overview.md",
+    "actual_output_test_cases": [
+      "v03-boundary",
+      "v03-normal"
+    ]
+  },
+  {
+    "task_id": "T12",
+    "title": "模型任务局部估算",
+    "raw_ids": [
+      "f10",
+      "f11",
+      "f13",
+      "f14",
+      "f15",
+      "f16",
+      "f17",
+      "f26",
+      "p10",
+      "p38",
+      "p40",
+      "p42",
+      "p43",
+      "p44",
+      "p50",
+      "p75",
+      "p81",
+      "p82",
+      "p83",
+      "p84",
+      "p85",
+      "p86",
+      "p87",
+      "c03",
+      "c07",
+      "c08",
+      "c09",
+      "c10",
+      "ce07",
+      "ce08",
+      "ce19",
+      "ce23",
+      "g05",
+      "g06",
+      "g07",
+      "g10",
+      "g11",
+      "g12",
+      "g16",
+      "g17",
+      "g18"
+    ],
+    "verified_ids": [
+      "V10"
+    ],
+    "reference_ids": [
+      "R01",
+      "R02",
+      "R05",
+      "R07"
+    ],
+    "review_ids": [
+      "N02",
+      "N03",
+      "N07",
+      "N08",
+      "N10",
+      "N12",
+      "N14"
+    ],
+    "source_pages": [
+      4,
+      5,
+      6,
+      8,
+      9,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      24,
+      28,
+      29,
+      31,
+      32,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      50,
+      51
+    ],
+    "scope_status": "partial_with_explicit_dependencies",
+    "limitation": "式5仅选定情景计算；TF冲突和参数校准见N02/N03/N07/N12。",
+    "actual_stage15_paths": [
+      "verified.md",
+      "references.md",
+      "needs-review.md",
+      ".cangjie/verification/candidate-decisions.json"
+    ],
+    "final_skill_delivery_status": "compiled_and_tested_within_agreed_scope",
+    "actual_final_paths": [
+      "skills/ai-software-development-cost-draft/references/capabilities/model-task-effort.md"
+    ],
+    "actual_reference_paths": [
+      "skills/ai-software-development-cost-draft/references/glossary.md",
+      "skills/ai-software-development-cost-draft/references/overview.md",
+      "skills/ai-software-development-cost-draft/references/overview.md",
+      "skills/ai-software-development-cost-draft/references/overview.md"
+    ],
+    "actual_review_path": "skills/ai-software-development-cost-draft/references/overview.md",
+    "actual_output_test_cases": [
+      "v10-boundary",
+      "v10-normal"
+    ]
+  },
+  {
+    "task_id": "T13",
+    "title": "全局因素",
+    "raw_ids": [
+      "f11",
+      "f14",
+      "f16",
+      "f17",
+      "f26",
+      "p42",
+      "p45",
+      "p46",
+      "p52",
+      "p75",
+      "p88",
+      "p89",
+      "p90",
+      "c03",
+      "c07",
+      "c08",
+      "c09",
+      "c10",
+      "ce23",
+      "g07",
+      "g18"
+    ],
+    "verified_ids": [
+      "V11"
+    ],
+    "reference_ids": [
+      "R01",
+      "R02",
+      "R06",
+      "R07",
+      "R09"
+    ],
+    "review_ids": [
+      "N02",
+      "N07",
+      "N10",
+      "N11",
+      "N12"
+    ],
+    "source_pages": [
+      6,
+      9,
+      17,
+      18,
+      19,
+      20,
+      28,
+      29,
+      31,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      50,
+      51
+    ],
+    "scope_status": "partial_with_explicit_dependencies",
+    "limitation": "给定因子组装可算；自动分档及外部质量细则不完整。",
+    "actual_stage15_paths": [
+      "verified.md",
+      "references.md",
+      "needs-review.md",
+      ".cangjie/verification/candidate-decisions.json"
+    ],
+    "final_skill_delivery_status": "compiled_and_tested_within_agreed_scope",
+    "actual_final_paths": [
+      "skills/ai-software-development-cost-draft/references/capabilities/global-factors.md"
+    ],
+    "actual_reference_paths": [
+      "skills/ai-software-development-cost-draft/references/glossary.md",
+      "skills/ai-software-development-cost-draft/references/overview.md",
+      "skills/ai-software-development-cost-draft/references/overview.md",
+      "skills/ai-software-development-cost-draft/references/overview.md",
+      "skills/ai-software-development-cost-draft/references/overview.md"
+    ],
+    "actual_review_path": "skills/ai-software-development-cost-draft/references/overview.md",
+    "actual_output_test_cases": [
+      "v11-boundary",
+      "v11-normal"
+    ]
+  },
+  {
+    "task_id": "T14",
+    "title": "模型工时与岗位费",
+    "raw_ids": [
+      "f02",
+      "f14",
+      "f16",
+      "f17",
+      "f23",
+      "p10",
+      "p11",
+      "p13",
+      "p38",
+      "p52",
+      "p53",
+      "p71",
+      "p73",
+      "p80",
+      "c11",
+      "ce06",
+      "ce07",
+      "ce10",
+      "ce22",
+      "g02",
+      "g03",
+      "g16",
+      "g17",
+      "g18",
+      "g19"
+    ],
+    "verified_ids": [
+      "V12"
+    ],
+    "reference_ids": [
+      "R01",
+      "R03",
+      "R07"
+    ],
+    "review_ids": [
+      "N01",
+      "N07",
+      "N08",
+      "N12",
+      "N14"
+    ],
+    "source_pages": [
+      7,
+      8,
+      9,
+      10,
+      11,
+      16,
+      17,
+      18,
+      19,
+      20,
+      25,
+      26,
+      28,
+      29,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      49,
+      50,
+      51,
+      52
+    ],
+    "scope_status": "bounded_method_covered_with_project_inputs",
+    "limitation": "方法支持限定任务；现实项目仍需合法范围、单位及取值证据，对应正常与边界任务已实测；不代表参数有预测效度。",
+    "actual_stage15_paths": [
+      "verified.md",
+      "references.md",
+      "needs-review.md",
+      ".cangjie/verification/candidate-decisions.json"
+    ],
+    "final_skill_delivery_status": "compiled_and_tested_within_agreed_scope",
+    "actual_final_paths": [
+      "skills/ai-software-development-cost-draft/references/capabilities/model-labor-cost.md"
+    ],
+    "actual_reference_paths": [
+      "skills/ai-software-development-cost-draft/references/glossary.md",
+      "skills/ai-software-development-cost-draft/references/overview.md",
+      "skills/ai-software-development-cost-draft/references/overview.md"
+    ],
+    "actual_review_path": "skills/ai-software-development-cost-draft/references/overview.md",
+    "actual_output_test_cases": [
+      "v12-boundary",
+      "v12-normal"
+    ]
+  },
+  {
+    "task_id": "T15",
+    "title": "采购询价",
+    "raw_ids": [
+      "f03",
+      "f18",
+      "f20",
+      "p12",
+      "p54",
+      "p55",
+      "ce09",
+      "ce10",
+      "ce11",
+      "g12",
+      "g20"
+    ],
+    "verified_ids": [
+      "V13"
+    ],
+    "reference_ids": [
+      "R01"
+    ],
+    "review_ids": [
+      "N14"
+    ],
+    "source_pages": [
+      9,
+      10,
+      12,
+      15,
+      22,
+      23,
+      24
+    ],
+    "scope_status": "partial_with_explicit_dependencies",
+    "limitation": "V13覆盖市场询价子范围；指导价/历史合同等其他路径仅由V03选择并交接外部结果。",
+    "actual_stage15_paths": [
+      "verified.md",
+      "references.md",
+      "needs-review.md",
+      ".cangjie/verification/candidate-decisions.json"
+    ],
+    "final_skill_delivery_status": "compiled_and_tested_within_agreed_scope",
+    "actual_final_paths": [
+      "skills/ai-software-development-cost-draft/references/capabilities/purchase-quotes.md"
+    ],
+    "actual_reference_paths": [
+      "skills/ai-software-development-cost-draft/references/glossary.md"
+    ],
+    "actual_review_path": "skills/ai-software-development-cost-draft/references/overview.md",
+    "actual_output_test_cases": [
+      "v13-boundary",
+      "v13-normal"
+    ]
+  },
+  {
+    "task_id": "T16",
+    "title": "资源租赁",
+    "raw_ids": [
+      "f03",
+      "f10",
+      "f19",
+      "f20",
+      "p14",
+      "p15",
+      "p56",
+      "p57",
+      "p58",
+      "p59",
+      "p60",
+      "p61",
+      "ce02",
+      "ce11",
+      "ce12",
+      "ce20",
+      "ce21",
+      "g12",
+      "g20"
+    ],
+    "verified_ids": [
+      "V14"
+    ],
+    "reference_ids": [
+      "R01"
+    ],
+    "review_ids": [
+      "N14"
+    ],
+    "source_pages": [
+      7,
+      8,
+      9,
+      10,
+      12,
+      13,
+      14,
+      15,
+      16,
+      22,
+      23,
+      24
+    ],
+    "scope_status": "bounded_method_covered_with_project_inputs",
+    "limitation": "方法支持限定任务；现实项目仍需合法范围、单位及取值证据，对应正常与边界任务已实测；不代表参数有预测效度。",
+    "actual_stage15_paths": [
+      "verified.md",
+      "references.md",
+      "needs-review.md",
+      ".cangjie/verification/candidate-decisions.json"
+    ],
+    "final_skill_delivery_status": "compiled_and_tested_within_agreed_scope",
+    "actual_final_paths": [
+      "skills/ai-software-development-cost-draft/references/capabilities/resource-rental.md"
+    ],
+    "actual_reference_paths": [
+      "skills/ai-software-development-cost-draft/references/glossary.md"
+    ],
+    "actual_review_path": "skills/ai-software-development-cost-draft/references/overview.md",
+    "actual_output_test_cases": [
+      "v14-boundary",
+      "v14-normal"
+    ]
+  },
+  {
+    "task_id": "T17",
+    "title": "基础设施集成",
+    "raw_ids": [
+      "f02",
+      "f21",
+      "p16",
+      "p62",
+      "p63",
+      "p64",
+      "p65",
+      "p66",
+      "ce13",
+      "g03",
+      "g08",
+      "g12",
+      "g21"
+    ],
+    "verified_ids": [
+      "V15"
+    ],
+    "reference_ids": [
+      "R01",
+      "R09"
+    ],
+    "review_ids": [
+      "N01",
+      "N11"
+    ],
+    "source_pages": [
+      4,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      14,
+      15,
+      16,
+      18,
+      20,
+      24,
+      25,
+      29
+    ],
+    "scope_status": "partial_with_explicit_dependencies",
+    "limitation": "给定费率和范围可算；外部费率及N01归类待补。",
+    "actual_stage15_paths": [
+      "verified.md",
+      "references.md",
+      "needs-review.md",
+      ".cangjie/verification/candidate-decisions.json"
+    ],
+    "final_skill_delivery_status": "compiled_and_tested_within_agreed_scope",
+    "actual_final_paths": [
+      "skills/ai-software-development-cost-draft/references/capabilities/infrastructure-integration.md"
+    ],
+    "actual_reference_paths": [
+      "skills/ai-software-development-cost-draft/references/glossary.md",
+      "skills/ai-software-development-cost-draft/references/overview.md"
+    ],
+    "actual_review_path": "skills/ai-software-development-cost-draft/references/overview.md",
+    "actual_output_test_cases": [
+      "v15-boundary",
+      "v15-normal"
+    ]
+  },
+  {
+    "task_id": "T18",
+    "title": "外购数据与模型服务",
+    "raw_ids": [
+      "f02",
+      "f17",
+      "f22",
+      "f23",
+      "p06",
+      "p10",
+      "p17",
+      "p18",
+      "p67",
+      "p68",
+      "ce04",
+      "ce07",
+      "ce12",
+      "ce14",
+      "g12",
+      "g22"
+    ],
+    "verified_ids": [
+      "V16",
+      "V17"
+    ],
+    "reference_ids": [
+      "R01"
+    ],
+    "review_ids": [
+      "N01",
+      "N14"
+    ],
+    "source_pages": [
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      15,
+      16,
+      18,
+      20,
+      24,
+      25,
+      26,
+      28,
+      29
+    ],
+    "scope_status": "bounded_method_covered_with_project_inputs",
+    "limitation": "方法支持限定任务；现实项目仍需合法范围、单位及取值证据，对应正常与边界任务已实测；不代表参数有预测效度。",
+    "actual_stage15_paths": [
+      "verified.md",
+      "references.md",
+      "needs-review.md",
+      ".cangjie/verification/candidate-decisions.json"
+    ],
+    "final_skill_delivery_status": "compiled_and_tested_within_agreed_scope",
+    "actual_final_paths": [
+      "skills/ai-software-development-cost-draft/references/capabilities/external-data-service.md",
+      "skills/ai-software-development-cost-draft/references/capabilities/external-model-service.md"
+    ],
+    "actual_reference_paths": [
+      "skills/ai-software-development-cost-draft/references/glossary.md"
+    ],
+    "actual_review_path": "skills/ai-software-development-cost-draft/references/overview.md",
+    "actual_output_test_cases": [
+      "v16-boundary",
+      "v16-normal",
+      "v17-boundary",
+      "v17-normal"
+    ]
+  },
+  {
+    "task_id": "T19",
+    "title": "其他直接非人力费",
+    "raw_ids": [
+      "f24",
+      "p19",
+      "p69",
+      "p70",
+      "ce02",
+      "ce24",
+      "g12",
+      "g23"
+    ],
+    "verified_ids": [
+      "V18"
+    ],
+    "reference_ids": [
+      "R01"
+    ],
+    "review_ids": [
+      "N14"
+    ],
+    "source_pages": [
+      7,
+      8,
+      10,
+      11,
+      12,
+      15,
+      24,
+      26,
+      27
+    ],
+    "scope_status": "bounded_method_covered_with_project_inputs",
+    "limitation": "方法支持限定任务；现实项目仍需合法范围、单位及取值证据，对应正常与边界任务已实测；不代表参数有预测效度。",
+    "actual_stage15_paths": [
+      "verified.md",
+      "references.md",
+      "needs-review.md",
+      ".cangjie/verification/candidate-decisions.json"
+    ],
+    "final_skill_delivery_status": "compiled_and_tested_within_agreed_scope",
+    "actual_final_paths": [
+      "skills/ai-software-development-cost-draft/references/capabilities/other-costs.md"
+    ],
+    "actual_reference_paths": [
+      "skills/ai-software-development-cost-draft/references/glossary.md"
+    ],
+    "actual_review_path": "skills/ai-software-development-cost-draft/references/overview.md",
+    "actual_output_test_cases": [
+      "v18-boundary",
+      "v18-normal"
+    ]
+  },
+  {
+    "task_id": "T20",
+    "title": "交叉复核与汇总报告",
+    "raw_ids": [
+      "f04",
+      "f09",
+      "f10",
+      "f19",
+      "f25",
+      "p22",
+      "p23",
+      "p28",
+      "p37",
+      "p38",
+      "p61",
+      "p74",
+      "p80",
+      "p91",
+      "p92",
+      "c04",
+      "c05",
+      "c12",
+      "ce03",
+      "ce16",
+      "g02",
+      "g12",
+      "g23"
+    ],
+    "verified_ids": [
+      "V19",
+      "V20"
+    ],
+    "reference_ids": [
+      "R01",
+      "R07",
+      "R08",
+      "R09"
+    ],
+    "review_ids": [
+      "N04",
+      "N05",
+      "N06",
+      "N08",
+      "N09",
+      "N11",
+      "N14"
+    ],
+    "source_pages": [
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      19,
+      22,
+      23,
+      24,
+      26,
+      27,
+      28,
+      29,
+      30,
+      32,
+      33,
+      39,
+      40,
+      41,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52
+    ],
+    "scope_status": "partial_with_explicit_dependencies",
+    "limitation": "已知分项可汇总；合理偏差/区间生成/正式报告规程未自足。",
+    "actual_stage15_paths": [
+      "verified.md",
+      "references.md",
+      "needs-review.md",
+      ".cangjie/verification/candidate-decisions.json"
+    ],
+    "final_skill_delivery_status": "compiled_and_tested_within_agreed_scope",
+    "actual_final_paths": [
+      "skills/ai-software-development-cost-draft/references/capabilities/cross-validation.md",
+      "skills/ai-software-development-cost-draft/references/capabilities/cost-summary.md"
+    ],
+    "actual_reference_paths": [
+      "skills/ai-software-development-cost-draft/references/glossary.md",
+      "skills/ai-software-development-cost-draft/references/overview.md",
+      "skills/ai-software-development-cost-draft/references/overview.md",
+      "skills/ai-software-development-cost-draft/references/overview.md"
+    ],
+    "actual_review_path": "skills/ai-software-development-cost-draft/references/overview.md",
+    "actual_output_test_cases": [
+      "v19-boundary",
+      "v19-normal",
+      "v20-boundary",
+      "v20-normal"
+    ]
+  },
+  {
+    "task_id": "T21",
+    "title": "参数校正与更新",
+    "raw_ids": [
+      "f07",
+      "f08",
+      "f11",
+      "f15",
+      "f26",
+      "p31",
+      "p39",
+      "p72",
+      "p75",
+      "p77",
+      "p78",
+      "ce17",
+      "ce23",
+      "g11",
+      "g15",
+      "g16",
+      "g18",
+      "g19"
+    ],
+    "verified_ids": [
+      "V21"
+    ],
+    "reference_ids": [
+      "R01",
+      "R02",
+      "R04",
+      "R05"
+    ],
+    "review_ids": [
+      "N02",
+      "N03",
+      "N07",
+      "N10",
+      "N12",
+      "N13"
+    ],
+    "source_pages": [
+      12,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      28,
+      29,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38
+    ],
+    "scope_status": "partial_with_explicit_dependencies",
+    "limitation": "部分覆盖：登记、适用性和更新准备；未提供完整统计校准/验证算法N12。",
+    "actual_stage15_paths": [
+      "verified.md",
+      "references.md",
+      "needs-review.md",
+      ".cangjie/verification/candidate-decisions.json"
+    ],
+    "final_skill_delivery_status": "compiled_and_tested_within_agreed_scope",
+    "actual_final_paths": [
+      "skills/ai-software-development-cost-draft/references/capabilities/parameter-register.md"
+    ],
+    "actual_reference_paths": [
+      "skills/ai-software-development-cost-draft/references/glossary.md",
+      "skills/ai-software-development-cost-draft/references/overview.md",
+      "skills/ai-software-development-cost-draft/references/overview.md",
+      "skills/ai-software-development-cost-draft/references/overview.md"
+    ],
+    "actual_review_path": "skills/ai-software-development-cost-draft/references/overview.md",
+    "actual_output_test_cases": [
+      "v21-boundary",
+      "v21-normal"
+    ]
+  }
+]

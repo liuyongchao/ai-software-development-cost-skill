@@ -1,0 +1,906 @@
+[
+  {
+    "case_id": "v01-normal",
+    "prompt": "应用项目开发期内有业务页面开发和模型微调；交付后运维、基础模型从零预训练、启动前可研不在开发期任务。按本稿判范围，输出included_count与excluded_count。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+    "bounded_expected_criteria": [
+      {
+        "kind": "json_number",
+        "value": "$.included_count",
+        "expected": 2,
+        "abs_tol": 1e-06
+      },
+      {
+        "kind": "json_number",
+        "value": "$.excluded_count",
+        "expected": 3,
+        "abs_tol": 1e-06
+      }
+    ],
+    "responses": {
+      "vB": {
+        "included_count": 2,
+        "excluded_count": 3,
+        "items": [
+          {
+            "activity": "业务页面开发",
+            "decision": "included"
+          },
+          {
+            "activity": "应用模型微调",
+            "decision": "included"
+          },
+          {
+            "activity": "交付后运维",
+            "decision": "excluded"
+          },
+          {
+            "activity": "基础模型从零预训练",
+            "decision": "excluded"
+          },
+          {
+            "activity": "启动前可研",
+            "decision": "excluded"
+          }
+        ],
+        "notes": "按2026-08-18征求意见稿第1章、4.1，AI应用开发从项目启动到交付，包含业务功能和应用模型微调；交付后运维、基础模型预训练及启动前可研排除。本题仅完成范围判定，未推断费用。"
+      },
+      "vA": {
+        "included_count": 2,
+        "excluded_count": 3,
+        "included_items": [
+          "开发期业务页面开发",
+          "开发期模型微调"
+        ],
+        "excluded_items": [
+          "交付后运维",
+          "基础模型从零预训练",
+          "启动前可研"
+        ],
+        "notes": "按题面给定的开发期任务边界计数，纳入2项、排除3项。这是依据题面限定的范围判断；未提供本稿正文，不能另行核定条款或扩大排除范围。"
+      }
+    }
+  },
+  {
+    "case_id": "v01-boundary",
+    "prompt": "一项“认证服务”没说明目的及发生时点，能否直接纳入AI应用开发成本？输出needs_scope_evidence和can_assume_zero。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+    "bounded_expected_criteria": [
+      {
+        "kind": "json_equals",
+        "value": "$.needs_scope_evidence",
+        "expected": true
+      },
+      {
+        "kind": "json_equals",
+        "value": "$.can_assume_zero",
+        "expected": false
+      }
+    ],
+    "responses": {
+      "vB": {
+        "needs_scope_evidence": true,
+        "can_assume_zero": false,
+        "scope_status": "pending",
+        "missing_evidence": [
+          "认证服务对象、目的和具体成果",
+          "项目启动与交付日期",
+          "认证服务发生及验收时点",
+          "合同范围及与开发活动的关系"
+        ],
+        "notes": "按2026-08-18征求意见稿4.1，不能仅凭“认证服务”名称纳入；目的及发生时点未知，保留待确认。若为开发完成后的安全、合规、伦理测评认证，则应排除。范围未定或费用未知均不等于零。"
+      },
+      "vA": {
+        "needs_scope_evidence": true,
+        "can_assume_zero": false,
+        "scope_status": "pending",
+        "required_evidence": [
+          "认证服务的目的、具体内容和交付物",
+          "发生时点及对应项目阶段",
+          "与AI应用开发任务的直接关联",
+          "合同范围、计费和其他科目覆盖情况"
+        ],
+        "notes": "名称不足以确认认证服务是否属于本次开发成本，应暂列待确认。证据缺失既不等于可以直接纳入，也不等于费用为0；范围确定后再据合同或实际工作计价。本稿具体范围条款未提供。"
+      }
+    }
+  },
+  {
+    "case_id": "v02-normal",
+    "prompt": "交付一个清洗工具；供应商承包600条标注；内部另做不同的40条复核。合同确认工作不重叠，项目明确采用4.2.2和6.2的数据处理单列口径且保留7.3.3冲突。请归类，输出tool_category/data_vendor_category/internal_review_category，值用main_function/data_service/data_processing等英文科目。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+    "bounded_expected_criteria": [
+      {
+        "kind": "json_equals",
+        "value": "$.tool_category",
+        "expected": "main_function"
+      },
+      {
+        "kind": "json_equals",
+        "value": "$.data_vendor_category",
+        "expected": "data_service"
+      },
+      {
+        "kind": "json_equals",
+        "value": "$.internal_review_category",
+        "expected": "data_processing"
+      }
+    ],
+    "responses": {
+      "vA": {
+        "tool_category": "main_function",
+        "data_vendor_category": "data_service",
+        "internal_review_category": "data_processing",
+        "retained_items": [
+          {
+            "activity": "交付清洗工具",
+            "category": "main_function"
+          },
+          {
+            "activity": "供应商标注600条",
+            "category": "data_service"
+          },
+          {
+            "activity": "内部复核不同的40条",
+            "category": "data_processing"
+          }
+        ],
+        "notes": "工具开发是交付主体功能，供应商标注为外购数据服务，内部复核按项目明确采用的4.2.2及6.2单列数据处理。保留与7.3.3的分类冲突N01，该项目约定不代表原稿已修订。合同确认成果及工作不重叠，三项均保留，不因同属数据相关工作而删项；不能重复计入供应商已承担的内部标注人力。依据为2026-08-18征求意见稿。"
+      },
+      "vB": {
+        "tool_category": "main_function",
+        "data_vendor_category": "data_service",
+        "internal_review_category": "data_processing",
+        "classification": [
+          {
+            "item": "交付的清洗工具",
+            "category": "main_function",
+            "basis": "工具是需开发交付的软件功能"
+          },
+          {
+            "item": "供应商承包的600条标注",
+            "category": "data_service",
+            "quantity": 600,
+            "basis": "外部采购的数据标注服务"
+          },
+          {
+            "item": "内部另做的40条复核",
+            "category": "data_processing",
+            "quantity": 40,
+            "basis": "内部实际执行的数据处理工作"
+          }
+        ],
+        "notes": "依据题面明确选定的数据处理单列口径，三项分别归类；合同确认不重叠，不能因同属数据工作而删掉40条复核，也不将工具开发等同于逐条处理。本稿4.2.2、6.2和7.3.3正文未提供，记录题面声明的冲突并保留待核，不能宣称已消除条款矛盾。"
+      }
+    }
+  },
+  {
+    "case_id": "v03-boundary",
+    "prompt": "附录D没有给“模型压缩部署”的独立基准，因此估算员把它及项目管理都写0。需求实际包含这两项。输出missing_table_means_zero及needs_wbs_allocation，并列待补依据。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+    "bounded_expected_criteria": [
+      {
+        "kind": "json_equals",
+        "value": "$.missing_table_means_zero",
+        "expected": false
+      },
+      {
+        "kind": "json_equals",
+        "value": "$.needs_wbs_allocation",
+        "expected": true
+      }
+    ],
+    "responses": {
+      "vB": {
+        "missing_table_means_zero": false,
+        "needs_wbs_allocation": true,
+        "pending_items": [
+          {
+            "task": "模型压缩部署",
+            "effort": null,
+            "evidence_needed": [
+              "需求及部署交付范围",
+              "对象数量、部署环境、压缩指标及验收条件",
+              "承担方、复用与外包边界",
+              "适用基准或可追溯的类比、专家工时估算依据"
+            ]
+          },
+          {
+            "task": "项目管理",
+            "effort": null,
+            "evidence_needed": [
+              "管理活动及周期",
+              "各工作包已含管理工作的范围与数量",
+              "未覆盖工作量和一次性分摊依据",
+              "承担岗位及工时记录或适用估算依据"
+            ]
+          }
+        ],
+        "notes": "按征求意见稿5.2—5.4、6.2.2及附录A，典型任务和附录D不等于完整WBS。需求确实包含两项，应列任务及成果，补依据再估算；管理应核对已含内容并只分摊一次。附录缺基准不证明不发生，不能填0或擅取其他任务中值。"
+      },
+      "vA": {
+        "missing_table_means_zero": false,
+        "needs_wbs_allocation": true,
+        "allocation": [
+          {
+            "task": "模型压缩部署",
+            "status": "待拆分并估算",
+            "items": [
+              "压缩方案与实验",
+              "效果和性能验证",
+              "部署集成与验收"
+            ]
+          },
+          {
+            "task": "项目管理",
+            "status": "待分配工时并估算",
+            "items": [
+              "计划与协调",
+              "进度质量风险管理",
+              "评审及交付管理"
+            ]
+          }
+        ],
+        "required_evidence": [
+          "已确认的需求、交付物及验收标准",
+          "WBS任务及责任人与范围边界",
+          "历史同类实际工时、试做数据或有依据的专家估算",
+          "角色费率及工时单位",
+          "与已有开发、测试、部署费用的覆盖关系"
+        ],
+        "notes": "需求包含的工作不能因附录未列独立基准而写0。应在WBS中明确归属，若已包含于其他费用须注明对应项和分配依据，避免重复。尚无工时和费率，金额待定；未核实附录D全文，不擅造定额。"
+      }
+    }
+  },
+  {
+    "case_id": "v04-normal",
+    "prompt": "主体功能、数据和模型已经三部分分别计费。主体功能还只以“AI系统”为由提高应用类型系数，没有其他依据。输出duplicate_ai_uplift_flag和requires_external_fp_method，列复核接口。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+    "bounded_expected_criteria": [
+      {
+        "kind": "json_equals",
+        "value": "$.duplicate_ai_uplift_flag",
+        "expected": true
+      },
+      {
+        "kind": "json_equals",
+        "value": "$.requires_external_fp_method",
+        "expected": true
+      }
+    ],
+    "responses": {
+      "vB": {
+        "duplicate_ai_uplift_flag": true,
+        "requires_external_fp_method": true,
+        "review_interfaces": [
+          "主体功能清单、应用边界、交付工具及复用范围；确认数据与模型已单列",
+          "外部功能规模标准及版本、计数方法与明细、调整前后FP及类型",
+          "生产率来源、版本、适用性及方向（人时/FP或FP/人时）",
+          "每项软件及开发调整因素的依据、数值和作用位置",
+          "综合费率UHC的币种、金额与时间单位、来源时期地区",
+          "人时、人天、人月转换依据及舍入约定",
+          "非功能要求、复用及数据模型费用的已含范围和排重记录"
+        ],
+        "notes": "按2026-08-18征求意见稿6.1.1—6.1.3，主体功能依赖外部GB/T 36964-2018等完整测算接口；本技能未提供完整FP计数方法。已分别计入主体功能、数据和模型后，仅凭“AI系统”提高应用类型系数存在重复调整，应撤回该加成或补充独立依据后复核。当前不能据此算出具体调整金额，也不宣称外部标准合规评审已完成。"
+      },
+      "vA": {
+        "duplicate_ai_uplift_flag": true,
+        "requires_external_fp_method": true,
+        "review_interfaces": [
+          "功能点计量方法、版本及适用范围",
+          "功能边界、计数明细及追溯到需求的关系",
+          "数据和模型已计费工作与主体功能的重叠核对",
+          "应用类型系数的定义、来源及独立支持证据",
+          "生产率、其他调整系数、人工费率与计价单位"
+        ],
+        "notes": "数据和模型已分项计费时，仅凭“AI系统”再次提高主体功能系数缺乏依据，标记为重复加价风险并暂不认可该上调。主体功能仍须接入可追溯的功能点计量及计价方法；题面未给本稿全文或指定外部方法，无法确认具体标准名称及版本。若另有符合所用方法的独立复杂性证据，可复核后决定系数。"
+      }
+    }
+  },
+  {
+    "case_id": "v04-boundary",
+    "prompt": "只有“120FP”一个数，没有方法版本、明细、生产率、调整系数或费率。请直接算完整主体功能费用；输出can_compute_complete_cost与cost_yuan（无法确定时null），另列缺项。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+    "bounded_expected_criteria": [
+      {
+        "kind": "json_equals",
+        "value": "$.can_compute_complete_cost",
+        "expected": false
+      },
+      {
+        "kind": "json_equals",
+        "value": "$.cost_yuan",
+        "expected": null
+      }
+    ],
+    "responses": {
+      "vB": {
+        "can_compute_complete_cost": false,
+        "cost_yuan": null,
+        "provided_scale_fp": 120,
+        "scale_status": "unverified",
+        "missing_items": [
+          "主体功能清单、应用边界、交付及复用范围",
+          "测量标准与方法版本、FP类型、计数明细和调整前后规模",
+          "生产率、单位方向、来源及适用性",
+          "软件及开发调整因素、作用位置与已含工作",
+          "综合人力费率的币种、单位、时期地区及来源",
+          "人时到人天或人月的转换依据",
+          "数据模型是否单列、非功能及复用重复计费核查",
+          "完整计算公式、精度和舍入约定"
+        ],
+        "notes": "按2026-08-18征求意见稿6.1，120FP只能作为待核规模输入。缺外部计数依据、生产率、调整因素和费率，无法转换成完整费用；不默认系数1、历史费率或时间换算常数，金额保持null。"
+      },
+      "vA": {
+        "can_compute_complete_cost": false,
+        "cost_yuan": null,
+        "missing_items": [
+          "功能点方法及版本",
+          "120FP的功能清单、边界、计数明细及核验依据",
+          "与所用方法同口径的生产率及单位",
+          "各项调整系数、作用顺序及依据",
+          "人工费率及其单位和包含范围",
+          "适用的费用公式与其他应计费用口径"
+        ],
+        "notes": "120FP只有规模，缺少将规模转换为工作量及费用的参数，不能得出完整主体功能费用，也不能把未知项置0。示意关系可写为规模×适用生产率×适用调整×对应人工单价，但生产率若用FP/人时须取倒数，最终以确认方法及单位为准。"
+      }
+    }
+  },
+  {
+    "case_id": "v05-normal",
+    "prompt": "代表性同口径样本120条共18人时，效率稳定并验收通过，目标3600条含样本。计算unit_hours、total_hours和remaining_hours。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+    "bounded_expected_criteria": [
+      {
+        "kind": "json_number",
+        "value": "$.unit_hours",
+        "expected": 0.15,
+        "abs_tol": 1e-06
+      },
+      {
+        "kind": "json_number",
+        "value": "$.total_hours",
+        "expected": 540,
+        "abs_tol": 1e-06
+      },
+      {
+        "kind": "json_number",
+        "value": "$.remaining_hours",
+        "expected": 522,
+        "abs_tol": 1e-06
+      }
+    ],
+    "responses": {
+      "vA": {
+        "unit_hours": 0.15,
+        "total_hours": 540,
+        "remaining_hours": 522,
+        "units": {
+          "unit_hours": "人时/条",
+          "total_hours": "人时",
+          "remaining_hours": "人时"
+        },
+        "calculation": {
+          "unit": "18 / 120 = 0.15",
+          "total": "3600 * 0.15 = 540",
+          "remaining": "(3600 - 120) * 0.15 = 522"
+        },
+        "notes": "按征求意见稿6.2.3.2a计件法，题设确认样本代表性、同口径、效率稳定且验收通过，使用样本累计人时除样本条数。目标3600条含已完成样本120条，剩余3480条；总工时已含样本18人时，不再重复加样本。本结果限于题设处理与验收口径，不推导岗位费用或统计置信区间。"
+      },
+      "vB": {
+        "unit_hours": 0.15,
+        "total_hours": 540,
+        "remaining_hours": 522,
+        "calculations": {
+          "unit_hours": "18 / 120 = 0.15 人时/条",
+          "total_hours": "3600 × 0.15 = 540 人时",
+          "remaining_hours": "(3600 - 120) × 0.15 = 522 人时"
+        },
+        "notes": "目标3600条已含完成并验收的120条样本，因此总工时含样本18人时，剩余工作量3480条。依据题设的代表性、同口径和稳定效率进行线性外推；未另加题目未给出的返工或固定准备工时。"
+      }
+    }
+  },
+  {
+    "case_id": "v08-normal",
+    "prompt": "同一缺陷识别模型在8个站点部署且共用训练；另有信用预测，目标、业务规则和单独采集标注训练都不同。输出independent_models，列三组证据。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+    "bounded_expected_criteria": [
+      {
+        "kind": "json_number",
+        "value": "$.independent_models",
+        "expected": 2,
+        "abs_tol": 1e-06
+      }
+    ],
+    "responses": {
+      "vB": {
+        "independent_models": 2,
+        "evidence_groups": [
+          {
+            "group": "识别或预测目标",
+            "evidence": "缺陷识别与信用预测，目标不同",
+            "status": "confirmed"
+          },
+          {
+            "group": "业务管控规则及判定逻辑",
+            "evidence": "题设确认信用预测与缺陷识别业务规则不同，分别服务相应业务判断",
+            "status": "confirmed"
+          },
+          {
+            "group": "采集、标注、训练独立性",
+            "evidence": "信用预测需要单独采集、单独标注、单独训练；缺陷模型8个站点共用训练",
+            "status": "confirmed"
+          }
+        ],
+        "count_ledger": [
+          {
+            "object": "缺陷识别",
+            "deployment_sites": 8,
+            "count": 1
+          },
+          {
+            "object": "信用预测",
+            "count": 1
+          }
+        ],
+        "notes": "按2026-08-18征求意见稿6.3.3.2 a)5)，题设三组独立证据支持两个业务模型；同一缺陷模型在8站部署且共用训练仍计1个，不按站点增计。数量不直接等于工时或费用，多站点实际部署工作仍需另核。"
+      },
+      "vA": {
+        "independent_models": 2,
+        "model_groups": [
+          {
+            "name": "缺陷识别模型",
+            "count": 1,
+            "deployment_sites": 8
+          },
+          {
+            "name": "信用预测模型",
+            "count": 1
+          }
+        ],
+        "evidence_groups": [
+          {
+            "dimension": "业务目标",
+            "evidence": "缺陷识别与信用预测的目标不同"
+          },
+          {
+            "dimension": "业务规则",
+            "evidence": "题面明确两者的业务规则不同"
+          },
+          {
+            "dimension": "数据和训练",
+            "evidence": "信用预测单独采集、标注、训练；8个缺陷识别站点共用训练"
+          }
+        ],
+        "notes": "按题面所给独立性证据，两项分别计为1个模型，共2个。部署到8个站点不把同一共用训练的模型扩为8个；多站点部署工作如需计费，应按实际工作另行估算。未提供本稿正文，此处未确认条款的完整独立性定义。"
+      }
+    }
+  },
+  {
+    "case_id": "v08-boundary",
+    "prompt": "只有两个不同模型文件，无法说明目标、业务规则、采集标注训练是否独立。输出count_confirmed以及independent_models（待确认用null）。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+    "bounded_expected_criteria": [
+      {
+        "kind": "json_equals",
+        "value": "$.count_confirmed",
+        "expected": false
+      },
+      {
+        "kind": "json_equals",
+        "value": "$.independent_models",
+        "expected": null
+      }
+    ],
+    "responses": {
+      "vB": {
+        "count_confirmed": false,
+        "independent_models": null,
+        "missing_evidence": [
+          "两个候选的识别或预测目标及比较依据",
+          "各自业务管控规则和判定逻辑",
+          "是否分别采集、分别标注、分别训练的计划或记录",
+          "共享数据、算法框架、部署实例与模型文件的对应关系"
+        ],
+        "notes": "按征求意见稿6.3.3.2 a)5)，文件不同不能代替三组业务独立性证据。现有材料不能确认独立模型数量，不能直接按两个文件计2，也不能把未知写0；保留两个候选待补证后判断。"
+      },
+      "vA": {
+        "count_confirmed": false,
+        "independent_models": null,
+        "required_evidence": [
+          "两个文件分别服务的业务目标",
+          "业务规则和适用范围是否独立",
+          "数据采集与标注工作是否分别执行",
+          "训练任务、版本关系及共用工作说明"
+        ],
+        "notes": "两个模型文件可能是同一模型的版本、格式或部署副本，文件数不足以证明独立模型数。现有证据既不能确认2个，也不能擅定1个或0个；待目标、规则及数据训练独立性明确后计数。"
+      }
+    }
+  },
+  {
+    "case_id": "v09-normal",
+    "prompt": "两个智能体各有独立API、独立知识库/提示词/编排逻辑/业务规则，可独立部署启停交付完成自己的业务目标；其中一个内部有4个角色和7个节点。输出independent_agents与internal_nodes_add_count。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+    "bounded_expected_criteria": [
+      {
+        "kind": "json_number",
+        "value": "$.independent_agents",
+        "expected": 2,
+        "abs_tol": 1e-06
+      },
+      {
+        "kind": "json_number",
+        "value": "$.internal_nodes_add_count",
+        "expected": 0,
+        "abs_tol": 1e-06
+      }
+    ],
+    "responses": {
+      "vA": {
+        "independent_agents": 2,
+        "internal_nodes_add_count": 0,
+        "evidence_groups": [
+          {
+            "group": "独立入口",
+            "status": "confirmed",
+            "evidence": "两个智能体各有独立API，满足入口、界面或API至少一种"
+          },
+          {
+            "group": "内部能力独立性",
+            "status": "confirmed",
+            "evidence": "各有独立知识库、提示词、编排逻辑及业务规则"
+          },
+          {
+            "group": "部署与业务完成独立性",
+            "status": "confirmed",
+            "evidence": "均可独立部署、启停、交付，并独立完成各自业务目标"
+          }
+        ],
+        "internal_complexity": {
+          "parent_agent_count": 1,
+          "roles": 4,
+          "nodes": 7
+        },
+        "notes": "按2026-08-18征求意见稿6.3.3.2 a)6)，三组条件均成立，确认2个独立智能体。其中一个内部4角色、7节点归所属业务闭环，不另增加独立数量；其编排工作仍须评估，不能将增计为0解释为工时为0，也不能据节点数量自动选复杂度系数。"
+      },
+      "vB": {
+        "independent_agents": 2,
+        "internal_nodes_add_count": 0,
+        "notes": "题面说明两个智能体分别具备独立API、知识库、提示词、编排逻辑及业务规则，并能独立部署、启停和交付完成各自目标，故计2个。其一内部4个角色、7个节点是内部组织结构，现有信息不支持再加4个或7个独立智能体；其实际开发工作仍可作为该智能体工作量。"
+      }
+    }
+  },
+  {
+    "case_id": "v09-boundary",
+    "prompt": "组件只有独立API，内部知识库/提示词/逻辑/规则以及独立交付都未知。输出independent_agents（未知null）及needs_more_evidence。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+    "bounded_expected_criteria": [
+      {
+        "kind": "json_equals",
+        "value": "$.independent_agents",
+        "expected": null
+      },
+      {
+        "kind": "json_equals",
+        "value": "$.needs_more_evidence",
+        "expected": true
+      }
+    ],
+    "responses": {
+      "vB": {
+        "independent_agents": null,
+        "needs_more_evidence": true,
+        "evidence_status": {
+          "independent_entry": "confirmed_by_API",
+          "independent_internal_capabilities": "unknown",
+          "independent_delivery_and_business_goal": "unknown"
+        },
+        "missing_evidence": [
+          "独立知识库、提示词、编排逻辑及业务规则的逐项说明",
+          "独立部署、启停、交付和完成自身业务目标的证据",
+          "组件业务闭环、所属父流程及共享成果关系"
+        ],
+        "notes": "按征求意见稿6.3.3.2 a)6)，独立API仅满足第一组条件；第二、第三组未知，独立智能体数量保持null。不能直接计1，亦不能永久判为0或仅内部节点。"
+      },
+      "vA": {
+        "independent_agents": null,
+        "needs_more_evidence": true,
+        "required_evidence": [
+          "知识库和数据边界是否独立",
+          "提示词、编排逻辑和业务规则是否独立",
+          "是否有独立业务目标及验收交付物",
+          "是否能独立部署、启停、运行和交付"
+        ],
+        "notes": "独立API仅证明存在接口，不能单独证明它是可独立交付的智能体；可能仍是其他智能体的内部组件。证据补齐前保留数量未知，不以未知代替0或1。"
+      }
+    }
+  },
+  {
+    "case_id": "v10-boundary",
+    "prompt": "提示词任务其他参数齐全，但只知道D.1写0.26而D.3用0.25，没有确定TF采用依据。能否自动挑较常出现版本估价？输出auto_choose_conflicting_factor及person_days。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+    "bounded_expected_criteria": [
+      {
+        "kind": "json_equals",
+        "value": "$.auto_choose_conflicting_factor",
+        "expected": false
+      },
+      {
+        "kind": "json_equals",
+        "value": "$.person_days",
+        "expected": null
+      }
+    ],
+    "responses": {
+      "vA": {
+        "auto_choose_conflicting_factor": false,
+        "person_days": null,
+        "conflict_register": [
+          {
+            "parameter": "提示词任务TF采用依据",
+            "source": "附录D.1",
+            "reported_value": 0.26
+          },
+          {
+            "parameter": "提示词任务TF采用依据",
+            "source": "附录D.3",
+            "reported_value": 0.25
+          }
+        ],
+        "missing_evidence": [
+          "所采用来源版本、具体表项及书面选取理由",
+          "冲突处理和该提示词任务适用性的明确确认",
+          "最终TF数值及必要的局部因素组合规则"
+        ],
+        "notes": "依据征求意见稿式5及技能边界，D.1与D.3的0.26/0.25差异必须保留，出现频次不能作为自动择值依据。TF采用依据未确定，停止该项人天计算，不默认1、任选版本或用中值。即使其他参数齐全，式5也只是项目选定假设方程下的情景演算，不代表已统计验证。"
+      },
+      "vB": {
+        "auto_choose_conflicting_factor": false,
+        "person_days": null,
+        "unresolved_factor": {
+          "name": "TF",
+          "candidates": [
+            0.26,
+            0.25
+          ],
+          "reported_sources": [
+            "D.1",
+            "D.3"
+          ],
+          "adopted_value": null
+        },
+        "required_evidence": [
+          "两个位置的原文及对应任务和单位",
+          "版本、更正说明或明确适用优先顺序",
+          "项目采用哪一参数的书面依据"
+        ],
+        "notes": "出现频次不能解决同一系数的取值冲突。题面未确定采用依据，不能自动选0.25或0.26后给出确定人天。可在依据确认前分别展示两种敏感性情景，但本题也未给其他参数的具体数值，无法算出数值情景。"
+      }
+    }
+  },
+  {
+    "case_id": "v14-boundary",
+    "prompt": "租赁单价按年，时长只写4个月；没约定按月折算，还有一台免费利旧资源。输出automatic_monthly_proration_allowed和free_asset_rental_yuan，列安全/迁移等待核。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+    "bounded_expected_criteria": [
+      {
+        "kind": "json_equals",
+        "value": "$.automatic_monthly_proration_allowed",
+        "expected": false
+      },
+      {
+        "kind": "json_number",
+        "value": "$.free_asset_rental_yuan",
+        "expected": 0,
+        "abs_tol": 1e-06
+      }
+    ],
+    "responses": {
+      "vA": {
+        "automatic_monthly_proration_allowed": false,
+        "free_asset_rental_yuan": 0,
+        "paid_resource_rental_yuan": null,
+        "pending_checks": [
+          "年度单价对应的资源、数量、单位及开发期",
+          "4个月租期的起止日、不满年度如何计费及是否允许按月折算的合同依据",
+          "免费租期、免费运维期与其他已包含费用",
+          "业务数据安全要求及落实责任",
+          "到期数据迁移方案、责任、发生时点及费用依据"
+        ],
+        "notes": "按征求意见稿7.2，年度单价与4个月租期缺少换算约定，不能自动乘4/12，付费租赁金额待确认。另一台已明确免费利旧，新增租赁费为0；该零不代表安全、迁移或其他工作全部免费。安全与迁移未知费用保持待补，并核实是否属于启动至交付范围。"
+      },
+      "vB": {
+        "automatic_monthly_proration_allowed": false,
+        "free_asset_rental_yuan": 0,
+        "paid_resource_rental_yuan": null,
+        "pending_checks": [
+          "租赁合同的最小计费周期、是否允许按月或按日折算及起止时点",
+          "免费利旧资源的使用权、可用性、容量及使用期限",
+          "安全评估、访问控制及必要整改费用",
+          "迁移、适配、数据搬迁、测试与切换工作费用",
+          "维护、能源、网络或支持费用是否另行发生、由谁承担及有无重复计费"
+        ],
+        "notes": "年单价与4个月期限不能在无约定时自动换算为年价×4/12，应先确认计费规则。免费利旧资源的租赁费为0，但安全、迁移等实际工作不因此自动为0，须有需求、工作量及费用依据。"
+      }
+    }
+  },
+  {
+    "case_id": "v16-boundary",
+    "prompt": "第三方数据包报价5000元但授权范围、允许用途和交付质量未知。输出ready_for_final_adoption和needs_license_quality_evidence。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+    "bounded_expected_criteria": [
+      {
+        "kind": "json_equals",
+        "value": "$.ready_for_final_adoption",
+        "expected": false
+      },
+      {
+        "kind": "json_equals",
+        "value": "$.needs_license_quality_evidence",
+        "expected": true
+      }
+    ],
+    "responses": {
+      "vB": {
+        "ready_for_final_adoption": false,
+        "needs_license_quality_evidence": true,
+        "quoted_price_yuan": 5000,
+        "adopted_cost_yuan": null,
+        "pending_evidence": [
+          "数据来源、授权对象、授权边界及期间",
+          "允许用途及本项目开发使用方式是否被覆盖",
+          "数据内容、数量、格式、质量指标及验收方法",
+          "交付成果、交付期与供应商责任",
+          "报价有效期、币种税费、包含项及项目取价认可依据",
+          "第三方活动与内部保留工作的边界及排重记录"
+        ],
+        "notes": "按征求意见稿4.3.4和7.4，5000元可保留为原始报价，不能代替授权、用途与交付质量证据，因此未达到最终采用条件。此项不能通过平均其他报价解决权利或质量缺口；本稿7.4没有最低三家询价的统一要求，项目另有采购制度时另核其依据。"
+      },
+      "vA": {
+        "ready_for_final_adoption": false,
+        "needs_license_quality_evidence": true,
+        "quoted_price_yuan": 5000,
+        "final_adopted_cost_yuan": null,
+        "required_evidence": [
+          "供应方权利来源和可授权证明",
+          "允许用途、使用主体、期限及模型训练等授权范围",
+          "数量、字段、覆盖率、准确性及交付格式",
+          "抽样质量验证与验收标准",
+          "不合格整改或退换条款及报价包含项"
+        ],
+        "notes": "5000元可登记为待核报价，不能在授权用途和交付质量未知时直接作为最终采纳价格。需先确认数据可合法用于本项目且质量满足需求，再确认对应采购范围和费用；不把未确认费用写0。"
+      }
+    }
+  },
+  {
+    "case_id": "v18-normal",
+    "prompt": "开发期评审差旅，委托方确认3人2天，适用核定上限400元/人天；无实际凭证。输出approved_cap_yuan和actual_settlement_yuan。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+    "bounded_expected_criteria": [
+      {
+        "kind": "json_number",
+        "value": "$.approved_cap_yuan",
+        "expected": 2400,
+        "abs_tol": 1e-06
+      },
+      {
+        "kind": "json_equals",
+        "value": "$.actual_settlement_yuan",
+        "expected": null
+      }
+    ],
+    "responses": {
+      "vA": {
+        "approved_cap_yuan": 2400,
+        "actual_settlement_yuan": null,
+        "calculation": "3 人 × 2 天 × 400 元/人天 = 2400 元",
+        "amount_nature": "approved_cap",
+        "pending_evidence": [
+          "实际出行、支出及报销凭证",
+          "结算核定记录",
+          "400元上限所含费用项目及是否存在重复报销"
+        ],
+        "notes": "按征求意见稿7.6，开发期评审差旅的用途、人数、天数及适用核定上限均已由题设确认，可算核定上限2400元。没有实际凭证，实际结算额未知，不能用上限冒充实际支出，也不能填0。计算无中间舍入，金额精确至元。"
+      },
+      "vB": {
+        "approved_cap_yuan": 2400,
+        "actual_settlement_yuan": null,
+        "calculation": "3人 × 2天 × 400元/人天 = 2400元",
+        "notes": "按题面委托方确认的人数、天数和适用上限，核定费用上限为2400元。该数是预算或核定上限，不能替代实际报销结算；无实际凭证时结算金额待核，不填2400元或0元。"
+      }
+    }
+  },
+  {
+    "case_id": "v21-normal",
+    "prompt": "组织参数记录给出了来源版本、单位、任务粒度和适用签字，但无统计方法与验证误差。请登记和复核，输出can_record_provenance及statistical_validation_confirmed。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+    "bounded_expected_criteria": [
+      {
+        "kind": "json_equals",
+        "value": "$.can_record_provenance",
+        "expected": true
+      },
+      {
+        "kind": "json_equals",
+        "value": "$.statistical_validation_confirmed",
+        "expected": false
+      }
+    ],
+    "responses": {
+      "vA": {
+        "can_record_provenance": true,
+        "statistical_validation_confirmed": false,
+        "register": {
+          "source_version": "题设确认组织记录已提供；具体内容未在题面展开",
+          "unit": "题设确认已提供；具体单位未展开",
+          "task_granularity": "题设确认已提供；具体粒度未展开",
+          "applicability_signoff": "题设确认已签字",
+          "parameter_value": null,
+          "statistical_method": null,
+          "validation_error": null,
+          "statistical_validation_status": "not_provided"
+        },
+        "pending_evidence": [
+          "参数名称、符号、定义和数值或区间",
+          "来源文件/版本/位置、单位与任务粒度的原始记录引用",
+          "局部或全局作用层、公式及时间单位换算依据",
+          "历史实际工时、样本范围及数据处理记录",
+          "拟合或校正方法、验证数据、误差指标及验证报告"
+        ],
+        "notes": "按征求意见稿附录D.1及参数登记流程，可以登记已提供的来源、单位、粒度和项目适用签字，不补造未披露细节。签字说明项目采用依据，不证明统计预测效度；统计方法与验证误差未提供，statistical_validation_confirmed为false表示尚未证实，不表示已证实无效。缺失数值等计算必要输入时仍不可直接计算。"
+      },
+      "vB": {
+        "can_record_provenance": true,
+        "statistical_validation_confirmed": false,
+        "record": {
+          "source_version": "已提供，可登记；具体值题面未列",
+          "unit": "已提供，可登记；具体值题面未列",
+          "task_granularity": "已提供，可登记；具体值题面未列",
+          "applicability_signoff": "已提供，可登记；签字信息题面未列",
+          "statistical_method": null,
+          "validation_error": null,
+          "review_status": "来源可追溯，统计有效性待核"
+        },
+        "required_evidence": [
+          "样本及其实际测量来源",
+          "抽样、清洗和统计计算方法",
+          "样本代表性与适用范围",
+          "独立验证数据、误差指标及结果"
+        ],
+        "notes": "来源版本、单位、粒度和适用签字可以构成参数出处记录，但适用签字不能替代统计验证。已完成证据状态登记；由于题面未给具体元数据，不编造版本或签字人。缺少方法与验证误差，无法确认参数已通过统计验证。"
+      }
+    }
+  },
+  {
+    "case_id": "v21-boundary",
+    "prompt": "只有附录D中值和三行预算估计，没有实际工时、拟合或验证数据。能否自动校准出可靠行业定额？输出can_auto_calibrate及default_appendix_value_allowed。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+    "bounded_expected_criteria": [
+      {
+        "kind": "json_equals",
+        "value": "$.can_auto_calibrate",
+        "expected": false
+      },
+      {
+        "kind": "json_equals",
+        "value": "$.default_appendix_value_allowed",
+        "expected": false
+      }
+    ],
+    "responses": {
+      "vA": {
+        "can_auto_calibrate": false,
+        "default_appendix_value_allowed": false,
+        "calibration_status": "not_performed",
+        "reliable_industry_quota": null,
+        "available_evidence": [
+          "附录D中值（资料性参考）",
+          "三行预算估计（非实际工时或验证结果）"
+        ],
+        "required_evidence": [
+          "统一的任务定义、粒度、边界和计量单位",
+          "历史实际工时及样本来源、时间和适用范围",
+          "明确的拟合或校正方法及数据处理记录",
+          "验证数据、误差指标和验证结果",
+          "参数项目适用性与采用记录；行业定额主张另需行业代表性依据"
+        ],
+        "notes": "附录D明确样本有限、参数仅供参考。三行预算估计无法替代真实工时和验证数据，不能自动校准或宣称得到可靠行业定额。本技能只做参数来源与适用性登记、更新准备；附录中值不得作为默认值，须逐项确认来源、作用层、数值及项目采用依据。缺项不能靠取中值或虚构样本填补。"
+      },
+      "vB": {
+        "can_auto_calibrate": false,
+        "default_appendix_value_allowed": null,
+        "calibration_status": "缺少实际观测及验证证据，不能形成可靠行业定额",
+        "required_evidence": [
+          "真实项目工时及对应任务规模",
+          "统一的统计口径和样本代表性",
+          "参数估计或拟合方法",
+          "独立验证数据和误差结果",
+          "附录D的适用范围、默认值采用条件及相关批准依据"
+        ],
+        "notes": "三行预算估计不能替代实际工时，附录中值也不能直接校准为可靠行业定额。题目未提供本稿正文及默认值采用规则，因此无法确认default_appendix_value_allowed，保留null。若另有明确允许采用附录中值的规则，可按其条件做暂估并注明来源；这仍不构成统计校准或行业定额。"
+      }
+    }
+  }
+]

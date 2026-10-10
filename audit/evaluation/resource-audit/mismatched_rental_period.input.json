@@ -1,0 +1,14 @@
+{
+  "operation": "rental_total",
+  "basis": "Independent synthetic audit inputs; no real quote or validation claim",
+  "items": [
+    {
+      "id": "one",
+      "unit_price_yuan": "240",
+      "quantity": "2",
+      "duration": "3",
+      "price_period": "year",
+      "duration_unit": "month"
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "status": "computed_from_declared_inputs",
+  "operation": "range_total",
+  "basis": "Independent synthetic audit inputs; no real quote or validation claim",
+  "source_status": "2026-08-18 consultation draft; no independent validation of inputs",
+  "rounding": "Decimal precision 40; no intermediate monetary rounding; display rounding belongs to the report",
+  "result": {
+    "known_subtotal": [
+      "8",
+      "10",
+      "12"
+    ],
+    "currency_unit": "wan_yuan",
+    "items": [
+      {
+        "id": "main_function",
+        "status": "known",
+        "range": [
+          "8",
+          "10",
+          "12"
+        ]
+      },
+      {
+        "id": "data_processing",
+        "status": "unknown",
+        "range": null
+      },
+      {
+        "id": "model_building",
+        "status": "confirmed_zero",
+        "range": [
+          "0",
+          "0",
+          "0"
+        ]
+      },
+      {
+        "id": "purchase",
+        "status": "confirmed_zero",
+        "range": [
+          "0",
+          "0",
+          "0"
+        ]
+      },
+      {
+        "id": "rental",
+        "status": "confirmed_zero",
+        "range": [
+          "0",
+          "0",
+          "0"
+        ]
+      },
+      {
+        "id": "integration",
+        "status": "confirmed_zero",
+        "range": [
+          "0",
+          "0",
+          "0"
+        ]
+      },
+      {
+        "id": "data_services",
+        "status": "confirmed_zero",
+        "range": [
+          "0",
+          "0",
+          "0"
+        ]
+      },
+      {
+        "id": "model_services",
+        "status": "confirmed_zero",
+        "range": [
+          "0",
+          "0",
+          "0"
+        ]
+      },
+      {
+        "id": "other",
+        "status": "confirmed_zero",
+        "range": [
+          "0",
+          "0",
+          "0"
+        ]
+      }
+    ],
+    "unknown": [
+      "data_processing"
+    ],
+    "complete_project_total": null,
+    "complete": false,
+    "note": "not a statistical confidence interval"
+  }
+}

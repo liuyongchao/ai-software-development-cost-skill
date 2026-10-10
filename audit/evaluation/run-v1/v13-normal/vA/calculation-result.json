@@ -1,0 +1,14 @@
+{
+  "status": "computed_from_declared_inputs",
+  "operation": "quote_median",
+  "basis": "题设三家正式可比报价，同规格同服务、无异常，项目明确选排序中间值；报价编号仅代表题给报价",
+  "source_status": "2026-08-18 consultation draft; no independent validation of inputs",
+  "rounding": "Decimal precision 40; no intermediate monetary rounding; display rounding belongs to the report",
+  "result": {
+    "unit_price_yuan": "9000",
+    "total_yuan": "27000",
+    "excluded_noncomparable_or_informal": [],
+    "scope": "market inquiry for purchase/rental/model service; not a mandatory data-service rule",
+    "formula": "explicitly selected middle quote * quantity"
+  }
+}

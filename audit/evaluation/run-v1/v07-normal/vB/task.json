@@ -1,0 +1,7 @@
+{
+  "case_id": "v07-normal",
+  "variant_label": "vB",
+  "prompt": "数据任务A16人时PF0.95，B3人天PF1.0；不重叠，约定8小时/天、20天/月、综合费率24000元/月，来源已确认。输出total_person_days及total_cost_yuan，逐项列计算。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+  "input_files": [],
+  "instruction": "按 prompt 实际完成任务，最终答案写同目录 output.md，其他交付物也放在本目录。不要读取相邻变体、映射表或预期答案。"
+}

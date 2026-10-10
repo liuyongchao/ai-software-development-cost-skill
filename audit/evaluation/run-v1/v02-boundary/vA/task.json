@@ -1,0 +1,7 @@
+{
+  "case_id": "v02-boundary",
+  "variant_label": "vA",
+  "prompt": "预算一笔“数据清洗”援引7.3.3放主体功能，另一份按6.2放数据处理；没明确合同边界或采用条款。能否把两笔都相加？输出double_count_allowed和classification_needs_basis。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+  "input_files": [],
+  "instruction": "按 prompt 实际完成任务，最终答案写同目录 output.md，其他交付物也放在本目录。不要读取相邻变体、映射表或预期答案。"
+}

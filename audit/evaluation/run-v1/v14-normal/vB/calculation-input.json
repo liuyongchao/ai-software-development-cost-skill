@@ -1,0 +1,9 @@
+{
+  "operation": "rental_unit",
+  "basis": "题给购价、资金成本0、折旧3年及已扣免费服务期运维6000元/台年；按式9计算",
+  "UP_yuan": 90000,
+  "CC_yuan": 0,
+  "DL_years": 3,
+  "OMUP_yuan_per_year": 6000,
+  "free_maintenance_deducted": true
+}

@@ -1,0 +1,102 @@
+[
+  {
+    "case_id": "v02-boundary",
+    "prompt": "预算一笔“数据清洗”援引7.3.3放主体功能，另一份按6.2放数据处理；没明确合同边界或采用条款。能否把两笔都相加？输出double_count_allowed和classification_needs_basis。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。"
+  },
+  {
+    "case_id": "v03-normal",
+    "prompt": "拆解页面开发、清洗200份文档、RAG配置三项工作，并安排测试和项目管理。数据量虽知，质量与周期未知。输出三项对应main_function/data_processing/model_building的task_categories数组，及testing_management_must_be_allocated。另给各任务成果和待补矩阵。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。"
+  },
+  {
+    "case_id": "v05-boundary",
+    "prompt": "计件效率波动很大，只有“5条/人时”，总量和样本口径都未知。输出can_compute_total和needs_stability_review，总量不要编造。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。"
+  },
+  {
+    "case_id": "v06-normal",
+    "prompt": "整个数据处理包DBE=36人天、AF=1.2、DRDF=0.35，组织确认适用；同一包被3个模型共同使用，不存在额外专属工作。输出person_days与package_count。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。"
+  },
+  {
+    "case_id": "v06-boundary",
+    "prompt": "请求按附录给整体数据包估工时，但未确认任务粒度、DBE与复用因子。能否直接用附录中值并默认缺项1？输出defaults_allowed与person_days。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。"
+  },
+  {
+    "case_id": "v07-normal",
+    "prompt": "数据任务A16人时PF0.95，B3人天PF1.0；不重叠，约定8小时/天、20天/月、综合费率24000元/月，来源已确认。输出total_person_days及total_cost_yuan，逐项列计算。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。"
+  },
+  {
+    "case_id": "v07-boundary",
+    "prompt": "数据工时10人天，费率2万元/人月，PF1，但没有本项目人天到人月换算依据。能否默认21.75？输出default_21_75_allowed和cost_yuan。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。"
+  },
+  {
+    "case_id": "v10-normal",
+    "prompt": "项目明确选式5作假设情景，已另行确认TBE40人天、TF1.2、SR0.75、TS0.5、SF1.3、MRDF0.8。输出person_days及predictive_validity_proven，展示乘法。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。"
+  },
+  {
+    "case_id": "v11-normal",
+    "prompt": "全局因子已确认SF1=1.4,SF2=1.1,MRDF1=1,MRDF2=0.9。两任务TE已经按式5含全局因素，分别8、12人天。输出SF、MRDF、total_person_days。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。"
+  },
+  {
+    "case_id": "v11-boundary",
+    "prompt": "有人将恰好200ms性能默认归附录高档，且技术8个月工具2个月自动取同一成熟度档；没有更多适用说明。输出automatic_unique_bucketing_allowed和needs_parameter_basis。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。"
+  },
+  {
+    "case_id": "v12-normal",
+    "prompt": "模型任务已排重且含全局因素：6人天PF1.2、14人天PF1.5，综合费率28000元/月，20天/月；外购模型任务人力已从这些数剔除，另合同5000元。输出labor_cost_yuan和external_service_yuan。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。"
+  },
+  {
+    "case_id": "v12-boundary",
+    "prompt": "模型TE已经通过SR剔除外包份额。评审想再把同一外包的人天扣一次。输出deduct_again_allowed和needs_deduction_trace。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。"
+  },
+  {
+    "case_id": "v13-normal",
+    "prompt": "3台项目专用设备，同规格同服务的三份正式可比报价每台8000、9000、11000元，无异常，项目明确取排序中间值。输出selected_unit_yuan和total_yuan，并保存取价记录。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。"
+  },
+  {
+    "case_id": "v13-boundary",
+    "prompt": "采购市场询价只有两份正式报价，另有一个无规格网店截图。可否认定满足三家正式可比报价？输出three_formal_quotes_satisfied，列缺项。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。"
+  },
+  {
+    "case_id": "v14-normal",
+    "prompt": "资源购价90000元、资金成本0、折旧3年、运维6000元/台年且已扣免费期；项目确认按12月均摊、租1台4个月，无其他费。只算租价，安全迁移资料另核。输出annual_unit_yuan、monthly_unit_yuan、total_yuan。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。"
+  },
+  {
+    "case_id": "v15-normal",
+    "prompt": "已确认专用基础设施子项SC120000元，适用外部费率R0.06，S1.2，F1，来源齐全。输出integration_yuan；另说明这个值只覆盖该子项。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。"
+  },
+  {
+    "case_id": "v15-boundary",
+    "prompt": "集成基数10万元，未给地方或行业费率及系数，也未拆人工任务。请求按惯例取5%。输出can_default_five_percent及integration_yuan。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。"
+  },
+  {
+    "case_id": "v16-normal",
+    "prompt": "外购开发期数据标注3000条，两个正式同规格报价都3元/条，质量、授权和周期已明且委托方接受，内部未重复做。输出cost_yuan及source_requires_three_quotes。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。"
+  },
+  {
+    "case_id": "v17-normal",
+    "prompt": "已拿三份可比正式报价并选合同：月费600元含20万token，超额1元/千token，精确按量且不向上整块取整、不结转。两月用量30万、10万，开发期内。输出month_costs与total_yuan。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。"
+  },
+  {
+    "case_id": "v17-boundary",
+    "prompt": "模型服务只给一个月费标签，未给套餐含量、超额计价或实际用量且只有一份正式询价。输出can_confirm_total与needs_more_quotes。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。"
+  },
+  {
+    "case_id": "v18-boundary",
+    "prompt": "其他费没有产品/服务说明，直接按总价8%计。输出automatic_percent_allowed和needs_specific_service。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。"
+  },
+  {
+    "case_id": "v19-normal",
+    "prompt": "同范围数据工作量两法80、100人天。组织约定差异以较小值为基数、≤30%合理，权重0.25/0.75。输出relative_difference与combined_person_days。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。"
+  },
+  {
+    "case_id": "v19-boundary",
+    "prompt": "模型费用40和100万元、项目认为差异大，但没有权重或合理阈值。请求直接平均成70。输出automatic_mean_allowed和needs_review。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。"
+  },
+  {
+    "case_id": "v20-normal",
+    "prompt": "单位万元：主体[20,22,24]、数据[2,3,4]、模型[7,8,9]；六类非人力都有证据确认不发生。九科目已核查。输出total_range与complete_total。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。"
+  },
+  {
+    "case_id": "v20-boundary",
+    "prompt": "仅知主体10万元、数据2万元、模型5万元，六类非人力没说明。输出known_subtotal_wan、complete_total、unknown_is_zero。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。"
+  }
+]

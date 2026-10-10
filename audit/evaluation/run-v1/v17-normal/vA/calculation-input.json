@@ -1,0 +1,21 @@
+{
+  "operation": "model_service",
+  "basis": "题给已选三家正式可比报价中的合同，600元月费含20万token；1元/千token超额按精确比例收费，不取整不结转，开发期两月",
+  "mode": "monthly_excess",
+  "monthly_base_yuan": 600,
+  "monthly_quota": 200000,
+  "excess_billing_unit": 1000,
+  "excess_unit_price_yuan": 1,
+  "rollover": false,
+  "proportional_billing": true,
+  "months": [
+    {
+      "id": "month1",
+      "usage": 300000
+    },
+    {
+      "id": "month2",
+      "usage": 100000
+    }
+  ]
+}

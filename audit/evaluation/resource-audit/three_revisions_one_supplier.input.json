@@ -1,0 +1,28 @@
+{
+  "operation": "quote_median",
+  "basis": "Independent synthetic audit inputs; no real quote or validation claim",
+  "quantity": "2",
+  "quotes": [
+    {
+      "id": "supplier-a-revision-1",
+      "supplier": "supplier-a",
+      "unit_price_yuan": "90",
+      "formal": true,
+      "comparable": true
+    },
+    {
+      "id": "supplier-a-revision-2",
+      "supplier": "supplier-a",
+      "unit_price_yuan": "100",
+      "formal": true,
+      "comparable": true
+    },
+    {
+      "id": "supplier-a-revision-3",
+      "supplier": "supplier-a",
+      "unit_price_yuan": "110",
+      "formal": true,
+      "comparable": true
+    }
+  ]
+}

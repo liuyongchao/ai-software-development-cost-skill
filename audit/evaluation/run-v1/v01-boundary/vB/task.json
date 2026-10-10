@@ -1,0 +1,7 @@
+{
+  "case_id": "v01-boundary",
+  "variant_label": "vB",
+  "prompt": "一项“认证服务”没说明目的及发生时点，能否直接纳入AI应用开发成本？输出needs_scope_evidence和can_assume_zero。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+  "input_files": [],
+  "instruction": "按 prompt 实际完成任务，最终答案写同目录 output.md，其他交付物也放在本目录。不要读取相邻变体、映射表或预期答案。"
+}

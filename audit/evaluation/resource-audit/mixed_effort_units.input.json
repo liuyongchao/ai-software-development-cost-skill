@@ -1,0 +1,28 @@
+{
+  "operation": "labor_total",
+  "basis": "Independent synthetic audit inputs; no real quote or validation claim",
+  "nonoverlap_confirmed": true,
+  "UHC_yuan_per_person_month": "16000",
+  "days_per_month": "20",
+  "hours_per_day": "8",
+  "items": [
+    {
+      "id": "hours",
+      "effort": "8",
+      "unit": "person_hours",
+      "PF": "1"
+    },
+    {
+      "id": "days",
+      "effort": "2",
+      "unit": "person_days",
+      "PF": "1.5"
+    },
+    {
+      "id": "months",
+      "effort": "0.5",
+      "unit": "person_months",
+      "PF": "2"
+    }
+  ]
+}

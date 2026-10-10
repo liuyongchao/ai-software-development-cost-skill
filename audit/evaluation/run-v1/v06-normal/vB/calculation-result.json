@@ -1,0 +1,12 @@
+{
+  "status": "computed_from_declared_inputs",
+  "operation": "data_baseline",
+  "basis": "题设确认整体共享包及参数适用，三个模型共用同一包，无额外专属工作",
+  "source_status": "2026-08-18 consultation draft; no independent validation of inputs",
+  "rounding": "Decimal precision 40; no intermediate monetary rounding; display rounding belongs to the report",
+  "result": {
+    "person_days": "15.120",
+    "formula": "DBE * AF * DRDF",
+    "time_unit": "person_days"
+  }
+}

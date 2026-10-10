@@ -1,0 +1,7 @@
+{
+  "case_id": "v17-boundary",
+  "variant_label": "vB",
+  "prompt": "模型服务只给一个月费标签，未给套餐含量、超额计价或实际用量且只有一份正式询价。输出can_confirm_total与needs_more_quotes。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+  "input_files": [],
+  "instruction": "按 prompt 实际完成任务，最终答案写同目录 output.md，其他交付物也放在本目录。不要读取相邻变体、映射表或预期答案。"
+}

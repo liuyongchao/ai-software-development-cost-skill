@@ -1,0 +1,7 @@
+{
+  "case_id": "v21-normal",
+  "variant_label": "vA",
+  "prompt": "组织参数记录给出了来源版本、单位、任务粒度和适用签字，但无统计方法与验证误差。请登记和复核，输出can_record_provenance及statistical_validation_confirmed。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+  "input_files": [],
+  "instruction": "按 prompt 实际完成任务，最终答案写同目录 output.md，其他交付物也放在本目录。不要读取相邻变体、映射表或预期答案。"
+}

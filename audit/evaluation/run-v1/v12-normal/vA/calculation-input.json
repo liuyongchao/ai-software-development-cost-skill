@@ -1,0 +1,21 @@
+{
+  "operation": "labor_total",
+  "basis": "题给模型TE已排重且含全局因素，外购任务人力已经剔除；按给定PF、费率及20天/月情景计算",
+  "nonoverlap_confirmed": true,
+  "UHC_yuan_per_person_month": 28000,
+  "days_per_month": 20,
+  "items": [
+    {
+      "id": "M1",
+      "effort": 6,
+      "unit": "person_days",
+      "PF": 1.2
+    },
+    {
+      "id": "M2",
+      "effort": 14,
+      "unit": "person_days",
+      "PF": 1.5
+    }
+  ]
+}

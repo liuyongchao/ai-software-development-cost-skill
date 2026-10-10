@@ -1,0 +1,7 @@
+{
+  "case_id": "v04-boundary",
+  "variant_label": "vA",
+  "prompt": "只有“120FP”一个数，没有方法版本、明细、生产率、调整系数或费率。请直接算完整主体功能费用；输出can_compute_complete_cost与cost_yuan（无法确定时null），另列缺项。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+  "input_files": [],
+  "instruction": "按 prompt 实际完成任务，最终答案写同目录 output.md，其他交付物也放在本目录。不要读取相邻变体、映射表或预期答案。"
+}

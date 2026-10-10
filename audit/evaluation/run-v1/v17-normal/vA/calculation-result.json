@@ -1,0 +1,23 @@
+{
+  "status": "computed_from_declared_inputs",
+  "operation": "model_service",
+  "basis": "题给已选三家正式可比报价中的合同，600元月费含20万token；1元/千token超额按精确比例收费，不取整不结转，开发期两月",
+  "source_status": "2026-08-18 consultation draft; no independent validation of inputs",
+  "rounding": "Decimal precision 40; no intermediate monetary rounding; display rounding belongs to the report",
+  "result": {
+    "total_yuan": "1300",
+    "months": [
+      {
+        "id": "month1",
+        "excess": "100000",
+        "cost_yuan": "700"
+      },
+      {
+        "id": "month2",
+        "excess": "0",
+        "cost_yuan": "600"
+      }
+    ],
+    "note": "quote, license and internal-work deduction review remain necessary"
+  }
+}

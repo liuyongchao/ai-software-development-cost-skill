@@ -1,0 +1,12 @@
+{
+  "status": "computed_from_declared_inputs",
+  "operation": "global_factors",
+  "basis": "题设已确认四个全局子因子，计算组合仅作记录，不再次作用于已调整TE",
+  "source_status": "2026-08-18 consultation draft; no independent validation of inputs",
+  "rounding": "Decimal precision 40; no intermediate monetary rounding; display rounding belongs to the report",
+  "result": {
+    "SF": "1.54",
+    "MRDF": "0.9",
+    "formula": "SF1 * SF2; MRDF1 * MRDF2"
+  }
+}

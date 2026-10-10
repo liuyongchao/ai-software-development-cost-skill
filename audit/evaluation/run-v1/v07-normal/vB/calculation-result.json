@@ -1,0 +1,24 @@
+{
+  "status": "computed_from_declared_inputs",
+  "operation": "labor_total",
+  "basis": "题设确认任务不重叠、工时与岗位系数来源、8小时/天及20天/月和综合费率",
+  "source_status": "2026-08-18 consultation draft; no independent validation of inputs",
+  "rounding": "Decimal precision 40; no intermediate monetary rounding; display rounding belongs to the report",
+  "result": {
+    "items": [
+      {
+        "id": "A",
+        "person_months": "0.1",
+        "cost_yuan": "2280.000"
+      },
+      {
+        "id": "B",
+        "person_months": "0.15",
+        "cost_yuan": "3600.00"
+      }
+    ],
+    "total_person_months": "0.25",
+    "total_cost_yuan": "5880.000",
+    "formula": "sum(effort converted to person_months * PF * UHC)"
+  }
+}

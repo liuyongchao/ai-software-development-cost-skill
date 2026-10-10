@@ -1,0 +1,7 @@
+{
+  "case_id": "v16-boundary",
+  "variant_label": "vA",
+  "prompt": "第三方数据包报价5000元但授权范围、允许用途和交付质量未知。输出ready_for_final_adoption和needs_license_quality_evidence。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+  "input_files": [],
+  "instruction": "按 prompt 实际完成任务，最终答案写同目录 output.md，其他交付物也放在本目录。不要读取相邻变体、映射表或预期答案。"
+}

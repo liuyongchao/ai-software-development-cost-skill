@@ -1,0 +1,18 @@
+{
+  "operation": "weighted_estimate",
+  "basis": "题给同范围数据工作量，组织约定以小值为差异基数且不超过30%，按80与100顺序权重0.25、0.75",
+  "max_relative_difference": 0.3,
+  "difference_basis": "minimum",
+  "items": [
+    {
+      "id": "method1",
+      "estimate": 80,
+      "weight": 0.25
+    },
+    {
+      "id": "method2",
+      "estimate": 100,
+      "weight": 0.75
+    }
+  ]
+}

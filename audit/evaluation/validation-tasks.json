@@ -1,0 +1,70 @@
+[
+  {
+    "case_id": "v01-normal",
+    "prompt": "应用项目开发期内有业务页面开发和模型微调；交付后运维、基础模型从零预训练、启动前可研不在开发期任务。按本稿判范围，输出included_count与excluded_count。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。"
+  },
+  {
+    "case_id": "v01-boundary",
+    "prompt": "一项“认证服务”没说明目的及发生时点，能否直接纳入AI应用开发成本？输出needs_scope_evidence和can_assume_zero。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。"
+  },
+  {
+    "case_id": "v02-normal",
+    "prompt": "交付一个清洗工具；供应商承包600条标注；内部另做不同的40条复核。合同确认工作不重叠，项目明确采用4.2.2和6.2的数据处理单列口径且保留7.3.3冲突。请归类，输出tool_category/data_vendor_category/internal_review_category，值用main_function/data_service/data_processing等英文科目。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。"
+  },
+  {
+    "case_id": "v03-boundary",
+    "prompt": "附录D没有给“模型压缩部署”的独立基准，因此估算员把它及项目管理都写0。需求实际包含这两项。输出missing_table_means_zero及needs_wbs_allocation，并列待补依据。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。"
+  },
+  {
+    "case_id": "v04-normal",
+    "prompt": "主体功能、数据和模型已经三部分分别计费。主体功能还只以“AI系统”为由提高应用类型系数，没有其他依据。输出duplicate_ai_uplift_flag和requires_external_fp_method，列复核接口。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。"
+  },
+  {
+    "case_id": "v04-boundary",
+    "prompt": "只有“120FP”一个数，没有方法版本、明细、生产率、调整系数或费率。请直接算完整主体功能费用；输出can_compute_complete_cost与cost_yuan（无法确定时null），另列缺项。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。"
+  },
+  {
+    "case_id": "v05-normal",
+    "prompt": "代表性同口径样本120条共18人时，效率稳定并验收通过，目标3600条含样本。计算unit_hours、total_hours和remaining_hours。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。"
+  },
+  {
+    "case_id": "v08-normal",
+    "prompt": "同一缺陷识别模型在8个站点部署且共用训练；另有信用预测，目标、业务规则和单独采集标注训练都不同。输出independent_models，列三组证据。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。"
+  },
+  {
+    "case_id": "v08-boundary",
+    "prompt": "只有两个不同模型文件，无法说明目标、业务规则、采集标注训练是否独立。输出count_confirmed以及independent_models（待确认用null）。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。"
+  },
+  {
+    "case_id": "v09-normal",
+    "prompt": "两个智能体各有独立API、独立知识库/提示词/编排逻辑/业务规则，可独立部署启停交付完成自己的业务目标；其中一个内部有4个角色和7个节点。输出independent_agents与internal_nodes_add_count。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。"
+  },
+  {
+    "case_id": "v09-boundary",
+    "prompt": "组件只有独立API，内部知识库/提示词/逻辑/规则以及独立交付都未知。输出independent_agents（未知null）及needs_more_evidence。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。"
+  },
+  {
+    "case_id": "v10-boundary",
+    "prompt": "提示词任务其他参数齐全，但只知道D.1写0.26而D.3用0.25，没有确定TF采用依据。能否自动挑较常出现版本估价？输出auto_choose_conflicting_factor及person_days。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。"
+  },
+  {
+    "case_id": "v14-boundary",
+    "prompt": "租赁单价按年，时长只写4个月；没约定按月折算，还有一台免费利旧资源。输出automatic_monthly_proration_allowed和free_asset_rental_yuan，列安全/迁移等待核。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。"
+  },
+  {
+    "case_id": "v16-boundary",
+    "prompt": "第三方数据包报价5000元但授权范围、允许用途和交付质量未知。输出ready_for_final_adoption和needs_license_quality_evidence。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。"
+  },
+  {
+    "case_id": "v18-normal",
+    "prompt": "开发期评审差旅，委托方确认3人2天，适用核定上限400元/人天；无实际凭证。输出approved_cap_yuan和actual_settlement_yuan。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。"
+  },
+  {
+    "case_id": "v21-normal",
+    "prompt": "组织参数记录给出了来源版本、单位、任务粒度和适用签字，但无统计方法与验证误差。请登记和复核，输出can_record_provenance及statistical_validation_confirmed。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。"
+  },
+  {
+    "case_id": "v21-boundary",
+    "prompt": "只有附录D中值和三行预算估计，没有实际工时、拟合或验证数据。能否自动校准出可靠行业定额？输出can_auto_calibrate及default_appendix_value_allowed。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。"
+  }
+]

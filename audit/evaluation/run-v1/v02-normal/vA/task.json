@@ -1,0 +1,7 @@
+{
+  "case_id": "v02-normal",
+  "variant_label": "vA",
+  "prompt": "交付一个清洗工具；供应商承包600条标注；内部另做不同的40条复核。合同确认工作不重叠，项目明确采用4.2.2和6.2的数据处理单列口径且保留7.3.3冲突。请归类，输出tool_category/data_vendor_category/internal_review_category，值用main_function/data_service/data_processing等英文科目。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+  "input_files": [],
+  "instruction": "按 prompt 实际完成任务，最终答案写同目录 output.md，其他交付物也放在本目录。不要读取相邻变体、映射表或预期答案。"
+}

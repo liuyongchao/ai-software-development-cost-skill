@@ -1,0 +1,7 @@
+{
+  "case_id": "v14-normal",
+  "variant_label": "vB",
+  "prompt": "资源购价90000元、资金成本0、折旧3年、运维6000元/台年且已扣免费期；项目确认按12月均摊、租1台4个月，无其他费。只算租价，安全迁移资料另核。输出annual_unit_yuan、monthly_unit_yuan、total_yuan。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+  "input_files": [],
+  "instruction": "按 prompt 实际完成任务，最终答案写同目录 output.md，其他交付物也放在本目录。不要读取相邻变体、映射表或预期答案。"
+}

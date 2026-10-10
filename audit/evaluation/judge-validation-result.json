@@ -1,0 +1,355 @@
+{
+  "reviewer_conditions": {
+    "mode": "独立标签盲评；并非文风盲评或严格双盲",
+    "anonymity": "仅使用每题vA/vB标签，不猜测标签对应变体。used_cards已移除，但条款密度、技能自称和文风可能透露来源，不能宣称这些线索已消除。",
+    "inputs_read": [
+      "work/ai-cost-eval/judge-validation-packet.json"
+    ],
+    "reference_sources_consulted": [
+      "work/ai-cost-eval/skill-v2/ai-software-development-cost-draft/references/overview.md（局部，用于来源版本、0.26/0.25含义与定位）",
+      "work/ai-cost-eval/skill-v2/ai-software-development-cost-draft/references/capabilities/scope-check.md",
+      "work/ai-cost-eval/skill-v2/ai-software-development-cost-draft/references/capabilities/cost-classification.md",
+      "work/ai-cost-eval/skill-v2/ai-software-development-cost-draft/references/capabilities/work-breakdown.md",
+      "work/ai-cost-eval/skill-v2/ai-software-development-cost-draft/references/capabilities/functional-cost-handoff.md",
+      "work/ai-cost-eval/skill-v2/ai-software-development-cost-draft/references/capabilities/data-piecework.md",
+      "work/ai-cost-eval/skill-v2/ai-software-development-cost-draft/references/capabilities/model-count.md",
+      "work/ai-cost-eval/skill-v2/ai-software-development-cost-draft/references/capabilities/agent-count.md",
+      "work/ai-cost-eval/skill-v2/ai-software-development-cost-draft/references/capabilities/model-task-effort.md",
+      "work/ai-cost-eval/skill-v2/ai-software-development-cost-draft/references/capabilities/resource-rental.md",
+      "work/ai-cost-eval/skill-v2/ai-software-development-cost-draft/references/capabilities/external-data-service.md",
+      "work/ai-cost-eval/skill-v2/ai-software-development-cost-draft/references/capabilities/other-costs.md",
+      "work/ai-cost-eval/skill-v2/ai-software-development-cost-draft/references/capabilities/parameter-register.md"
+    ],
+    "excluded_inputs": "未读取mapping、机械评分、其他实际输出、主技能文件或其他评委结果；未修改输出或技能。",
+    "evaluation_rule": "限定预期只用于界定题意，逐题检查实际JSON交付、notes推理、计算量纲、未知与零、证据边界和来源。诚实承认无正文不直接视为失败或编造；题面已足以完成时不追加门槛。关键判断未交付仍判失败。轻微附加字段/引用问题记录于issues，不自动否定正确的主交付。",
+    "preference_rule": "优先实质完成、正确性与可追溯性；不按长度、术语数量或猜测身份偏好。两者同样满足限定任务时可判tie。来源或边界的额外细节仅在直接有助题目审查时作为偏好。",
+    "arithmetic_rechecked": [
+      "18/120=0.15；3600×0.15=540；(3600−120)×0.15=522；540−18=522",
+      "3×2×400=2400",
+      "范围计数2+3=5；独立模型1+1=2；智能体2且内部节点增计0"
+    ],
+    "summary": {
+      "case_count": 17,
+      "response_count": 34,
+      "semantic_pass": {
+        "vA": 17,
+        "vB": 16
+      },
+      "preferences": {
+        "vA": 3,
+        "vB": 3,
+        "tie": 11
+      },
+      "nonpassing_cases": [
+        {
+          "case_id": "v21-boundary",
+          "response": "vB",
+          "type": "关键判断未完成，非编造"
+        }
+      ],
+      "criterion_issues": [
+        "v10-boundary",
+        "v21-boundary"
+      ]
+    }
+  },
+  "cases": [
+    {
+      "case_id": "v01-normal",
+      "responses": {
+        "vA": {
+          "semantic_pass": true,
+          "reason": "已把页面开发和应用微调逐项纳入，把交付后运维、基础模型预训练和启动前可研逐项排除，2/3可由明细复数。依据题面作出的限定结论符合scope-check；坦承未核正文不是编造，也未妨碍本题交付。",
+          "issues": []
+        },
+        "vB": {
+          "semantic_pass": true,
+          "reason": "2项纳入、3项排除均有对应活动，开发起止点及预训练/运维/可研排除边界与scope-check和overview相符；所引第1章、4.1能支持判定，未把范围判断扩张为费用估算。",
+          "issues": []
+        }
+      },
+      "preferred": "vB",
+      "criterion_issue": null
+    },
+    {
+      "case_id": "v01-boundary",
+      "responses": {
+        "vA": {
+          "semantic_pass": true,
+          "reason": "已实际判定认证费待确认、需目的及期间证据且不能当零，列出内容、成果、时间、开发关联和合同边界；没有把未知直接纳入或永久排除。",
+          "issues": []
+        },
+        "vB": {
+          "semantic_pass": true,
+          "reason": "已交付待确认结论和具体缺证清单，明确开发完成后的认证属于排除情形；该条件与scope-check相符，且正确把范围未知和金额为零分开。",
+          "issues": []
+        }
+      },
+      "preferred": "vB",
+      "criterion_issue": null
+    },
+    {
+      "case_id": "v02-normal",
+      "responses": {
+        "vA": {
+          "semantic_pass": true,
+          "reason": "三项分别归main_function/data_service/data_processing；工具开发与逐条处理区分正确，600条外包和40条不同复核均保留，未借排重删掉实际不同工作。采用题设4.2.2/6.2口径并保留7.3.3冲突，符合cost-classification。",
+          "issues": []
+        },
+        "vB": {
+          "semantic_pass": true,
+          "reason": "逐项列清工具、600条供应商标注、40条内部复核及归类理由，三科目符合题设采用口径。合同已确认不重叠时没有重复扣除，且明确分类约定没有解决原稿冲突。",
+          "issues": []
+        }
+      },
+      "preferred": "tie",
+      "criterion_issue": null
+    },
+    {
+      "case_id": "v03-boundary",
+      "responses": {
+        "vA": {
+          "semantic_pass": true,
+          "reason": "已否定缺表等于零，给两项工作实际拆分方向，并列需求验收、任务责任、历史或试做/专家工时、费率和覆盖关系等待补依据；金额仍待定，未冒造基准或重复分摊。",
+          "issues": []
+        },
+        "vB": {
+          "semantic_pass": true,
+          "reason": "两项需求均保留为待估且工时null，分别给压缩部署的对象/指标/承担方和管理工作的已含量/未覆盖量/一次分摊证据，满足所需WBS处理和待补交付，符合work-breakdown。",
+          "issues": []
+        }
+      },
+      "preferred": "tie",
+      "criterion_issue": null
+    },
+    {
+      "case_id": "v04-normal",
+      "responses": {
+        "vA": {
+          "semantic_pass": true,
+          "reason": "已标记仅凭AI标签上调的重复风险并暂不认可，同时交出功能方法、版本、范围明细、重叠、系数、生产率和费率复核接口。没有错误声称所有独立复杂性因素均不得采用，完成了题目要求。",
+          "issues": []
+        },
+        "vB": {
+          "semantic_pass": true,
+          "reason": "既指出重复调整风险，又给出可追溯的外部计数方法/版本、规模、生产率方向、因子作用位置、综合费率、时间单位转换和排重接口；GB/T 36964-2018及6.1.1—6.1.3引述获functional-cost-handoff支持。较vA进一步明确了会影响后续计算的单位方向和转换接口。",
+          "issues": []
+        }
+      },
+      "preferred": "vB",
+      "criterion_issue": null
+    },
+    {
+      "case_id": "v04-boundary",
+      "responses": {
+        "vA": {
+          "semantic_pass": true,
+          "reason": "120FP只给规模，缺方法、工作量转换参数和费率，回答正确拒绝完整金额并给null及缺项。示意乘法明确了FP/人时须取倒数，未把示意公式当已确认标准。",
+          "issues": []
+        },
+        "vB": {
+          "semantic_pass": true,
+          "reason": "保留120FP为待核规模，完整费用为null，已列题设缺失的方法版本/计数证据、生产率、调整因素和费率以及单位转换，未默认系数或历史价格；符合functional-cost-handoff的停止条件。",
+          "issues": []
+        }
+      },
+      "preferred": "tie",
+      "criterion_issue": null
+    },
+    {
+      "case_id": "v05-normal",
+      "responses": {
+        "vA": {
+          "semantic_pass": true,
+          "reason": "可独立复算18/120=0.15人时/条，3600×0.15=540人时，(3600−120)×0.15=522人时。总量包含样本、剩余量扣除样本且没有再加18人时；代表性、同口径、稳定及验收前提均由题面给定。",
+          "issues": []
+        },
+        "vB": {
+          "semantic_pass": true,
+          "reason": "给出相同且可复算的三式，量纲和3480条剩余数量正确，540已含样本18人时；没有臆加返工/准备工时或以证据不足为由拒算，满足data-piecework边界。",
+          "issues": []
+        }
+      },
+      "preferred": "tie",
+      "criterion_issue": null
+    },
+    {
+      "case_id": "v08-normal",
+      "responses": {
+        "vA": {
+          "semantic_pass": true,
+          "reason": "已按缺陷识别与信用预测各1个合计2个，明确列出目标、业务规则、采集标注训练三组题设证据；8站点共训未扩成8个模型，实际部署工作仍可另估。",
+          "issues": []
+        },
+        "vB": {
+          "semantic_pass": true,
+          "reason": "已给三组证据及计数台账，8站缺陷模型合并为1，独立信用预测为1，合计2；计数与工时费用分开，符合model-count。",
+          "issues": []
+        }
+      },
+      "preferred": "tie",
+      "criterion_issue": null
+    },
+    {
+      "case_id": "v08-boundary",
+      "responses": {
+        "vA": {
+          "semantic_pass": true,
+          "reason": "没有以两个权重文件认定两个业务模型，数量null且未确认；具体列出目标、规则、数据采集标注和训练/版本共享缺项，未把未知写成0或1。",
+          "issues": []
+        },
+        "vB": {
+          "semantic_pass": true,
+          "reason": "三个业务独立性证据均待补，两个文件仅保留为候选，不直接计2也不归零；所列共享/部署/文件关系可用于后续判定，符合model-count。",
+          "issues": []
+        }
+      },
+      "preferred": "tie",
+      "criterion_issue": null
+    },
+    {
+      "case_id": "v09-normal",
+      "responses": {
+        "vA": {
+          "semantic_pass": true,
+          "reason": "三组独立条件均按题面登记，两个智能体计2，内部4角色7节点增计0。明确内部复杂度和实际编排工作仍存在，未将计数0误作工时0，也未自动选择复杂度系数。",
+          "issues": []
+        },
+        "vB": {
+          "semantic_pass": true,
+          "reason": "notes已逐项重述独立API、知识库/提示词/编排/规则及独立部署交付业务目标，足以支持计2；4角色7节点按内部结构不增计，且保留开发工作。题目未要求另设三组证据数组，不能因其简洁判失败。",
+          "issues": []
+        }
+      },
+      "preferred": "tie",
+      "criterion_issue": null
+    },
+    {
+      "case_id": "v09-boundary",
+      "responses": {
+        "vA": {
+          "semantic_pass": true,
+          "reason": "独立API不足以证明完整智能体，数量null且需补证；已列内部能力、业务目标、验收和部署启停交付证据，未擅定1或0。",
+          "issues": []
+        },
+        "vB": {
+          "semantic_pass": true,
+          "reason": "正确登记入口组成立、内部能力及独立交付两组未知，数量null，并明确不能永久判作0或内部节点；缺项覆盖agent-count规定的关键维度。",
+          "issues": []
+        }
+      },
+      "preferred": "tie",
+      "criterion_issue": null
+    },
+    {
+      "case_id": "v10-boundary",
+      "responses": {
+        "vA": {
+          "semantic_pass": true,
+          "reason": "已保留0.26/0.25差异并否定按出现频次自动选择，person_days为null，要求明确采用版本/依据及最终TF；该停止结果符合model-task-effort。未以1或中值填空，也未声称式5已验证。",
+          "issues": [
+            "轻微来源定位问题：冲突表把0.26来源写成“附录D.1”。overview p85定位为附录D.2的表D.1；题干同样只写D.1，宜补全表/节层级。此问题未改变停止计算的正确结论。"
+          ]
+        },
+        "vB": {
+          "semantic_pass": true,
+          "reason": "主交付已完成：不按频次择值、工时null、提出来源及采用依据缺项。由于没有选取任何值并投入计算，附加字段的命名问题未造成错误估价，但应修正参数含义。",
+          "issues": [
+            "轻微但实际的参数语义问题：unresolved_factor.name为TF且candidates列0.26/0.25，容易将两者误作TF本身。overview p85中它们是TF5=1+(评分和)×k的乘数k，最终TF还取决于评分。",
+            "required_evidence中的优先顺序/更正说明是可能的补证方式，不应解读为必须等待原稿更正；本回答同时允许项目书面采用依据，故不据此判未完成。"
+          ]
+        }
+      },
+      "preferred": "vA",
+      "criterion_issue": "题干D.1存在表/节定位歧义，应写“附录D.2表D.1”；0.26/0.25为TF公式的乘数而非TF最终值。两个限定预期只检验不自动择值与暂停工时计算，未覆盖该参数语义区别。"
+    },
+    {
+      "case_id": "v14-boundary",
+      "responses": {
+        "vA": {
+          "semantic_pass": true,
+          "reason": "明确拒绝无合同依据的年价×4/12，付费额null；免费利旧资源只将新增租赁费判0，安全和到期迁移仍列证据、责任、时点及费用待核，并核对开发期边界。",
+          "issues": []
+        },
+        "vB": {
+          "semantic_pass": true,
+          "reason": "拒绝自动按月折算、免费资源租赁费0，付费额null，且列安全、迁移及可能另发生服务的待核项，没有把免费租赁推成全部工作免费。满足所需交付；未实际把所列维护费用纳入开发成本。",
+          "issues": []
+        }
+      },
+      "preferred": "vA",
+      "criterion_issue": null
+    },
+    {
+      "case_id": "v16-boundary",
+      "responses": {
+        "vA": {
+          "semantic_pass": true,
+          "reason": "报价5000被保留为待核报价，最终采用额null，明确未满足最终采纳条件且需授权用途/来源、质量指标与验收证据，未用价格推定权利或质量。",
+          "issues": []
+        },
+        "vB": {
+          "semantic_pass": true,
+          "reason": "同样区分报价与采用价，并给授权、用途、交付质量、供应商责任和取价边界证据。补充7.4没有统一最低三家要求获external-data-service支持，未移植其他科目门槛。",
+          "issues": []
+        }
+      },
+      "preferred": "tie",
+      "criterion_issue": null
+    },
+    {
+      "case_id": "v18-normal",
+      "responses": {
+        "vA": {
+          "semantic_pass": true,
+          "reason": "3×2×400=2400元，明确金额性质为核定上限，实际结算null，并列实际凭证和结算记录待补；没有把上限冒充实际支出或未知归零。",
+          "issues": []
+        },
+        "vB": {
+          "semantic_pass": true,
+          "reason": "同样完整计算2400元并区分核定上限与实际结算，实际凭证缺失导致null，算式量纲正确；本题没有要求额外凭证清单，简短notes足够完成。",
+          "issues": []
+        }
+      },
+      "preferred": "tie",
+      "criterion_issue": null
+    },
+    {
+      "case_id": "v21-normal",
+      "responses": {
+        "vA": {
+          "semantic_pass": true,
+          "reason": "已实际登记题面确认存在的四类来源元数据及其未披露详情，并将统计方法/误差留空。适用签字与统计验证分开，false解释为未证实而非已证伪，未编造数值、版本或签字人。",
+          "issues": []
+        },
+        "vB": {
+          "semantic_pass": true,
+          "reason": "record完成证据状态登记，题面没给具体值时用已提供/未展开描述适当；方法和误差null、统计有效性待核及补证清单正确。来源可登记不等于已验证，符合parameter-register。",
+          "issues": []
+        }
+      },
+      "preferred": "tie",
+      "criterion_issue": null
+    },
+    {
+      "case_id": "v21-boundary",
+      "responses": {
+        "vA": {
+          "semantic_pass": true,
+          "reason": "已否定由三行预算和附录中值自动校准可靠行业定额，同时明确未有采用依据时不得把中值作默认。可追溯地列出实际工时、任务口径、拟合和验证等缺项，保持未校准及结果null，与parameter-register相符。",
+          "issues": []
+        },
+        "vB": {
+          "semantic_pass": false,
+          "reason": "已正确拒绝自动校准可靠行业定额，也没有捏造数据；但将default_appendix_value_allowed留null，未完成本题在现有证据下能否默认采用附录中值的关键判断。参考卡明确禁止未经确认的中值升格为默认；未来若另有采用依据可作有条件暂估，与当前默认不允许并不冲突。",
+          "issues": [
+            "关键交付未完成：default_appendix_value_allowed应就题设现有证据明确为false，却因未见正文保留null。",
+            "这是有解释的保守未知，不是编造或擅自套中值；失败仅指未完成所要求的默认采用判断，不能汇报成已错误估价或已虚构可靠行业定额。"
+          ]
+        }
+      },
+      "preferred": "vA",
+      "criterion_issue": "default_appendix_value_allowed的适用范围应在题干明确为“在本题证据下，无另行采用依据时能否默认使用”。false不能扩张为永远禁止在有项目适用证据后引用附录值；本次按限定预期的当前默认使用含义判定。"
+    }
+  ]
+}

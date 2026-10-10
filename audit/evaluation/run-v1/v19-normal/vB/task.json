@@ -1,0 +1,7 @@
+{
+  "case_id": "v19-normal",
+  "variant_label": "vB",
+  "prompt": "同范围数据工作量两法80、100人天。组织约定差异以较小值为基数、≤30%合理，权重0.25/0.75。输出relative_difference与combined_person_days。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+  "input_files": [],
+  "instruction": "按 prompt 实际完成任务，最终答案写同目录 output.md，其他交付物也放在本目录。不要读取相邻变体、映射表或预期答案。"
+}

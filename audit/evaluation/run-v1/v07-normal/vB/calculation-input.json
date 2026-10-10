@@ -1,0 +1,22 @@
+{
+  "operation": "labor_total",
+  "basis": "题设确认任务不重叠、工时与岗位系数来源、8小时/天及20天/月和综合费率",
+  "nonoverlap_confirmed": true,
+  "UHC_yuan_per_person_month": 24000,
+  "days_per_month": 20,
+  "hours_per_day": 8,
+  "items": [
+    {
+      "id": "A",
+      "effort": 16,
+      "unit": "person_hours",
+      "PF": 0.95
+    },
+    {
+      "id": "B",
+      "effort": 3,
+      "unit": "person_days",
+      "PF": 1
+    }
+  ]
+}

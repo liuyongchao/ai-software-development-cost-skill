@@ -1,0 +1,13 @@
+{
+  "status": "computed_from_declared_inputs",
+  "operation": "weighted_estimate",
+  "basis": "题给同范围数据工作量，组织约定以小值为差异基数且不超过30%，按80与100顺序权重0.25、0.75",
+  "source_status": "2026-08-18 consultation draft; no independent validation of inputs",
+  "rounding": "Decimal precision 40; no intermediate monetary rounding; display rounding belongs to the report",
+  "result": {
+    "status": "within_declared_criterion",
+    "relative_difference": "0.25",
+    "estimate": "95.00",
+    "note": "data work/cost only; no universal threshold"
+  }
+}

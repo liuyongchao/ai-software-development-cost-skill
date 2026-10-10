@@ -1,0 +1,106 @@
+{
+  "status": "computed_from_declared_inputs",
+  "operation": "range_total",
+  "basis": "题给万元区间，九科目已核查，六类直接非人力均有证据确认不发生",
+  "source_status": "2026-08-18 consultation draft; no independent validation of inputs",
+  "rounding": "Decimal precision 40; no intermediate monetary rounding; display rounding belongs to the report",
+  "result": {
+    "known_subtotal": [
+      "29",
+      "33",
+      "37"
+    ],
+    "currency_unit": "wan_yuan",
+    "items": [
+      {
+        "id": "main_function",
+        "status": "known",
+        "range": [
+          "20",
+          "22",
+          "24"
+        ]
+      },
+      {
+        "id": "data_processing",
+        "status": "known",
+        "range": [
+          "2",
+          "3",
+          "4"
+        ]
+      },
+      {
+        "id": "model_building",
+        "status": "known",
+        "range": [
+          "7",
+          "8",
+          "9"
+        ]
+      },
+      {
+        "id": "purchase",
+        "status": "confirmed_zero",
+        "range": [
+          "0",
+          "0",
+          "0"
+        ]
+      },
+      {
+        "id": "rental",
+        "status": "confirmed_zero",
+        "range": [
+          "0",
+          "0",
+          "0"
+        ]
+      },
+      {
+        "id": "integration",
+        "status": "confirmed_zero",
+        "range": [
+          "0",
+          "0",
+          "0"
+        ]
+      },
+      {
+        "id": "data_services",
+        "status": "confirmed_zero",
+        "range": [
+          "0",
+          "0",
+          "0"
+        ]
+      },
+      {
+        "id": "model_services",
+        "status": "confirmed_zero",
+        "range": [
+          "0",
+          "0",
+          "0"
+        ]
+      },
+      {
+        "id": "other",
+        "status": "confirmed_zero",
+        "range": [
+          "0",
+          "0",
+          "0"
+        ]
+      }
+    ],
+    "unknown": [],
+    "complete_project_total": [
+      "29",
+      "33",
+      "37"
+    ],
+    "complete": true,
+    "note": "not a statistical confidence interval"
+  }
+}

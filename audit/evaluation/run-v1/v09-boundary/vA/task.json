@@ -1,0 +1,7 @@
+{
+  "case_id": "v09-boundary",
+  "variant_label": "vA",
+  "prompt": "组件只有独立API，内部知识库/提示词/逻辑/规则以及独立交付都未知。输出independent_agents（未知null）及needs_more_evidence。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+  "input_files": [],
+  "instruction": "按 prompt 实际完成任务，最终答案写同目录 output.md，其他交付物也放在本目录。不要读取相邻变体、映射表或预期答案。"
+}

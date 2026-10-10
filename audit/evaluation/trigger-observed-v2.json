@@ -1,0 +1,65 @@
+[
+  {
+    "case_id": "trigger-1",
+    "would_trigger": true,
+    "selected_capability": "data-piecework",
+    "reason": "意图是AI项目数据处理的计件样本与工时换算，命中数据计件及样本单位工时。",
+    "if_triggered_action": "加载data-piecework，收集样本数量、有效工时、计件单位及总体数据量等输入，核单位转换并计算；输入缺失则列待补。"
+  },
+  {
+    "case_id": "trigger-2",
+    "would_trigger": true,
+    "selected_capability": "model-count",
+    "reason": "要判断同一识别任务多园区部署的独立模型数量，属于模型计数而非部署技术。",
+    "if_triggered_action": "加载model-count，核任务、模型差异及复用证据，区分部署数量与独立模型数量，形成计数依据。"
+  },
+  {
+    "case_id": "trigger-3",
+    "would_trigger": true,
+    "selected_capability": "external-model-service",
+    "reason": "对象是开发期模型API套餐和超额费用，直接命中外购模型服务用量计价。",
+    "if_triggered_action": "加载external-model-service，核套餐额度、各期用量、超额单价及单位、结转和计费规则，逐期计算并保存询价与选价依据。"
+  },
+  {
+    "case_id": "trigger-4",
+    "would_trigger": true,
+    "selected_capability": "cost-summary",
+    "reason": "意图是开发估价汇总的完整性复核，重点为缺项是否可填零。",
+    "if_triggered_action": "加载cost-summary，逐项区分已知金额、待确认缺项与有证据不发生的零，保存已知小计及完整性声明。"
+  },
+  {
+    "case_id": "trigger-5",
+    "would_trigger": false,
+    "selected_capability": "none",
+    "reason": "要求编写RAG向量检索代码，属于明确排除的技术实施，而非开发成本度量。",
+    "if_triggered_action": null
+  },
+  {
+    "case_id": "trigger-6",
+    "would_trigger": false,
+    "selected_capability": "none",
+    "reason": "要求按另一标准测算交付后运维成本，超出本技能限定的开发启动至交付范围。",
+    "if_triggered_action": null
+  },
+  {
+    "case_id": "trigger-7",
+    "would_trigger": false,
+    "selected_capability": "none",
+    "reason": "任务是与AI应用无关的硬件研发预算，属于本技能明确不适用的范围。",
+    "if_triggered_action": null
+  },
+  {
+    "case_id": "trigger-8",
+    "would_trigger": true,
+    "selected_capability": "overview",
+    "reason": "仅询问本征求意见稿版本和主要范围，是非能力类概览查询。",
+    "if_triggered_action": "使用SKILL核心原则并读取overview，说明2026-08-18征求意见稿身份与主要适用范围，不加载计算能力卡。"
+  },
+  {
+    "case_id": "trigger-9",
+    "would_trigger": true,
+    "selected_capability": "agent-count",
+    "reason": "核心意图是判断五个角色是否构成五个独立智能体；采购询价卡不承担该判定，不能仅因点名该卡就误路由。",
+    "if_triggered_action": "说明采购询价卡不适用该计数问题，转加载agent-count，按角色独立性及内部节点证据判定数量，材料不足时列待补而不直接认定为五个。"
+  }
+]

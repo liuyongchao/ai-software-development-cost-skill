@@ -1,0 +1,18 @@
+{
+  "status": "computed_from_declared_inputs",
+  "operation": "integration_total",
+  "basis": "题给专用基础设施子项及适用外部参数，来源齐全，仅覆盖该子项",
+  "source_status": "2026-08-18 consultation draft; no independent validation of inputs",
+  "rounding": "Decimal precision 40; no intermediate monetary rounding; display rounding belongs to the report",
+  "result": {
+    "items": [
+      {
+        "id": "I1",
+        "cost_yuan": "8640.000"
+      }
+    ],
+    "total_yuan": "8640.000",
+    "formula": "sum(SC * R * S * F)",
+    "note": "scope and rate applicability must be confirmed outside arithmetic"
+  }
+}

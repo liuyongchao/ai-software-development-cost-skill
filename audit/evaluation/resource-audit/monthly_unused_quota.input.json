@@ -1,0 +1,21 @@
+{
+  "operation": "model_service",
+  "basis": "Independent synthetic audit inputs; no real quote or validation claim",
+  "mode": "monthly_excess",
+  "rollover": false,
+  "proportional_billing": true,
+  "monthly_base_yuan": "90",
+  "monthly_quota": "1000",
+  "excess_billing_unit": "100",
+  "excess_unit_price_yuan": "2",
+  "months": [
+    {
+      "id": "m1",
+      "usage": "100"
+    },
+    {
+      "id": "m2",
+      "usage": "1150"
+    }
+  ]
+}

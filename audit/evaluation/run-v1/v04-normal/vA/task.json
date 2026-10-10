@@ -1,0 +1,7 @@
+{
+  "case_id": "v04-normal",
+  "variant_label": "vA",
+  "prompt": "主体功能、数据和模型已经三部分分别计费。主体功能还只以“AI系统”为由提高应用类型系数，没有其他依据。输出duplicate_ai_uplift_flag和requires_external_fp_method，列复核接口。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+  "input_files": [],
+  "instruction": "按 prompt 实际完成任务，最终答案写同目录 output.md，其他交付物也放在本目录。不要读取相邻变体、映射表或预期答案。"
+}

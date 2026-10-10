@@ -1,0 +1,5 @@
+{
+  "status": "input_error",
+  "message": "rental price_period and duration_unit must match explicitly",
+  "result": null
+}

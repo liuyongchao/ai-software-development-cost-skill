@@ -1,0 +1,10 @@
+{
+  "operation": "model_task",
+  "basis": "Independent synthetic audit inputs; no real quote or validation claim",
+  "hypothetical_equation_selected": true,
+  "TBE": "12",
+  "SR": "0.5",
+  "TS": "0.8",
+  "SF": "1.2",
+  "MRDF": "0.9"
+}

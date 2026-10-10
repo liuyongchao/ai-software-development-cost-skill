@@ -1,0 +1,8 @@
+{
+  "operation": "data_baseline",
+  "basis": "题设确认整体共享包及参数适用，三个模型共用同一包，无额外专属工作",
+  "DBE": 36,
+  "AF": 1.2,
+  "DRDF": 0.35,
+  "granularity_confirmed": true
+}

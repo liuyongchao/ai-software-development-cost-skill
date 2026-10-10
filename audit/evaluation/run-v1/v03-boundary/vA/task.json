@@ -1,0 +1,7 @@
+{
+  "case_id": "v03-boundary",
+  "variant_label": "vA",
+  "prompt": "附录D没有给“模型压缩部署”的独立基准，因此估算员把它及项目管理都写0。需求实际包含这两项。输出missing_table_means_zero及needs_wbs_allocation，并列待补依据。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+  "input_files": [],
+  "instruction": "按 prompt 实际完成任务，最终答案写同目录 output.md，其他交付物也放在本目录。不要读取相邻变体、映射表或预期答案。"
+}

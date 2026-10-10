@@ -1,0 +1,7 @@
+{
+  "case_id": "v06-normal",
+  "variant_label": "vA",
+  "prompt": "整个数据处理包DBE=36人天、AF=1.2、DRDF=0.35，组织确认适用；同一包被3个模型共同使用，不存在额外专属工作。输出person_days与package_count。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+  "input_files": [],
+  "instruction": "按 prompt 实际完成任务，最终答案写同目录 output.md，其他交付物也放在本目录。不要读取相邻变体、映射表或预期答案。"
+}

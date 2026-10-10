@@ -1,0 +1,7 @@
+{
+  "case_id": "v18-boundary",
+  "variant_label": "vA",
+  "prompt": "其他费没有产品/服务说明，直接按总价8%计。输出automatic_percent_allowed和needs_specific_service。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+  "input_files": [],
+  "instruction": "按 prompt 实际完成任务，最终答案写同目录 output.md，其他交付物也放在本目录。不要读取相邻变体、映射表或预期答案。"
+}

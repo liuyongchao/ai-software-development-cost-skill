@@ -1,0 +1,11 @@
+{
+  "operation": "model_task",
+  "basis": "项目明确选正文式5作假设情景且另行确认全部题给参数；不是预测效度证明",
+  "hypothetical_equation_selected": true,
+  "TBE": 40,
+  "TF": 1.2,
+  "SR": 0.75,
+  "TS": 0.5,
+  "SF": 1.3,
+  "MRDF": 0.8
+}

@@ -1,0 +1,7 @@
+{
+  "case_id": "v16-normal",
+  "variant_label": "vA",
+  "prompt": "外购开发期数据标注3000条，两个正式同规格报价都3元/条，质量、授权和周期已明且委托方接受，内部未重复做。输出cost_yuan及source_requires_three_quotes。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+  "input_files": [],
+  "instruction": "按 prompt 实际完成任务，最终答案写同目录 output.md，其他交付物也放在本目录。不要读取相邻变体、映射表或预期答案。"
+}

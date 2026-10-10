@@ -1,0 +1,253 @@
+{
+  "artifact": "DIGEST.md",
+  "source_version": "2026-08-18 consultation draft",
+  "cjk_regex": "[\\u3400-\\u4DBF\\u4E00-\\u9FFF]",
+  "cjk_count": 6947,
+  "total_characters": 10364,
+  "main_sections": 6,
+  "methodology_sections": 15,
+  "capability_link_count": 21,
+  "final_delivery_link_prefix": "skills/ai-software-development-cost-draft/references/capabilities/",
+  "link_checks": [
+    {
+      "link": "skills/ai-software-development-cost-draft/references/capabilities/scope-check.md",
+      "source_card_exists": true
+    },
+    {
+      "link": "skills/ai-software-development-cost-draft/references/capabilities/cost-classification.md",
+      "source_card_exists": true
+    },
+    {
+      "link": "skills/ai-software-development-cost-draft/references/capabilities/work-breakdown.md",
+      "source_card_exists": true
+    },
+    {
+      "link": "skills/ai-software-development-cost-draft/references/capabilities/functional-cost-handoff.md",
+      "source_card_exists": true
+    },
+    {
+      "link": "skills/ai-software-development-cost-draft/references/capabilities/data-piecework.md",
+      "source_card_exists": true
+    },
+    {
+      "link": "skills/ai-software-development-cost-draft/references/capabilities/data-baseline.md",
+      "source_card_exists": true
+    },
+    {
+      "link": "skills/ai-software-development-cost-draft/references/capabilities/model-count.md",
+      "source_card_exists": true
+    },
+    {
+      "link": "skills/ai-software-development-cost-draft/references/capabilities/agent-count.md",
+      "source_card_exists": true
+    },
+    {
+      "link": "skills/ai-software-development-cost-draft/references/capabilities/model-task-effort.md",
+      "source_card_exists": true
+    },
+    {
+      "link": "skills/ai-software-development-cost-draft/references/capabilities/global-factors.md",
+      "source_card_exists": true
+    },
+    {
+      "link": "skills/ai-software-development-cost-draft/references/capabilities/data-labor-cost.md",
+      "source_card_exists": true
+    },
+    {
+      "link": "skills/ai-software-development-cost-draft/references/capabilities/model-labor-cost.md",
+      "source_card_exists": true
+    },
+    {
+      "link": "skills/ai-software-development-cost-draft/references/capabilities/purchase-quotes.md",
+      "source_card_exists": true
+    },
+    {
+      "link": "skills/ai-software-development-cost-draft/references/capabilities/resource-rental.md",
+      "source_card_exists": true
+    },
+    {
+      "link": "skills/ai-software-development-cost-draft/references/capabilities/external-data-service.md",
+      "source_card_exists": true
+    },
+    {
+      "link": "skills/ai-software-development-cost-draft/references/capabilities/external-model-service.md",
+      "source_card_exists": true
+    },
+    {
+      "link": "skills/ai-software-development-cost-draft/references/capabilities/infrastructure-integration.md",
+      "source_card_exists": true
+    },
+    {
+      "link": "skills/ai-software-development-cost-draft/references/capabilities/other-costs.md",
+      "source_card_exists": true
+    },
+    {
+      "link": "skills/ai-software-development-cost-draft/references/capabilities/cross-validation.md",
+      "source_card_exists": true
+    },
+    {
+      "link": "skills/ai-software-development-cost-draft/references/capabilities/cost-summary.md",
+      "source_card_exists": true
+    },
+    {
+      "link": "skills/ai-software-development-cost-draft/references/capabilities/parameter-register.md",
+      "source_card_exists": true
+    }
+  ],
+  "arithmetic_checks": [
+    {
+      "id": "source_function_scale",
+      "actual": 464.2407,
+      "expected": 464.2407,
+      "passed": true
+    },
+    {
+      "id": "source_piecework_before_hours",
+      "actual": 600.0,
+      "expected": 600,
+      "passed": true
+    },
+    {
+      "id": "source_sample_hours_per_item",
+      "actual": 0.3,
+      "expected": 0.3,
+      "passed": true
+    },
+    {
+      "id": "source_piecework_after_hours",
+      "actual": 900.0,
+      "expected": 900,
+      "passed": true
+    },
+    {
+      "id": "source_piecework_before_months_display",
+      "actual": 3.45,
+      "expected": 3.45,
+      "passed": true
+    },
+    {
+      "id": "source_piecework_after_months_display",
+      "actual": 5.17,
+      "expected": 5.17,
+      "passed": true
+    },
+    {
+      "id": "source_baseline_days",
+      "actual": 25.929,
+      "expected": 25.929,
+      "passed": true
+    },
+    {
+      "id": "source_baseline_months_display",
+      "actual": 1.19,
+      "expected": 1.19,
+      "passed": true
+    },
+    {
+      "id": "source_prompt_example_weight025",
+      "actual": 54.27,
+      "expected": 54.27,
+      "passed": true
+    },
+    {
+      "id": "source_prompt_alternative_weight026",
+      "actual": 54.70416,
+      "expected": 54.70416,
+      "passed": true
+    },
+    {
+      "id": "synthetic_model_sum",
+      "actual": 30,
+      "expected": 30,
+      "passed": true
+    },
+    {
+      "id": "synthetic_labor_yuan",
+      "actual": 12000.0,
+      "expected": 12000,
+      "passed": true
+    },
+    {
+      "id": "synthetic_purchase_yuan",
+      "actual": 24000,
+      "expected": 24000,
+      "passed": true
+    },
+    {
+      "id": "synthetic_rental_yuan",
+      "actual": 30000,
+      "expected": 30000,
+      "passed": true
+    },
+    {
+      "id": "synthetic_external_data_yuan",
+      "actual": 20000,
+      "expected": 20000,
+      "passed": true
+    },
+    {
+      "id": "synthetic_monthly_model_service_yuan",
+      "actual": 2000,
+      "expected": 2000,
+      "passed": true
+    },
+    {
+      "id": "synthetic_two_month_model_service_yuan",
+      "actual": 4000,
+      "expected": 4000,
+      "passed": true
+    },
+    {
+      "id": "synthetic_integration_yuan",
+      "actual": 11000.0,
+      "expected": 11000,
+      "passed": true
+    },
+    {
+      "id": "synthetic_travel_cap_yuan",
+      "actual": 3000,
+      "expected": 3000,
+      "passed": true
+    },
+    {
+      "id": "synthetic_relative_difference",
+      "actual": 0.2,
+      "expected": 0.2,
+      "passed": true
+    },
+    {
+      "id": "synthetic_weighted_days",
+      "actual": 112.0,
+      "expected": 112,
+      "passed": true
+    },
+    {
+      "id": "synthetic_excess_relative_difference",
+      "actual": 0.5,
+      "expected": 0.5,
+      "passed": true
+    },
+    {
+      "id": "synthetic_known_lower_wan",
+      "actual": 18,
+      "expected": 18,
+      "passed": true
+    },
+    {
+      "id": "synthetic_known_middle_wan",
+      "actual": 22,
+      "expected": 22,
+      "passed": true
+    },
+    {
+      "id": "synthetic_known_upper_wan",
+      "actual": 26,
+      "expected": 26,
+      "passed": true
+    }
+  ],
+  "failed_arithmetic_count": 0,
+  "references_status": "R01-R09 retained as reference material",
+  "needs_review_status": "N01-N14 all remain open",
+  "review_scope": "Document structure, source-label review, source-card slug existence, and deterministic arithmetic only. Does not attest final package existence, skill runtime tests, or real project predictive validation."
+}

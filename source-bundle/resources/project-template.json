@@ -1,0 +1,96 @@
+{
+  "template_status": "blank_intake_not_calculator_input",
+  "source_version": "2026-08-18 consultation draft",
+  "project": {
+    "name": null,
+    "development_start": null,
+    "delivery_date": null,
+    "purpose": null,
+    "currency_unit": "yuan"
+  },
+  "task_fields": [
+    "id",
+    "scope",
+    "responsible_party",
+    "deliverable",
+    "acceptance",
+    "data_type",
+    "quantity_unit",
+    "quantity",
+    "period",
+    "method",
+    "effort_unit",
+    "baseline",
+    "factors",
+    "position",
+    "PF",
+    "rate",
+    "conversion",
+    "source",
+    "version",
+    "reuse_or_outsource_deduction",
+    "included_testing_management",
+    "status"
+  ],
+  "tasks": [],
+  "cost_categories": {
+    "main_function": {
+      "status": "unknown"
+    },
+    "data_processing": {
+      "status": "unknown"
+    },
+    "model_building": {
+      "status": "unknown"
+    },
+    "purchase": {
+      "status": "unknown"
+    },
+    "rental": {
+      "status": "unknown"
+    },
+    "integration": {
+      "status": "unknown"
+    },
+    "data_services": {
+      "status": "unknown"
+    },
+    "model_services": {
+      "status": "unknown"
+    },
+    "other": {
+      "status": "unknown"
+    }
+  },
+  "quote_fields": [
+    "supplier",
+    "formal_record",
+    "specification",
+    "authorization",
+    "included_services",
+    "quantity",
+    "unit",
+    "period",
+    "price",
+    "comparison_basis",
+    "selection_basis"
+  ],
+  "quotes": [],
+  "parameter_fields": [
+    "name",
+    "value",
+    "unit",
+    "scope_and_granularity",
+    "source",
+    "version",
+    "sample_scope",
+    "applicability_evidence",
+    "method",
+    "validation_evidence",
+    "status",
+    "updated_on"
+  ],
+  "parameters": [],
+  "open_questions": [],
+  "notes": "null/unknown不是0；这是实施用记录格式，不能宣称所有字段为原稿规定。"
+}

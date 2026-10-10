@@ -1,0 +1,38 @@
+[
+  {
+    "case_id": "trigger-1",
+    "prompt": "帮我核AI项目的数据处理工时：计件样本怎么换算？"
+  },
+  {
+    "case_id": "trigger-2",
+    "prompt": "同一个识别任务布置在九个园区，要算几个独立模型？"
+  },
+  {
+    "case_id": "trigger-3",
+    "prompt": "算AI开发期的模型API套餐费用，怎么处理超额？"
+  },
+  {
+    "case_id": "trigger-4",
+    "prompt": "复核AI开发估价汇总，没写的非人力项能否算零？"
+  },
+  {
+    "case_id": "trigger-5",
+    "prompt": "用Python给我写RAG向量检索代码。"
+  },
+  {
+    "case_id": "trigger-6",
+    "prompt": "按GBT28827.7测算交付后运维成本。"
+  },
+  {
+    "case_id": "trigger-7",
+    "prompt": "帮我做一笔硬件研发费用预算，和AI应用项目无关。"
+  },
+  {
+    "case_id": "trigger-8",
+    "prompt": "我只问这本AI开发成本征求意见稿的版本和主要范围，不算任何项目。"
+  },
+  {
+    "case_id": "trigger-9",
+    "prompt": "采购询价这张卡能判定模型里面的五个角色是不是五个独立智能体吗？"
+  }
+]

@@ -1,0 +1,7 @@
+{
+  "case_id": "v11-boundary",
+  "variant_label": "vA",
+  "prompt": "有人将恰好200ms性能默认归附录高档，且技术8个月工具2个月自动取同一成熟度档；没有更多适用说明。输出automatic_unique_bucketing_allowed和needs_parameter_basis。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+  "input_files": [],
+  "instruction": "按 prompt 实际完成任务，最终答案写同目录 output.md，其他交付物也放在本目录。不要读取相邻变体、映射表或预期答案。"
+}

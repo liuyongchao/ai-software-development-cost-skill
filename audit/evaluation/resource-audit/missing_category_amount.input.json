@@ -1,0 +1,54 @@
+{
+  "operation": "range_total",
+  "basis": "Independent synthetic audit inputs; no real quote or validation claim",
+  "currency_unit": "wan_yuan",
+  "all_categories_reviewed": true,
+  "items": [
+    {
+      "id": "main_function",
+      "status": "known",
+      "lower": "8",
+      "middle": "10",
+      "upper": "12"
+    },
+    {
+      "id": "data_processing",
+      "status": "unknown"
+    },
+    {
+      "id": "model_building",
+      "status": "confirmed_zero",
+      "nonoccurrence_evidence_confirmed": true
+    },
+    {
+      "id": "purchase",
+      "status": "confirmed_zero",
+      "nonoccurrence_evidence_confirmed": true
+    },
+    {
+      "id": "rental",
+      "status": "confirmed_zero",
+      "nonoccurrence_evidence_confirmed": true
+    },
+    {
+      "id": "integration",
+      "status": "confirmed_zero",
+      "nonoccurrence_evidence_confirmed": true
+    },
+    {
+      "id": "data_services",
+      "status": "confirmed_zero",
+      "nonoccurrence_evidence_confirmed": true
+    },
+    {
+      "id": "model_services",
+      "status": "confirmed_zero",
+      "nonoccurrence_evidence_confirmed": true
+    },
+    {
+      "id": "other",
+      "status": "confirmed_zero",
+      "nonoccurrence_evidence_confirmed": true
+    }
+  ]
+}

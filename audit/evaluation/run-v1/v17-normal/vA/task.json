@@ -1,0 +1,7 @@
+{
+  "case_id": "v17-normal",
+  "variant_label": "vA",
+  "prompt": "已拿三份可比正式报价并选合同：月费600元含20万token，超额1元/千token，精确按量且不向上整块取整、不结转。两月用量30万、10万，开发期内。输出month_costs与total_yuan。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+  "input_files": [],
+  "instruction": "按 prompt 实际完成任务，最终答案写同目录 output.md，其他交付物也放在本目录。不要读取相邻变体、映射表或预期答案。"
+}

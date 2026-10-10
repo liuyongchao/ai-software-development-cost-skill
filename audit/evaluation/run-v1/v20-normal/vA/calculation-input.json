@@ -1,0 +1,59 @@
+{
+  "operation": "range_total",
+  "basis": "题给万元区间，九科目已核查，六类直接非人力均有证据确认不发生",
+  "currency_unit": "wan_yuan",
+  "all_categories_reviewed": true,
+  "items": [
+    {
+      "id": "main_function",
+      "status": "known",
+      "lower": 20,
+      "middle": 22,
+      "upper": 24
+    },
+    {
+      "id": "data_processing",
+      "status": "known",
+      "lower": 2,
+      "middle": 3,
+      "upper": 4
+    },
+    {
+      "id": "model_building",
+      "status": "known",
+      "lower": 7,
+      "middle": 8,
+      "upper": 9
+    },
+    {
+      "id": "purchase",
+      "status": "confirmed_zero",
+      "nonoccurrence_evidence_confirmed": true
+    },
+    {
+      "id": "rental",
+      "status": "confirmed_zero",
+      "nonoccurrence_evidence_confirmed": true
+    },
+    {
+      "id": "integration",
+      "status": "confirmed_zero",
+      "nonoccurrence_evidence_confirmed": true
+    },
+    {
+      "id": "data_services",
+      "status": "confirmed_zero",
+      "nonoccurrence_evidence_confirmed": true
+    },
+    {
+      "id": "model_services",
+      "status": "confirmed_zero",
+      "nonoccurrence_evidence_confirmed": true
+    },
+    {
+      "id": "other",
+      "status": "confirmed_zero",
+      "nonoccurrence_evidence_confirmed": true
+    }
+  ]
+}

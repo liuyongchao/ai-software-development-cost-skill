@@ -1,0 +1,37 @@
+[
+  {
+    "case_id": "v13-normal",
+    "passed": true,
+    "assertion_pass": 2,
+    "assertion_total": 2,
+    "sha256": "1ba20aea9abeaa83ff93e584325324cf78db26b40bdeebbe910675f1476bbf29"
+  },
+  {
+    "case_id": "v13-boundary",
+    "passed": true,
+    "assertion_pass": 1,
+    "assertion_total": 1,
+    "sha256": "5c99fa8b7584f07a2bee618c055db3c334a01040c13146196e239c7c90f5c92f"
+  },
+  {
+    "case_id": "v14-normal",
+    "passed": true,
+    "assertion_pass": 3,
+    "assertion_total": 3,
+    "sha256": "ba91a29fa3052a8d28777ee493c840548814c6c7eef42e131e054eea6e518d18"
+  },
+  {
+    "case_id": "v17-normal",
+    "passed": true,
+    "assertion_pass": 2,
+    "assertion_total": 2,
+    "sha256": "811931eb125f6fbeb90503e4dc660aeef9bd290ec2cd40cf9d5ec9cc77d8e0f8"
+  },
+  {
+    "case_id": "v17-boundary",
+    "passed": true,
+    "assertion_pass": 2,
+    "assertion_total": 2,
+    "sha256": "dad06fc2e148d615e149240bce7a759193e72d2989a3b3402657de630b185f7f"
+  }
+]

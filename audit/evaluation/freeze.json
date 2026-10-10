@@ -1,0 +1,18 @@
+{
+  "created_on": "2026-10-10",
+  "status": "fixed_before_actual_skill_execution",
+  "total_output_cases": 42,
+  "train": 25,
+  "validation": 17,
+  "variants": [
+    "new_skill",
+    "without_skill"
+  ],
+  "trigger_cases": 9,
+  "sha256": {
+    "suite.json": "eda779ae40216312cb8fc29b1aec9771e6516704f038ecb06da662b7cf8fae09",
+    "train-tasks.json": "ca7808a205424c5dae50c3cb9c4780a751ea4b53e088e5355b80e5f5d0e36392",
+    "validation-tasks.json": "6e58b17eb8b5a87ded14722df93f53d9c7036802916fffbe86f8da831a6c76a9",
+    "trigger-tasks.json": "e354f11c87b452b2fb8b0c67cd56ffe4cd43edabb07279bd2c78d0d8ee921a66"
+  }
+}

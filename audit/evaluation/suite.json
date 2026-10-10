@@ -1,0 +1,997 @@
+{
+  "schema_version": 1,
+  "suite_id": "ai-cost-draft-output-v1",
+  "target": "ai-software-development-cost-draft",
+  "split_seed": 42,
+  "train_ratio": 0.6,
+  "trigger_cases": [
+    {
+      "case_id": "trigger-1",
+      "prompt": "帮我核AI项目的数据处理工时：计件样本怎么换算？",
+      "expected": "should_trigger",
+      "expected_capability": "data-piecework"
+    },
+    {
+      "case_id": "trigger-2",
+      "prompt": "同一个识别任务布置在九个园区，要算几个独立模型？",
+      "expected": "should_trigger",
+      "expected_capability": "model-count"
+    },
+    {
+      "case_id": "trigger-3",
+      "prompt": "算AI开发期的模型API套餐费用，怎么处理超额？",
+      "expected": "should_trigger",
+      "expected_capability": "external-model-service"
+    },
+    {
+      "case_id": "trigger-4",
+      "prompt": "复核AI开发估价汇总，没写的非人力项能否算零？",
+      "expected": "should_trigger",
+      "expected_capability": "cost-summary"
+    },
+    {
+      "case_id": "trigger-5",
+      "prompt": "用Python给我写RAG向量检索代码。",
+      "expected": "should_not_trigger"
+    },
+    {
+      "case_id": "trigger-6",
+      "prompt": "按GBT28827.7测算交付后运维成本。",
+      "expected": "should_not_trigger"
+    },
+    {
+      "case_id": "trigger-7",
+      "prompt": "帮我做一笔硬件研发费用预算，和AI应用项目无关。",
+      "expected": "should_not_trigger"
+    },
+    {
+      "case_id": "trigger-8",
+      "prompt": "我只问这本AI开发成本征求意见稿的版本和主要范围，不算任何项目。",
+      "expected": "edge_case",
+      "expected_capability": "overview"
+    },
+    {
+      "case_id": "trigger-9",
+      "prompt": "采购询价这张卡能判定模型里面的五个角色是不是五个独立智能体吗？",
+      "expected": "sibling",
+      "sibling_target": "agent-count",
+      "expected_capability": "agent-count"
+    }
+  ],
+  "output_cases": [
+    {
+      "case_id": "v01-normal",
+      "capability_id": "V01",
+      "prompt": "应用项目开发期内有业务页面开发和模型微调；交付后运维、基础模型从零预训练、启动前可研不在开发期任务。按本稿判范围，输出included_count与excluded_count。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+      "assertions": [
+        {
+          "kind": "json_number",
+          "value": "$.included_count",
+          "expected": 2,
+          "abs_tol": 1e-06
+        },
+        {
+          "kind": "json_number",
+          "value": "$.excluded_count",
+          "expected": 3,
+          "abs_tol": 1e-06
+        }
+      ],
+      "compare_against": [
+        "without_skill"
+      ],
+      "split": "validation"
+    },
+    {
+      "case_id": "v01-boundary",
+      "capability_id": "V01",
+      "prompt": "一项“认证服务”没说明目的及发生时点，能否直接纳入AI应用开发成本？输出needs_scope_evidence和can_assume_zero。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+      "assertions": [
+        {
+          "kind": "json_equals",
+          "value": "$.needs_scope_evidence",
+          "expected": true
+        },
+        {
+          "kind": "json_equals",
+          "value": "$.can_assume_zero",
+          "expected": false
+        }
+      ],
+      "compare_against": [
+        "without_skill"
+      ],
+      "split": "validation"
+    },
+    {
+      "case_id": "v02-normal",
+      "capability_id": "V02",
+      "prompt": "交付一个清洗工具；供应商承包600条标注；内部另做不同的40条复核。合同确认工作不重叠，项目明确采用4.2.2和6.2的数据处理单列口径且保留7.3.3冲突。请归类，输出tool_category/data_vendor_category/internal_review_category，值用main_function/data_service/data_processing等英文科目。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+      "assertions": [
+        {
+          "kind": "json_equals",
+          "value": "$.tool_category",
+          "expected": "main_function"
+        },
+        {
+          "kind": "json_equals",
+          "value": "$.data_vendor_category",
+          "expected": "data_service"
+        },
+        {
+          "kind": "json_equals",
+          "value": "$.internal_review_category",
+          "expected": "data_processing"
+        }
+      ],
+      "compare_against": [
+        "without_skill"
+      ],
+      "split": "validation"
+    },
+    {
+      "case_id": "v02-boundary",
+      "capability_id": "V02",
+      "prompt": "预算一笔“数据清洗”援引7.3.3放主体功能，另一份按6.2放数据处理；没明确合同边界或采用条款。能否把两笔都相加？输出double_count_allowed和classification_needs_basis。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+      "assertions": [
+        {
+          "kind": "json_equals",
+          "value": "$.double_count_allowed",
+          "expected": false
+        },
+        {
+          "kind": "json_equals",
+          "value": "$.classification_needs_basis",
+          "expected": true
+        }
+      ],
+      "compare_against": [
+        "without_skill"
+      ],
+      "split": "train"
+    },
+    {
+      "case_id": "v03-normal",
+      "capability_id": "V03",
+      "prompt": "拆解页面开发、清洗200份文档、RAG配置三项工作，并安排测试和项目管理。数据量虽知，质量与周期未知。输出三项对应main_function/data_processing/model_building的task_categories数组，及testing_management_must_be_allocated。另给各任务成果和待补矩阵。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+      "assertions": [
+        {
+          "kind": "json_equals",
+          "value": "$.task_categories",
+          "expected": [
+            "main_function",
+            "data_processing",
+            "model_building"
+          ]
+        },
+        {
+          "kind": "json_equals",
+          "value": "$.testing_management_must_be_allocated",
+          "expected": true
+        }
+      ],
+      "compare_against": [
+        "without_skill"
+      ],
+      "split": "train"
+    },
+    {
+      "case_id": "v03-boundary",
+      "capability_id": "V03",
+      "prompt": "附录D没有给“模型压缩部署”的独立基准，因此估算员把它及项目管理都写0。需求实际包含这两项。输出missing_table_means_zero及needs_wbs_allocation，并列待补依据。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+      "assertions": [
+        {
+          "kind": "json_equals",
+          "value": "$.missing_table_means_zero",
+          "expected": false
+        },
+        {
+          "kind": "json_equals",
+          "value": "$.needs_wbs_allocation",
+          "expected": true
+        }
+      ],
+      "compare_against": [
+        "without_skill"
+      ],
+      "split": "validation"
+    },
+    {
+      "case_id": "v04-normal",
+      "capability_id": "V04",
+      "prompt": "主体功能、数据和模型已经三部分分别计费。主体功能还只以“AI系统”为由提高应用类型系数，没有其他依据。输出duplicate_ai_uplift_flag和requires_external_fp_method，列复核接口。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+      "assertions": [
+        {
+          "kind": "json_equals",
+          "value": "$.duplicate_ai_uplift_flag",
+          "expected": true
+        },
+        {
+          "kind": "json_equals",
+          "value": "$.requires_external_fp_method",
+          "expected": true
+        }
+      ],
+      "compare_against": [
+        "without_skill"
+      ],
+      "split": "validation"
+    },
+    {
+      "case_id": "v04-boundary",
+      "capability_id": "V04",
+      "prompt": "只有“120FP”一个数，没有方法版本、明细、生产率、调整系数或费率。请直接算完整主体功能费用；输出can_compute_complete_cost与cost_yuan（无法确定时null），另列缺项。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+      "assertions": [
+        {
+          "kind": "json_equals",
+          "value": "$.can_compute_complete_cost",
+          "expected": false
+        },
+        {
+          "kind": "json_equals",
+          "value": "$.cost_yuan",
+          "expected": null
+        }
+      ],
+      "compare_against": [
+        "without_skill"
+      ],
+      "split": "validation"
+    },
+    {
+      "case_id": "v05-normal",
+      "capability_id": "V05",
+      "prompt": "代表性同口径样本120条共18人时，效率稳定并验收通过，目标3600条含样本。计算unit_hours、total_hours和remaining_hours。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+      "assertions": [
+        {
+          "kind": "json_number",
+          "value": "$.unit_hours",
+          "expected": 0.15,
+          "abs_tol": 1e-06
+        },
+        {
+          "kind": "json_number",
+          "value": "$.total_hours",
+          "expected": 540,
+          "abs_tol": 1e-06
+        },
+        {
+          "kind": "json_number",
+          "value": "$.remaining_hours",
+          "expected": 522,
+          "abs_tol": 1e-06
+        }
+      ],
+      "compare_against": [
+        "without_skill"
+      ],
+      "split": "validation"
+    },
+    {
+      "case_id": "v05-boundary",
+      "capability_id": "V05",
+      "prompt": "计件效率波动很大，只有“5条/人时”，总量和样本口径都未知。输出can_compute_total和needs_stability_review，总量不要编造。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+      "assertions": [
+        {
+          "kind": "json_equals",
+          "value": "$.can_compute_total",
+          "expected": false
+        },
+        {
+          "kind": "json_equals",
+          "value": "$.needs_stability_review",
+          "expected": true
+        }
+      ],
+      "compare_against": [
+        "without_skill"
+      ],
+      "split": "train"
+    },
+    {
+      "case_id": "v06-normal",
+      "capability_id": "V06",
+      "prompt": "整个数据处理包DBE=36人天、AF=1.2、DRDF=0.35，组织确认适用；同一包被3个模型共同使用，不存在额外专属工作。输出person_days与package_count。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+      "assertions": [
+        {
+          "kind": "json_number",
+          "value": "$.person_days",
+          "expected": 15.12,
+          "abs_tol": 1e-06
+        },
+        {
+          "kind": "json_number",
+          "value": "$.package_count",
+          "expected": 1,
+          "abs_tol": 1e-06
+        }
+      ],
+      "compare_against": [
+        "without_skill"
+      ],
+      "split": "train"
+    },
+    {
+      "case_id": "v06-boundary",
+      "capability_id": "V06",
+      "prompt": "请求按附录给整体数据包估工时，但未确认任务粒度、DBE与复用因子。能否直接用附录中值并默认缺项1？输出defaults_allowed与person_days。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+      "assertions": [
+        {
+          "kind": "json_equals",
+          "value": "$.defaults_allowed",
+          "expected": false
+        },
+        {
+          "kind": "json_equals",
+          "value": "$.person_days",
+          "expected": null
+        }
+      ],
+      "compare_against": [
+        "without_skill"
+      ],
+      "split": "train"
+    },
+    {
+      "case_id": "v07-normal",
+      "capability_id": "V07",
+      "prompt": "数据任务A16人时PF0.95，B3人天PF1.0；不重叠，约定8小时/天、20天/月、综合费率24000元/月，来源已确认。输出total_person_days及total_cost_yuan，逐项列计算。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+      "assertions": [
+        {
+          "kind": "json_number",
+          "value": "$.total_person_days",
+          "expected": 5,
+          "abs_tol": 1e-06
+        },
+        {
+          "kind": "json_number",
+          "value": "$.total_cost_yuan",
+          "expected": 5880,
+          "abs_tol": 1e-06
+        }
+      ],
+      "compare_against": [
+        "without_skill"
+      ],
+      "split": "train"
+    },
+    {
+      "case_id": "v07-boundary",
+      "capability_id": "V07",
+      "prompt": "数据工时10人天，费率2万元/人月，PF1，但没有本项目人天到人月换算依据。能否默认21.75？输出default_21_75_allowed和cost_yuan。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+      "assertions": [
+        {
+          "kind": "json_equals",
+          "value": "$.default_21_75_allowed",
+          "expected": false
+        },
+        {
+          "kind": "json_equals",
+          "value": "$.cost_yuan",
+          "expected": null
+        }
+      ],
+      "compare_against": [
+        "without_skill"
+      ],
+      "split": "train"
+    },
+    {
+      "case_id": "v08-normal",
+      "capability_id": "V08",
+      "prompt": "同一缺陷识别模型在8个站点部署且共用训练；另有信用预测，目标、业务规则和单独采集标注训练都不同。输出independent_models，列三组证据。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+      "assertions": [
+        {
+          "kind": "json_number",
+          "value": "$.independent_models",
+          "expected": 2,
+          "abs_tol": 1e-06
+        }
+      ],
+      "compare_against": [
+        "without_skill"
+      ],
+      "split": "validation"
+    },
+    {
+      "case_id": "v08-boundary",
+      "capability_id": "V08",
+      "prompt": "只有两个不同模型文件，无法说明目标、业务规则、采集标注训练是否独立。输出count_confirmed以及independent_models（待确认用null）。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+      "assertions": [
+        {
+          "kind": "json_equals",
+          "value": "$.count_confirmed",
+          "expected": false
+        },
+        {
+          "kind": "json_equals",
+          "value": "$.independent_models",
+          "expected": null
+        }
+      ],
+      "compare_against": [
+        "without_skill"
+      ],
+      "split": "validation"
+    },
+    {
+      "case_id": "v09-normal",
+      "capability_id": "V09",
+      "prompt": "两个智能体各有独立API、独立知识库/提示词/编排逻辑/业务规则，可独立部署启停交付完成自己的业务目标；其中一个内部有4个角色和7个节点。输出independent_agents与internal_nodes_add_count。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+      "assertions": [
+        {
+          "kind": "json_number",
+          "value": "$.independent_agents",
+          "expected": 2,
+          "abs_tol": 1e-06
+        },
+        {
+          "kind": "json_number",
+          "value": "$.internal_nodes_add_count",
+          "expected": 0,
+          "abs_tol": 1e-06
+        }
+      ],
+      "compare_against": [
+        "without_skill"
+      ],
+      "split": "validation"
+    },
+    {
+      "case_id": "v09-boundary",
+      "capability_id": "V09",
+      "prompt": "组件只有独立API，内部知识库/提示词/逻辑/规则以及独立交付都未知。输出independent_agents（未知null）及needs_more_evidence。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+      "assertions": [
+        {
+          "kind": "json_equals",
+          "value": "$.independent_agents",
+          "expected": null
+        },
+        {
+          "kind": "json_equals",
+          "value": "$.needs_more_evidence",
+          "expected": true
+        }
+      ],
+      "compare_against": [
+        "without_skill"
+      ],
+      "split": "validation"
+    },
+    {
+      "case_id": "v10-normal",
+      "capability_id": "V10",
+      "prompt": "项目明确选式5作假设情景，已另行确认TBE40人天、TF1.2、SR0.75、TS0.5、SF1.3、MRDF0.8。输出person_days及predictive_validity_proven，展示乘法。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+      "assertions": [
+        {
+          "kind": "json_number",
+          "value": "$.person_days",
+          "expected": 18.72,
+          "abs_tol": 1e-06
+        },
+        {
+          "kind": "json_equals",
+          "value": "$.predictive_validity_proven",
+          "expected": false
+        }
+      ],
+      "compare_against": [
+        "without_skill"
+      ],
+      "split": "train"
+    },
+    {
+      "case_id": "v10-boundary",
+      "capability_id": "V10",
+      "prompt": "提示词任务其他参数齐全，但只知道D.1写0.26而D.3用0.25，没有确定TF采用依据。能否自动挑较常出现版本估价？输出auto_choose_conflicting_factor及person_days。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+      "assertions": [
+        {
+          "kind": "json_equals",
+          "value": "$.auto_choose_conflicting_factor",
+          "expected": false
+        },
+        {
+          "kind": "json_equals",
+          "value": "$.person_days",
+          "expected": null
+        }
+      ],
+      "compare_against": [
+        "without_skill"
+      ],
+      "split": "validation"
+    },
+    {
+      "case_id": "v11-normal",
+      "capability_id": "V11",
+      "prompt": "全局因子已确认SF1=1.4,SF2=1.1,MRDF1=1,MRDF2=0.9。两任务TE已经按式5含全局因素，分别8、12人天。输出SF、MRDF、total_person_days。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+      "assertions": [
+        {
+          "kind": "json_number",
+          "value": "$.SF",
+          "expected": 1.54,
+          "abs_tol": 1e-06
+        },
+        {
+          "kind": "json_number",
+          "value": "$.MRDF",
+          "expected": 0.9,
+          "abs_tol": 1e-06
+        },
+        {
+          "kind": "json_number",
+          "value": "$.total_person_days",
+          "expected": 20,
+          "abs_tol": 1e-06
+        }
+      ],
+      "compare_against": [
+        "without_skill"
+      ],
+      "split": "train"
+    },
+    {
+      "case_id": "v11-boundary",
+      "capability_id": "V11",
+      "prompt": "有人将恰好200ms性能默认归附录高档，且技术8个月工具2个月自动取同一成熟度档；没有更多适用说明。输出automatic_unique_bucketing_allowed和needs_parameter_basis。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+      "assertions": [
+        {
+          "kind": "json_equals",
+          "value": "$.automatic_unique_bucketing_allowed",
+          "expected": false
+        },
+        {
+          "kind": "json_equals",
+          "value": "$.needs_parameter_basis",
+          "expected": true
+        }
+      ],
+      "compare_against": [
+        "without_skill"
+      ],
+      "split": "train"
+    },
+    {
+      "case_id": "v12-normal",
+      "capability_id": "V12",
+      "prompt": "模型任务已排重且含全局因素：6人天PF1.2、14人天PF1.5，综合费率28000元/月，20天/月；外购模型任务人力已从这些数剔除，另合同5000元。输出labor_cost_yuan和external_service_yuan。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+      "assertions": [
+        {
+          "kind": "json_number",
+          "value": "$.labor_cost_yuan",
+          "expected": 39480,
+          "abs_tol": 1e-06
+        },
+        {
+          "kind": "json_number",
+          "value": "$.external_service_yuan",
+          "expected": 5000,
+          "abs_tol": 1e-06
+        }
+      ],
+      "compare_against": [
+        "without_skill"
+      ],
+      "split": "train"
+    },
+    {
+      "case_id": "v12-boundary",
+      "capability_id": "V12",
+      "prompt": "模型TE已经通过SR剔除外包份额。评审想再把同一外包的人天扣一次。输出deduct_again_allowed和needs_deduction_trace。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+      "assertions": [
+        {
+          "kind": "json_equals",
+          "value": "$.deduct_again_allowed",
+          "expected": false
+        },
+        {
+          "kind": "json_equals",
+          "value": "$.needs_deduction_trace",
+          "expected": true
+        }
+      ],
+      "compare_against": [
+        "without_skill"
+      ],
+      "split": "train"
+    },
+    {
+      "case_id": "v13-normal",
+      "capability_id": "V13",
+      "prompt": "3台项目专用设备，同规格同服务的三份正式可比报价每台8000、9000、11000元，无异常，项目明确取排序中间值。输出selected_unit_yuan和total_yuan，并保存取价记录。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+      "assertions": [
+        {
+          "kind": "json_number",
+          "value": "$.selected_unit_yuan",
+          "expected": 9000,
+          "abs_tol": 1e-06
+        },
+        {
+          "kind": "json_number",
+          "value": "$.total_yuan",
+          "expected": 27000,
+          "abs_tol": 1e-06
+        }
+      ],
+      "compare_against": [
+        "without_skill"
+      ],
+      "split": "train"
+    },
+    {
+      "case_id": "v13-boundary",
+      "capability_id": "V13",
+      "prompt": "采购市场询价只有两份正式报价，另有一个无规格网店截图。可否认定满足三家正式可比报价？输出three_formal_quotes_satisfied，列缺项。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+      "assertions": [
+        {
+          "kind": "json_equals",
+          "value": "$.three_formal_quotes_satisfied",
+          "expected": false
+        }
+      ],
+      "compare_against": [
+        "without_skill"
+      ],
+      "split": "train"
+    },
+    {
+      "case_id": "v14-normal",
+      "capability_id": "V14",
+      "prompt": "资源购价90000元、资金成本0、折旧3年、运维6000元/台年且已扣免费期；项目确认按12月均摊、租1台4个月，无其他费。只算租价，安全迁移资料另核。输出annual_unit_yuan、monthly_unit_yuan、total_yuan。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+      "assertions": [
+        {
+          "kind": "json_number",
+          "value": "$.annual_unit_yuan",
+          "expected": 36000,
+          "abs_tol": 1e-06
+        },
+        {
+          "kind": "json_number",
+          "value": "$.monthly_unit_yuan",
+          "expected": 3000,
+          "abs_tol": 1e-06
+        },
+        {
+          "kind": "json_number",
+          "value": "$.total_yuan",
+          "expected": 12000,
+          "abs_tol": 1e-06
+        }
+      ],
+      "compare_against": [
+        "without_skill"
+      ],
+      "split": "train"
+    },
+    {
+      "case_id": "v14-boundary",
+      "capability_id": "V14",
+      "prompt": "租赁单价按年，时长只写4个月；没约定按月折算，还有一台免费利旧资源。输出automatic_monthly_proration_allowed和free_asset_rental_yuan，列安全/迁移等待核。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+      "assertions": [
+        {
+          "kind": "json_equals",
+          "value": "$.automatic_monthly_proration_allowed",
+          "expected": false
+        },
+        {
+          "kind": "json_number",
+          "value": "$.free_asset_rental_yuan",
+          "expected": 0,
+          "abs_tol": 1e-06
+        }
+      ],
+      "compare_against": [
+        "without_skill"
+      ],
+      "split": "validation"
+    },
+    {
+      "case_id": "v15-normal",
+      "capability_id": "V15",
+      "prompt": "已确认专用基础设施子项SC120000元，适用外部费率R0.06，S1.2，F1，来源齐全。输出integration_yuan；另说明这个值只覆盖该子项。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+      "assertions": [
+        {
+          "kind": "json_number",
+          "value": "$.integration_yuan",
+          "expected": 8640,
+          "abs_tol": 1e-06
+        }
+      ],
+      "compare_against": [
+        "without_skill"
+      ],
+      "split": "train"
+    },
+    {
+      "case_id": "v15-boundary",
+      "capability_id": "V15",
+      "prompt": "集成基数10万元，未给地方或行业费率及系数，也未拆人工任务。请求按惯例取5%。输出can_default_five_percent及integration_yuan。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+      "assertions": [
+        {
+          "kind": "json_equals",
+          "value": "$.can_default_five_percent",
+          "expected": false
+        },
+        {
+          "kind": "json_equals",
+          "value": "$.integration_yuan",
+          "expected": null
+        }
+      ],
+      "compare_against": [
+        "without_skill"
+      ],
+      "split": "train"
+    },
+    {
+      "case_id": "v16-normal",
+      "capability_id": "V16",
+      "prompt": "外购开发期数据标注3000条，两个正式同规格报价都3元/条，质量、授权和周期已明且委托方接受，内部未重复做。输出cost_yuan及source_requires_three_quotes。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+      "assertions": [
+        {
+          "kind": "json_number",
+          "value": "$.cost_yuan",
+          "expected": 9000,
+          "abs_tol": 1e-06
+        },
+        {
+          "kind": "json_equals",
+          "value": "$.source_requires_three_quotes",
+          "expected": false
+        }
+      ],
+      "compare_against": [
+        "without_skill"
+      ],
+      "split": "train"
+    },
+    {
+      "case_id": "v16-boundary",
+      "capability_id": "V16",
+      "prompt": "第三方数据包报价5000元但授权范围、允许用途和交付质量未知。输出ready_for_final_adoption和needs_license_quality_evidence。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+      "assertions": [
+        {
+          "kind": "json_equals",
+          "value": "$.ready_for_final_adoption",
+          "expected": false
+        },
+        {
+          "kind": "json_equals",
+          "value": "$.needs_license_quality_evidence",
+          "expected": true
+        }
+      ],
+      "compare_against": [
+        "without_skill"
+      ],
+      "split": "validation"
+    },
+    {
+      "case_id": "v17-normal",
+      "capability_id": "V17",
+      "prompt": "已拿三份可比正式报价并选合同：月费600元含20万token，超额1元/千token，精确按量且不向上整块取整、不结转。两月用量30万、10万，开发期内。输出month_costs与total_yuan。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+      "assertions": [
+        {
+          "kind": "json_equals",
+          "value": "$.month_costs",
+          "expected": [
+            700,
+            600
+          ]
+        },
+        {
+          "kind": "json_number",
+          "value": "$.total_yuan",
+          "expected": 1300,
+          "abs_tol": 1e-06
+        }
+      ],
+      "compare_against": [
+        "without_skill"
+      ],
+      "split": "train"
+    },
+    {
+      "case_id": "v17-boundary",
+      "capability_id": "V17",
+      "prompt": "模型服务只给一个月费标签，未给套餐含量、超额计价或实际用量且只有一份正式询价。输出can_confirm_total与needs_more_quotes。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+      "assertions": [
+        {
+          "kind": "json_equals",
+          "value": "$.can_confirm_total",
+          "expected": false
+        },
+        {
+          "kind": "json_equals",
+          "value": "$.needs_more_quotes",
+          "expected": true
+        }
+      ],
+      "compare_against": [
+        "without_skill"
+      ],
+      "split": "train"
+    },
+    {
+      "case_id": "v18-normal",
+      "capability_id": "V18",
+      "prompt": "开发期评审差旅，委托方确认3人2天，适用核定上限400元/人天；无实际凭证。输出approved_cap_yuan和actual_settlement_yuan。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+      "assertions": [
+        {
+          "kind": "json_number",
+          "value": "$.approved_cap_yuan",
+          "expected": 2400,
+          "abs_tol": 1e-06
+        },
+        {
+          "kind": "json_equals",
+          "value": "$.actual_settlement_yuan",
+          "expected": null
+        }
+      ],
+      "compare_against": [
+        "without_skill"
+      ],
+      "split": "validation"
+    },
+    {
+      "case_id": "v18-boundary",
+      "capability_id": "V18",
+      "prompt": "其他费没有产品/服务说明，直接按总价8%计。输出automatic_percent_allowed和needs_specific_service。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+      "assertions": [
+        {
+          "kind": "json_equals",
+          "value": "$.automatic_percent_allowed",
+          "expected": false
+        },
+        {
+          "kind": "json_equals",
+          "value": "$.needs_specific_service",
+          "expected": true
+        }
+      ],
+      "compare_against": [
+        "without_skill"
+      ],
+      "split": "train"
+    },
+    {
+      "case_id": "v19-normal",
+      "capability_id": "V19",
+      "prompt": "同范围数据工作量两法80、100人天。组织约定差异以较小值为基数、≤30%合理，权重0.25/0.75。输出relative_difference与combined_person_days。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+      "assertions": [
+        {
+          "kind": "json_number",
+          "value": "$.relative_difference",
+          "expected": 0.25,
+          "abs_tol": 1e-06
+        },
+        {
+          "kind": "json_number",
+          "value": "$.combined_person_days",
+          "expected": 95,
+          "abs_tol": 1e-06
+        }
+      ],
+      "compare_against": [
+        "without_skill"
+      ],
+      "split": "train"
+    },
+    {
+      "case_id": "v19-boundary",
+      "capability_id": "V19",
+      "prompt": "模型费用40和100万元、项目认为差异大，但没有权重或合理阈值。请求直接平均成70。输出automatic_mean_allowed和needs_review。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+      "assertions": [
+        {
+          "kind": "json_equals",
+          "value": "$.automatic_mean_allowed",
+          "expected": false
+        },
+        {
+          "kind": "json_equals",
+          "value": "$.needs_review",
+          "expected": true
+        }
+      ],
+      "compare_against": [
+        "without_skill"
+      ],
+      "split": "train"
+    },
+    {
+      "case_id": "v20-normal",
+      "capability_id": "V20",
+      "prompt": "单位万元：主体[20,22,24]、数据[2,3,4]、模型[7,8,9]；六类非人力都有证据确认不发生。九科目已核查。输出total_range与complete_total。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+      "assertions": [
+        {
+          "kind": "json_equals",
+          "value": "$.total_range",
+          "expected": [
+            29,
+            33,
+            37
+          ]
+        },
+        {
+          "kind": "json_equals",
+          "value": "$.complete_total",
+          "expected": true
+        }
+      ],
+      "compare_against": [
+        "without_skill"
+      ],
+      "split": "train"
+    },
+    {
+      "case_id": "v20-boundary",
+      "capability_id": "V20",
+      "prompt": "仅知主体10万元、数据2万元、模型5万元，六类非人力没说明。输出known_subtotal_wan、complete_total、unknown_is_zero。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+      "assertions": [
+        {
+          "kind": "json_number",
+          "value": "$.known_subtotal_wan",
+          "expected": 17,
+          "abs_tol": 1e-06
+        },
+        {
+          "kind": "json_equals",
+          "value": "$.complete_total",
+          "expected": false
+        },
+        {
+          "kind": "json_equals",
+          "value": "$.unknown_is_zero",
+          "expected": false
+        }
+      ],
+      "compare_against": [
+        "without_skill"
+      ],
+      "split": "train"
+    },
+    {
+      "case_id": "v21-normal",
+      "capability_id": "V21",
+      "prompt": "组织参数记录给出了来源版本、单位、任务粒度和适用签字，但无统计方法与验证误差。请登记和复核，输出can_record_provenance及statistical_validation_confirmed。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+      "assertions": [
+        {
+          "kind": "json_equals",
+          "value": "$.can_record_provenance",
+          "expected": true
+        },
+        {
+          "kind": "json_equals",
+          "value": "$.statistical_validation_confirmed",
+          "expected": false
+        }
+      ],
+      "compare_against": [
+        "without_skill"
+      ],
+      "split": "validation"
+    },
+    {
+      "case_id": "v21-boundary",
+      "capability_id": "V21",
+      "prompt": "只有附录D中值和三行预算估计，没有实际工时、拟合或验证数据。能否自动校准出可靠行业定额？输出can_auto_calibrate及default_appendix_value_allowed。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+      "assertions": [
+        {
+          "kind": "json_equals",
+          "value": "$.can_auto_calibrate",
+          "expected": false
+        },
+        {
+          "kind": "json_equals",
+          "value": "$.default_appendix_value_allowed",
+          "expected": false
+        }
+      ],
+      "compare_against": [
+        "without_skill"
+      ],
+      "split": "validation"
+    }
+  ]
+}

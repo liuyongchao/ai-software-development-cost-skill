@@ -1,0 +1,25 @@
+{
+  "operation": "quote_median",
+  "basis": "题设三家正式可比报价，同规格同服务、无异常，项目明确选排序中间值；报价编号仅代表题给报价",
+  "quantity": 3,
+  "quotes": [
+    {
+      "id": "报价1",
+      "unit_price_yuan": 8000,
+      "formal": true,
+      "comparable": true
+    },
+    {
+      "id": "报价2",
+      "unit_price_yuan": 9000,
+      "formal": true,
+      "comparable": true
+    },
+    {
+      "id": "报价3",
+      "unit_price_yuan": 11000,
+      "formal": true,
+      "comparable": true
+    }
+  ]
+}

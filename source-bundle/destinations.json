@@ -1,0 +1,68 @@
+{
+  "bundle_id": "bundle.ai-cost-draft",
+  "destinations": {
+    "cap.ai-cost-draft.scope-check": {
+      "served_by": "ai-software-development-cost-draft"
+    },
+    "cap.ai-cost-draft.cost-classification": {
+      "served_by": "ai-software-development-cost-draft"
+    },
+    "cap.ai-cost-draft.work-breakdown": {
+      "served_by": "ai-software-development-cost-draft"
+    },
+    "cap.ai-cost-draft.functional-cost-handoff": {
+      "served_by": "ai-software-development-cost-draft"
+    },
+    "cap.ai-cost-draft.data-piecework": {
+      "served_by": "ai-software-development-cost-draft"
+    },
+    "cap.ai-cost-draft.data-baseline": {
+      "served_by": "ai-software-development-cost-draft"
+    },
+    "cap.ai-cost-draft.data-labor-cost": {
+      "served_by": "ai-software-development-cost-draft"
+    },
+    "cap.ai-cost-draft.model-count": {
+      "served_by": "ai-software-development-cost-draft"
+    },
+    "cap.ai-cost-draft.agent-count": {
+      "served_by": "ai-software-development-cost-draft"
+    },
+    "cap.ai-cost-draft.model-task-effort": {
+      "served_by": "ai-software-development-cost-draft"
+    },
+    "cap.ai-cost-draft.global-factors": {
+      "served_by": "ai-software-development-cost-draft"
+    },
+    "cap.ai-cost-draft.model-labor-cost": {
+      "served_by": "ai-software-development-cost-draft"
+    },
+    "cap.ai-cost-draft.purchase-quotes": {
+      "served_by": "ai-software-development-cost-draft"
+    },
+    "cap.ai-cost-draft.resource-rental": {
+      "served_by": "ai-software-development-cost-draft"
+    },
+    "cap.ai-cost-draft.infrastructure-integration": {
+      "served_by": "ai-software-development-cost-draft"
+    },
+    "cap.ai-cost-draft.external-data-service": {
+      "served_by": "ai-software-development-cost-draft"
+    },
+    "cap.ai-cost-draft.external-model-service": {
+      "served_by": "ai-software-development-cost-draft"
+    },
+    "cap.ai-cost-draft.other-costs": {
+      "served_by": "ai-software-development-cost-draft"
+    },
+    "cap.ai-cost-draft.cross-validation": {
+      "served_by": "ai-software-development-cost-draft"
+    },
+    "cap.ai-cost-draft.cost-summary": {
+      "served_by": "ai-software-development-cost-draft"
+    },
+    "cap.ai-cost-draft.parameter-register": {
+      "served_by": "ai-software-development-cost-draft"
+    }
+  }
+}

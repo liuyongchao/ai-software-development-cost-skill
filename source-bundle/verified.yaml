@@ -1,0 +1,1307 @@
+schema_version: 1
+bundle_id: bundle.ai-cost-draft
+book:
+  title: 系统与软件工程 人工智能应用软件开发成本度量（2026-08-18征求意见稿）
+  author: 中国计算机用户协会、北京软件造价评估技术创新联盟提出并归口；起草人未列
+  source_pack: ai-software-development-cost-draft
+  baseline_tag: draft-20260818
+entry:
+  name: ai-software-development-cost-draft
+  description: 用于AI应用软件开发成本测算与复核（AI software development cost）：核范围、费用归类、数据工时、模型/智能体数量、任务工时、岗位费率、采购租赁及外部服务和汇总。依据2026-08-18征求意见稿，参数须有明确来源。不用于预训练、运维、硬件研发或RAG技术实现；完整功能点计数与统计校准需外部方法。
+  core_principles:
+  - 这是2026-08-18团体标准征求意见稿的限定方法技能；保留草稿和资料性参数身份，不断言现行正式效力。
+  - 先判开发启动至交付范围，再按三类综合人力及六类直接非人力分解，按承担方、成果和期间排重。
+  - 计算参数、岗位、费率、单位及转换依据明确；缺输入输出待补，不默认中值、1或0。计算器不验证来源真实性。
+  - 模型式5为选定假设方程的情景计算；附录冲突不自动择一，已含全局因素不得再乘；外包已扣不重复扣。
+  - 参考参数、案例和14组问题见overview；项目未知成本与确认不发生的零分开，区间不冒充统计置信区间。
+  - 完整估算按任务分阶段读取能力卡，每个子任务最多读取两张，保存台账再转下一步，最终由汇总卡收口。
+  out_of_scope:
+  - 基础模型从零预训练、人工智能基础研究、硬件研发和交付后运行维护估价。
+  - 如何编写RAG代码、部署模型或训练算法的技术实施。
+  - 仅凭本稿完整计数功能点、自动拟合校准或宣称符合外部报告标准。
+  stop_conditions:
+  - 关键单位、参数或范围缺失时停止受影响项数值输出，保留已知部分和待补证据。
+  - 遇7.3.3分类、0.25/0.26、TF6范围或不唯一档位，标明问题并要求采用依据；不能静默修正原稿。
+  - 缺失费用不得填零，历史/附录费率不当成当前默认价格。
+  - 附带脚本先阅读说明；它只处理显式输入，现实来源与适用性由任务证据确认。
+router_entry:
+  name: ai-software-development-cost-draft
+  description: 用于AI应用软件开发成本测算与复核（AI software development cost）：核范围、费用归类、数据工时、模型/智能体数量、任务工时、岗位费率、采购租赁及外部服务和汇总。依据2026-08-18征求意见稿，参数须有明确来源。不用于预训练、运维、硬件研发或RAG技术实现；完整功能点计数与统计校准需外部方法。
+promotion_budget: 8
+capabilities:
+- capability_id: cap.ai-cost-draft.scope-check
+  revision: 1
+  status: active
+  slug: scope-check
+  title: 开发成本适用范围判定
+  importance: critical
+  importance_rationale: 对应T01；减少跨生命周期费用混入。
+  one_liner: 按应用开发目的和启动至交付时段逐活动给出纳入、排除或待确认理由。
+  intents:
+  - 开发成本适用范围判定
+  keywords:
+  - scope-check
+  - T01
+  - 开发成本适用范围判定
+  also_read:
+  - cap.ai-cost-draft.cost-classification
+  card: cards/scope-check.md
+  frontmatter:
+    description: 开发成本适用范围判定：按应用开发目的和启动至交付时段逐活动给出纳入、排除或待确认理由。 不适用：不估算基础模型预训练、基础研究、硬件开发和运行维护；缺活动目的或交付时点时保留待确认。
+    tags:
+    - ai-cost
+    - draft-standard
+    - cost-review
+  source_evidence:
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 第1章、4.1及注1/3/4（PDF 4、7–8）
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 第1章 / PDF 4
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 4.1注1、3、4 / PDF 7、8
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 4.3.2 / PDF 10
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 4.3.6 / PDF 11
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 第 1 章 范围（PDF 4）
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 4.1 注 3–4；4.3.2.2 c（PDF 7–8、10）
+  promotion:
+    destination: router
+    gate:
+      independent_intent: true
+      independent_contract: true
+      independent_run: true
+      independent_reuse: true
+      independent_eval: true
+    notes: V01：用户可单独提出该限定意图；独立输入/输出见契约；给定必要输入和边界即可完成，外部依赖不冒充已实现；可跨项目复用；W01已纸面演练且可设计近邻/缺输入实际评测。具备独立资格但用户明确选择single，本次全部served_by同一入口，不创建21个独立入口。
+  resources:
+  - resources/cost_calculator.py
+  - resources/calculator-guide.md
+  - resources/project-template.json
+  stage15_id: V01
+  task_ids:
+  - T01
+- capability_id: cap.ai-cost-draft.cost-classification
+  revision: 1
+  status: active
+  slug: cost-classification
+  title: 费用归类与重复列支检查
+  importance: critical
+  importance_rationale: 对应T02,T03；防止外购与自研、工具与加工、采购与租赁重复计价。
+  one_liner: 把实际工作按三类综合人力和六类直接非人力分类；用承担方、资源取得方式、期间和交付物核对重计。
+  intents:
+  - 费用归类与重复列支检查
+  keywords:
+  - cost-classification
+  - T02
+  - T03
+  - 费用归类与重复列支检查
+  also_read:
+  - cap.ai-cost-draft.work-breakdown
+  card: cards/cost-classification.md
+  frontmatter:
+    description: 费用归类与重复列支检查：把实际工作按三类综合人力和六类直接非人力分类；用承担方、资源取得方式、期间和交付物核对重计。 不适用：7.3.3争议数据活动标N01，要求明确采用依据；工具节省、业主环境扣减无统一比例，不擅定金额。
+    tags:
+    - ai-cost
+    - draft-standard
+    - cost-review
+  source_evidence:
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 4.1–4.3、6.2.3.2–6.2.3.3、6.3.3.1及6.3.3.3（PDF 7–11、16、18、20）
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 4.3.1.2、4.3.2.2、7.2.3（PDF 9–10、24）
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 4.1 / PDF 7
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 4.2.1 / PDF 8
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 4.2.2.1 / PDF 8
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 4.2.2.2a–c、4.3.4.2b、6.2.3.3 / PDF 8、11、16
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 4.2.2.2d / PDF 8
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 4.2.2.2e、6.2.3.2b / PDF 8、16
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 4.2.3.1 / PDF 9
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 4.2.3.2c–e、6.3.3.3c / PDF 9、20
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 4.3.1.1–4.3.1.2a–c / PDF 9、10
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 4.3.1.2e / PDF 10
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 4.3.1.2d、4.3.2.2b–c / PDF 10
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 4.3.3.2 / PDF 10、11
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 4.3.4 / PDF 11
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 4.3.5 / PDF 11
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 6.1.3b / PDF 14
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 6.3.3.1d、6.3.3.2a3 / PDF 18、19
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 4.1；4.2.2.2 b；4.2.3.2 b；5.3；6.3.3.2 a3（PDF 7–9、12、19）
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 4.2.2.2 c；4.3.4.2 b；6.2.3.3；7.4.3 a（PDF 8、11、16、26）
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 4.2.2.2 e；6.2.3.2 b（PDF 8、16）
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 4.2.3.2 a；6.3.3.1 d；6.3.3.2 a3；6.3.3.3 b（PDF 9、18–20）
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 4.2.3.2 d；6.3.3.3 c（PDF 9、20）
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 4.2.2.2 d；4.2.3.2 e；6.1.3 b；6.3.3.2 SR、TS、a4（PDF 8–9、14、18–19）
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 4.3.1.2 a–c（PDF 9–10）
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 4.3.1.2 e（PDF 10）
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 4.3.2.2 b（PDF 10）
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 4.3.3.2 b–c（PDF 11）；7.3.3 对应用集成的排除（PDF 25）
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 4.3.4.2 a（PDF 11）
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 7.2.3 e（PDF 24）
+  promotion:
+    destination: router
+    gate:
+      independent_intent: true
+      independent_contract: true
+      independent_run: true
+      independent_reuse: true
+      independent_eval: true
+    notes: V02：用户可单独提出该限定意图；独立输入/输出见契约；给定必要输入和边界即可完成，外部依赖不冒充已实现；可跨项目复用；W02已纸面演练且可设计近邻/缺输入实际评测。具备独立资格但用户明确选择single，本次全部served_by同一入口，不创建21个独立入口。
+  resources:
+  - resources/cost_calculator.py
+  - resources/calculator-guide.md
+  - resources/project-template.json
+  stage15_id: V02
+  task_ids:
+  - T02
+  - T03
+- capability_id: cap.ai-cost-draft.work-breakdown
+  revision: 1
+  status: active
+  slug: work-breakdown
+  title: 工作分解、成果与估算方法矩阵
+  importance: high
+  importance_rationale: 对应T04,T06,T11；减少漏项及没有成果定义的计价任务。
+  one_liner: 按需求把主体、数据、模型及非人力工作列成任务—成果—验收—方法—证据矩阵；数据任务明确类型、规模、质量、成果与交付周期；检查测试和管理分摊。
+  intents:
+  - 工作分解、成果与估算方法矩阵
+  keywords:
+  - work-breakdown
+  - T04
+  - T06
+  - T11
+  - 工作分解、成果与估算方法矩阵
+  also_read:
+  - cap.ai-cost-draft.functional-cost-handoff
+  - cap.ai-cost-draft.model-task-effort
+  card: cards/work-breakdown.md
+  frontmatter:
+    description: 工作分解、成果与估算方法矩阵：按需求把主体、数据、模型及非人力工作列成任务—成果—验收—方法—证据矩阵；数据任务明确类型、规模、质量、成果与交付周期；检查测试和管理分摊。 不适用：典型任务不是完整WBS；不生成学习曲线算法、缺失任务基准或历史回归方程。
+    tags:
+    - ai-cost
+    - draft-standard
+    - cost-review
+  source_evidence:
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 5.1–5.5及图2（PDF 11–13）
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 6.2.2–6.2.3.1、附录A、C.2（PDF 14–15、28–29、31）
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 6.3.2–6.3.3.1、附录A及注1（PDF 17–18、28–29）
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 5.2 / PDF 12
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 5.3–5.4 / PDF 12
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 6.2.2a、6.2.3.1 / PDF 14、15
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 6.2.3.2表1 / PDF 15、16
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 6.3.3.1a–b / PDF 17
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 6.3.3.1c、6.3.3.2a1 / PDF 17、18、19
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 附录A注1 / PDF 29
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 附录 A 表 A.1 注 1（PDF 29）
+  promotion:
+    destination: router
+    gate:
+      independent_intent: true
+      independent_contract: true
+      independent_run: true
+      independent_reuse: true
+      independent_eval: true
+    notes: V03：用户可单独提出该限定意图；独立输入/输出见契约；给定必要输入和边界即可完成，外部依赖不冒充已实现；可跨项目复用；W03已纸面演练且可设计近邻/缺输入实际评测。具备独立资格但用户明确选择single，本次全部served_by同一入口，不创建21个独立入口。
+  resources:
+  - resources/cost_calculator.py
+  - resources/calculator-guide.md
+  - resources/project-template.json
+  stage15_id: V03
+  task_ids:
+  - T04
+  - T06
+  - T11
+- capability_id: cap.ai-cost-draft.functional-cost-handoff
+  revision: 1
+  status: active
+  slug: functional-cost-handoff
+  title: 主体功能测算接口与计费口径复核
+  importance: critical
+  importance_rationale: 对应T05,T03；防止将不完整外部方法伪装为自给自足计数器。
+  one_liner: 输出主体功能范围、外部标准版本、规模/生产率/调整/费率/单位接口及重计检查。
+  intents:
+  - 主体功能测算接口与计费口径复核
+  keywords:
+  - functional-cost-handoff
+  - T05
+  - T03
+  - 主体功能测算接口与计费口径复核
+  also_read:
+  - cap.ai-cost-draft.cost-classification
+  card: cards/functional-cost-handoff.md
+  frontmatter:
+    description: 主体功能测算接口与计费口径复核：输出主体功能范围、外部标准版本、规模/生产率/调整/费率/单位接口及重计检查。 不适用：不凭本稿重建完整功能点计数或权重。分列数据和模型时检查AI应用类型重复上调；本能力输出交接与复核单。
+    tags:
+    - ai-cost
+    - draft-standard
+    - cost-review
+  source_evidence:
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 6.1.1–6.1.3及图3（PDF 13–14）
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 6.1.1–6.1.2 / PDF 13
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 6.1.2c、6.1.3a / PDF 13、14
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 6.1.3b / PDF 14
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 6.1.3c / PDF 14
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 6.1.3 a（PDF 14）
+  promotion:
+    destination: router
+    gate:
+      independent_intent: true
+      independent_contract: true
+      independent_run: true
+      independent_reuse: true
+      independent_eval: true
+    notes: V04：用户可单独提出该限定意图；独立输入/输出见契约；给定必要输入和边界即可完成，外部依赖不冒充已实现；可跨项目复用；W04已纸面演练且可设计近邻/缺输入实际评测。具备独立资格但用户明确选择single，本次全部served_by同一入口，不创建21个独立入口。
+  resources:
+  - resources/cost_calculator.py
+  - resources/calculator-guide.md
+  - resources/project-template.json
+  stage15_id: V04
+  task_ids:
+  - T05
+  - T03
+- capability_id: cap.ai-cost-draft.data-piecework
+  revision: 1
+  status: active
+  slug: data-piecework
+  title: 数据计件与样本单位工时测算
+  importance: high
+  importance_rationale: 对应T07；稳定效率量纲，避免工时与速率反用。
+  one_liner: 对可量化且效率稳定的任务，使用已有适用单位工时，或以代表样本总人时除同口径样本件数确定单位工时，再乘待处理规模；记录人工作业/自动化和质检返工范围。
+  intents:
+  - 数据计件与样本单位工时测算
+  keywords:
+  - data-piecework
+  - T07
+  - 数据计件与样本单位工时测算
+  also_read:
+  - cap.ai-cost-draft.data-baseline
+  - cap.ai-cost-draft.data-labor-cost
+  card: cards/data-piecework.md
+  frontmatter:
+    description: 数据计件与样本单位工时测算：对可量化且效率稳定的任务，使用已有适用单位工时，或以代表样本总人时除同口径样本件数确定单位工时，再乘待处理规模；记录人工作业/自动化和质检返工范围。 不适用：样本量与目标量须使用同一计量对象。原稿未定义不合格、返工处理规则，不能擅自把分母改成合格件数；不强制重新抽样，不规定统一样本量或置信区间。件/人时先换成相应单位耗时。
+    tags:
+    - ai-cost
+    - draft-standard
+    - cost-review
+  source_evidence:
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 6.2.3.2式1、C.4.1（PDF 15、32–33）
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 6.2.3.2a式1、C.4.1 / PDF 15、32、33
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 6.2.3.2a、C.4.1 / PDF 15、32、33
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 6.2.3.2 a；附录 C.4.1（PDF 15、32–33）
+  promotion:
+    destination: router
+    gate:
+      independent_intent: true
+      independent_contract: true
+      independent_run: true
+      independent_reuse: true
+      independent_eval: true
+    notes: V05：用户可单独提出该限定意图；独立输入/输出见契约；给定必要输入和边界即可完成，外部依赖不冒充已实现；可跨项目复用；W05已纸面演练且可设计近邻/缺输入实际评测。具备独立资格但用户明确选择single，本次全部served_by同一入口，不创建21个独立入口。
+  resources:
+  - resources/cost_calculator.py
+  - resources/calculator-guide.md
+  - resources/project-template.json
+  stage15_id: V05
+  task_ids:
+  - T07
+- capability_id: cap.ai-cost-draft.data-baseline
+  revision: 1
+  status: active
+  slug: data-baseline
+  title: 数据基准工时与复用工具因素计算
+  importance: critical
+  importance_rationale: 对应T08,T03；给出可追踪因子链并避免整体基准重复。
+  one_liner: 在基准粒度和适用性已确认时，计算DBE×AF×DRDF；若声明DRDF由DR与DDT组成则乘这两项。
+  intents:
+  - 数据基准工时与复用工具因素计算
+  keywords:
+  - data-baseline
+  - T08
+  - T03
+  - 数据基准工时与复用工具因素计算
+  also_read:
+  - cap.ai-cost-draft.data-labor-cost
+  card: cards/data-baseline.md
+  frontmatter:
+    description: 数据基准工时与复用工具因素计算：在基准粒度和适用性已确认时，计算DBE×AF×DRDF；若声明DRDF由DR与DDT组成则乘这两项。 不适用：不自动选择附录档位；整体数据基准不再逐采集、清洗、标注、预处理各套一次；共享数据按实际活动排重。
+    tags:
+    - ai-cost
+    - draft-standard
+    - cost-review
+  source_evidence:
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 6.2.3.2式2及表1、C.3–C.4.2（PDF 15–16、31–33）
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 4.2.2.2d / PDF 8
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 6.2.3.2a式2 / PDF 15
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 6.2.3.2说明2、C.3–C.4 / PDF 16、31、32、33
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 6.3.3.2a7 / PDF 20
+  promotion:
+    destination: router
+    gate:
+      independent_intent: true
+      independent_contract: true
+      independent_run: true
+      independent_reuse: true
+      independent_eval: true
+    notes: V06：用户可单独提出该限定意图；独立输入/输出见契约；给定必要输入和边界即可完成，外部依赖不冒充已实现；可跨项目复用；W06已纸面演练且可设计近邻/缺输入实际评测。具备独立资格但用户明确选择single，本次全部served_by同一入口，不创建21个独立入口。
+  resources:
+  - resources/cost_calculator.py
+  - resources/calculator-guide.md
+  - resources/project-template.json
+  stage15_id: V06
+  task_ids:
+  - T08
+  - T03
+- capability_id: cap.ai-cost-draft.data-labor-cost
+  revision: 1
+  status: active
+  slug: data-labor-cost
+  title: 数据任务岗位费用汇总
+  importance: high
+  importance_rationale: 对应T09；避免单位错配及不同岗位被统一系数覆盖。
+  one_liner: 排重后统一工时单位；逐任务按DPE×PF×UHC计费，再合计工时和费用。
+  intents:
+  - 数据任务岗位费用汇总
+  keywords:
+  - data-labor-cost
+  - T09
+  - 数据任务岗位费用汇总
+  also_read:
+  - cap.ai-cost-draft.cost-summary
+  card: cards/data-labor-cost.md
+  frontmatter:
+    description: 数据任务岗位费用汇总：排重后统一工时单位；逐任务按DPE×PF×UHC计费，再合计工时和费用。 不适用：UHC为综合费率；岗位、换算与费率来源必填；多岗规则若引用附录需明确采用，不能将全项目一律取最高PF。
+    tags:
+    - ai-cost
+    - draft-standard
+    - cost-review
+  source_evidence:
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 6.2.2、6.2.3.2–6.2.3.3式3/4、附录A（PDF 14、16、28–29）
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 4.2.2.2f、4.2.3.2f、6.2.3.3、6.3.3.3 / PDF 8、9、16、20
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 6.2.3.2b式3 / PDF 16
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 6.2.3.3式4 / PDF 16
+  promotion:
+    destination: router
+    gate:
+      independent_intent: true
+      independent_contract: true
+      independent_run: true
+      independent_reuse: true
+      independent_eval: true
+    notes: V07：用户可单独提出该限定意图；独立输入/输出见契约；给定必要输入和边界即可完成，外部依赖不冒充已实现；可跨项目复用；W07已纸面演练且可设计近邻/缺输入实际评测。具备独立资格但用户明确选择single，本次全部served_by同一入口，不创建21个独立入口。
+  resources:
+  - resources/cost_calculator.py
+  - resources/calculator-guide.md
+  - resources/project-template.json
+  stage15_id: V07
+  task_ids:
+  - T09
+- capability_id: cap.ai-cost-draft.model-count
+  revision: 1
+  status: active
+  slug: model-count
+  title: 独立传统模型数量判定
+  importance: high
+  importance_rationale: 对应T10；减少按部署实例重复计模型。
+  one_liner: 检查目标、业务规则与判定逻辑、单独采集标注训练三组条件；同一识别任务多站点部署排重。
+  intents:
+  - 独立传统模型数量判定
+  keywords:
+  - model-count
+  - T10
+  - 独立传统模型数量判定
+  also_read:
+  - cap.ai-cost-draft.agent-count
+  card: cards/model-count.md
+  frontmatter:
+    description: 独立传统模型数量判定：检查目标、业务规则与判定逻辑、单独采集标注训练三组条件；同一识别任务多站点部署排重。 不适用：证据不足输出待确认，不能按算法名、文件数或点位计数量；部分共享的边界不自行放宽。
+    tags:
+    - ai-cost
+    - draft-standard
+    - cost-review
+  source_evidence:
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 6.3.3.2 a)5)、a)7)（PDF 19–20）
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 6.3.3.2a5 / PDF 19
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 6.3.3.2a5 / PDF 19、20
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 6.3.3.2 a5（PDF 19–20）
+  promotion:
+    destination: router
+    gate:
+      independent_intent: true
+      independent_contract: true
+      independent_run: true
+      independent_reuse: true
+      independent_eval: true
+    notes: V08：用户可单独提出该限定意图；独立输入/输出见契约；给定必要输入和边界即可完成，外部依赖不冒充已实现；可跨项目复用；W08已纸面演练且可设计近邻/缺输入实际评测。具备独立资格但用户明确选择single，本次全部served_by同一入口，不创建21个独立入口。
+  resources:
+  - resources/cost_calculator.py
+  - resources/calculator-guide.md
+  - resources/project-template.json
+  stage15_id: V08
+  task_ids:
+  - T10
+- capability_id: cap.ai-cost-draft.agent-count
+  revision: 1
+  status: active
+  slug: agent-count
+  title: 独立智能体与内部节点判定
+  importance: high
+  importance_rationale: 对应T10；统一计数对象与可交付边界。
+  one_liner: 逐对象同时核对三组条件：独立业务入口/界面/API（本组入口形式为或）；独立知识库、提示词、编排逻辑与业务规则；独立部署、启停、交付并完成业务目标。逐项留证。
+  intents:
+  - 独立智能体与内部节点判定
+  keywords:
+  - agent-count
+  - T10
+  - 独立智能体与内部节点判定
+  also_read:
+  - cap.ai-cost-draft.model-count
+  card: cards/agent-count.md
+  frontmatter:
+    description: 独立智能体与内部节点判定：逐对象同时核对三组条件：独立业务入口/界面/API（本组入口形式为或）；独立知识库、提示词、编排逻辑与业务规则；独立部署、启停、交付并完成业务目标。逐项留证。 不适用：证据不全列待确认，不自动认作0或1。同闭环角色、分支和节点只影响复杂度，不自动增加独立数量。
+    tags:
+    - ai-cost
+    - draft-standard
+    - cost-review
+  source_evidence:
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 6.3.3.2 a)4)、a)6)–7)（PDF 19–20）
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 6.3.3.2a6 / PDF 20
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 6.3.3.2a6 / PDF 20
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 6.3.3.2 a6（PDF 20）
+  promotion:
+    destination: router
+    gate:
+      independent_intent: true
+      independent_contract: true
+      independent_run: true
+      independent_reuse: true
+      independent_eval: true
+    notes: V09：用户可单独提出该限定意图；独立输入/输出见契约；给定必要输入和边界即可完成，外部依赖不冒充已实现；可跨项目复用；W09已纸面演练且可设计近邻/缺输入实际评测。具备独立资格但用户明确选择single，本次全部served_by同一入口，不创建21个独立入口。
+  resources:
+  - resources/cost_calculator.py
+  - resources/calculator-guide.md
+  - resources/project-template.json
+  stage15_id: V09
+  task_ids:
+  - T10
+- capability_id: cap.ai-cost-draft.model-task-effort
+  revision: 1
+  status: active
+  slug: model-task-effort
+  title: 给定参数的模型任务方程演算
+  importance: critical
+  importance_rationale: 对应T12；透明计算并区分方程运算正确和估价有效。
+  one_liner: 明确选择正文式5假设模型且给定适用参数后，计算TBE×TF×SR×TS×SF×MRDF并记录因子来源。
+  intents:
+  - 给定参数的模型任务方程演算
+  keywords:
+  - model-task-effort
+  - T12
+  - 给定参数的模型任务方程演算
+  also_read:
+  - cap.ai-cost-draft.global-factors
+  - cap.ai-cost-draft.model-labor-cost
+  card: cards/model-task-effort.md
+  frontmatter:
+    description: 给定参数的模型任务方程演算：明确选择正文式5假设模型且给定适用参数后，计算TBE×TF×SR×TS×SF×MRDF并记录因子来源。 不适用：不宣称回归已被验证；不自动选择提示词或编排矛盾参数；缺任一因子不得默认1。
+    tags:
+    - ai-cost
+    - draft-standard
+    - cost-review
+  source_evidence:
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 6.3.3.1–6.3.3.2式5、附录D表D.1（PDF 17–19、35–36）
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 6.3.3.2a式5 / PDF 18
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 6.3.3.1c3、6.3.3.2a / PDF 17、18、19
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 6.3.3.1c4、6.3.3.2a / PDF 18
+  promotion:
+    destination: router
+    gate:
+      independent_intent: true
+      independent_contract: true
+      independent_run: true
+      independent_reuse: true
+      independent_eval: true
+    notes: V10：用户可单独提出该限定意图；独立输入/输出见契约；给定必要输入和边界即可完成，外部依赖不冒充已实现；可跨项目复用；W10已纸面演练且可设计近邻/缺输入实际评测。具备独立资格但用户明确选择single，本次全部served_by同一入口，不创建21个独立入口。
+  resources:
+  - resources/cost_calculator.py
+  - resources/calculator-guide.md
+  - resources/project-template.json
+  stage15_id: V10
+  task_ids:
+  - T12
+- capability_id: cap.ai-cost-draft.global-factors
+  revision: 1
+  status: active
+  slug: global-factors
+  title: 模型全局因素组装与重复应用检查
+  importance: critical
+  importance_rationale: 对应T13；防止系统质量与开发环境因素漏算或复乘。
+  one_liner: 在业务/质量/团队/成熟度因子分别有依据时计算SF1×SF2、MRDF1×MRDF2，标记其作用层。
+  intents:
+  - 模型全局因素组装与重复应用检查
+  keywords:
+  - global-factors
+  - T13
+  - 模型全局因素组装与重复应用检查
+  also_read:
+  - cap.ai-cost-draft.model-task-effort
+  card: cards/global-factors.md
+  frontmatter:
+    description: 模型全局因素组装与重复应用检查：在业务/质量/团队/成熟度因子分别有依据时计算SF1×SF2、MRDF1×MRDF2，标记其作用层。 不适用：不自动按附录不唯一边界分档；全局因子在式5进入一次，式6后不能再乘。
+    tags:
+    - ai-cost
+    - draft-standard
+    - cost-review
+  source_evidence:
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 6.3.3.1–6.3.3.2、D.2表D.2（PDF 17–19、36–37）
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 6.3.3.2a / PDF 18、19
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 6.3.3.2a / PDF 19
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 6.3.3.2b式6 / PDF 20
+  promotion:
+    destination: router
+    gate:
+      independent_intent: true
+      independent_contract: true
+      independent_run: true
+      independent_reuse: true
+      independent_eval: true
+    notes: V11：用户可单独提出该限定意图；独立输入/输出见契约；给定必要输入和边界即可完成，外部依赖不冒充已实现；可跨项目复用；W11已纸面演练且可设计近邻/缺输入实际评测。具备独立资格但用户明确选择single，本次全部served_by同一入口，不创建21个独立入口。
+  resources:
+  - resources/cost_calculator.py
+  - resources/calculator-guide.md
+  - resources/project-template.json
+  stage15_id: V11
+  task_ids:
+  - T13
+- capability_id: cap.ai-cost-draft.model-labor-cost
+  revision: 1
+  status: active
+  slug: model-labor-cost
+  title: 模型任务工时与岗位费用汇总
+  importance: critical
+  importance_rationale: 对应T14；保留岗位差异与外购扣减后人力边界。
+  one_liner: 对已排除外包、数据和主体功能重叠的任务，汇总TE并逐岗位计算TE×PF×UHC。
+  intents:
+  - 模型任务工时与岗位费用汇总
+  keywords:
+  - model-labor-cost
+  - T14
+  - 模型任务工时与岗位费用汇总
+  also_read:
+  - cap.ai-cost-draft.cost-summary
+  card: cards/model-labor-cost.md
+  frontmatter:
+    description: 模型任务工时与岗位费用汇总：对已排除外包、数据和主体功能重叠的任务，汇总TE并逐岗位计算TE×PF×UHC。 不适用：岗位、综合费率、工时换算及来源必填，TE是否已含全局因素明确；外购服务另列，已在TE/SR扣除的内部工时不再二次扣减。
+    tags:
+    - ai-cost
+    - draft-standard
+    - cost-review
+  source_evidence:
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 6.3.3.2 b)、6.3.3.3式6/7、附录A（PDF 20、28–29）
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 4.2.3.2c–e、6.3.3.3c / PDF 9、20
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 4.2.2.2f、4.2.3.2f、6.2.3.3、6.3.3.3 / PDF 8、9、16、20
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 6.3.3.2b式6 / PDF 20
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 6.3.3.3式7 / PDF 20
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 4.2.3.2 d；6.3.3.3 c（PDF 9、20）
+  promotion:
+    destination: router
+    gate:
+      independent_intent: true
+      independent_contract: true
+      independent_run: true
+      independent_reuse: true
+      independent_eval: true
+    notes: V12：用户可单独提出该限定意图；独立输入/输出见契约；给定必要输入和边界即可完成，外部依赖不冒充已实现；可跨项目复用；W12已纸面演练且可设计近邻/缺输入实际评测。具备独立资格但用户明确选择single，本次全部served_by同一入口，不创建21个独立入口。
+  resources:
+  - resources/cost_calculator.py
+  - resources/calculator-guide.md
+  - resources/project-template.json
+  stage15_id: V12
+  task_ids:
+  - T14
+- capability_id: cap.ai-cost-draft.purchase-quotes
+  revision: 2
+  status: active
+  slug: purchase-quotes
+  title: 专用软硬件采购询价复核
+  importance: high
+  importance_rationale: 对应T15；提高报价可比性并保留取价依据。
+  one_liner: 统一规格、授权、税费/服务边界，保存至少三家正式可比报价；有依据时选中值作为参考。
+  intents:
+  - 专用软硬件采购询价复核
+  keywords:
+  - purchase-quotes
+  - T15
+  - 专用软硬件采购询价复核
+  also_read:
+  - cap.ai-cost-draft.cost-classification
+  card: cards/purchase-quotes.md
+  frontmatter:
+    description: 专用软硬件采购询价复核：统一规格、授权、税费/服务边界，保存至少三家正式可比报价；有依据时选中值作为参考。 不适用：本能力限定市场询价路径；不把三家报价要求套给指导价/历史合同等全部路径。不凭高低自行剔异常；偶数中值需约定。税费字段是报价可比性实现字段，不宣称本稿单列规定。
+    tags:
+    - ai-cost
+    - draft-standard
+    - cost-review
+  source_evidence:
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 7.1.1–7.1.3及图6（PDF 22）
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 7.1.1–7.1.2 / PDF 22
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 7.1.3 / PDF 22
+  promotion:
+    destination: router
+    gate:
+      independent_intent: true
+      independent_contract: true
+      independent_run: true
+      independent_reuse: true
+      independent_eval: true
+    notes: V13：用户可单独提出该限定意图；独立输入/输出见契约；给定必要输入和边界即可完成，外部依赖不冒充已实现；可跨项目复用；W13已纸面演练且可设计近邻/缺输入实际评测。具备独立资格但用户明确选择single，本次全部served_by同一入口，不创建21个独立入口。
+  resources:
+  - resources/cost_calculator.py
+  - resources/calculator-guide.md
+  - resources/project-template.json
+  stage15_id: V13
+  task_ids:
+  - T15
+- capability_id: cap.ai-cost-draft.resource-rental
+  revision: 2
+  status: active
+  slug: resource-rental
+  title: 资源租赁单价与期间费用计算
+  importance: high
+  importance_rationale: 对应T16；减少跨期间单位错误及免费资源重计。
+  one_liner: 核取得方式和开发期间，按同一计费期间计算Σ单价×数量×期间。选市场询价路径时需至少三家正式可比报价与记录；指导价、历史合同或方程路径不机械套三家。地方/本单位/近一年等原稿“宜”要求作为核查项。成本方程明确折旧年限、资金成本、扣免费期后的同期间运维。另记录业务数据安全要求、合同到期迁移安排及成本依据；未知列待补，不因此把交付后运维计入开发成本。
+  intents:
+  - 资源租赁单价与期间费用计算
+  keywords:
+  - resource-rental
+  - T16
+  - 资源租赁单价与期间费用计算
+  also_read:
+  - cap.ai-cost-draft.cost-classification
+  card: cards/resource-rental.md
+  frontmatter:
+    description: 资源租赁单价与期间费用计算：核取得方式和开发期间，按同一计费期间计算Σ单价×数量×期间。选市场询价路径时需至少三家正式可比报价与记录；指导价、历史合同或方程路径不机械套三家。地方/本单位/近一年等原稿“宜”要求作为核查项。成本方程明确折旧年限、资金成本、扣免费期后的同期间运维。另记录业务数据安全要求、合同到期迁移安排及成本依据；未知列待补，不因此把交付后运维计入开发成本。
+      不适用：按月折算需项目明确约定，不从年折旧擅推计费政策；免费/已有/统采资源不得另收租赁费。
+    tags:
+    - ai-cost
+    - draft-standard
+    - cost-review
+  source_evidence:
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 7.2.1–7.2.3及式8（PDF 22–24）
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 7.2.1式9（PDF 23）
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 7.2.1式8 / PDF 22、23
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 7.2.1–7.2.2 / PDF 23
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 7.2.1式9 / PDF 23
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 7.2.3a–d / PDF 23
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 7.2.3e / PDF 24
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 7.2.3f–g / PDF 24
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 4.3.2.2 d（PDF 10）
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 7.2.3 e（PDF 24）
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 7.2.1 式 9 的 OMUP 说明（PDF 23）
+  promotion:
+    destination: router
+    gate:
+      independent_intent: true
+      independent_contract: true
+      independent_run: true
+      independent_reuse: true
+      independent_eval: true
+    notes: V14：用户可单独提出该限定意图；独立输入/输出见契约；给定必要输入和边界即可完成，外部依赖不冒充已实现；可跨项目复用；W14已纸面演练且可设计近邻/缺输入实际评测。具备独立资格但用户明确选择single，本次全部served_by同一入口，不创建21个独立入口。
+  resources:
+  - resources/cost_calculator.py
+  - resources/calculator-guide.md
+  - resources/project-template.json
+  stage15_id: V14
+  task_ids:
+  - T16
+- capability_id: cap.ai-cost-draft.infrastructure-integration
+  revision: 1
+  status: active
+  slug: infrastructure-integration
+  title: 基础设施集成估算与边界检查
+  importance: high
+  importance_rationale: 对应T17；将费率法与分解法的依据显式化。
+  one_liner: 确认专用基础设施范围；比例法用明确外部基数/费率/系数逐项计算，经验法用人员级别和分步工时/工具费。
+  intents:
+  - 基础设施集成估算与边界检查
+  keywords:
+  - infrastructure-integration
+  - T17
+  - 基础设施集成估算与边界检查
+  also_read:
+  - cap.ai-cost-draft.cost-classification
+  card: cards/infrastructure-integration.md
+  frontmatter:
+    description: 基础设施集成估算与边界检查：确认专用基础设施范围；比例法用明确外部基数/费率/系数逐项计算，经验法用人员级别和分步工时/工具费。 不适用：不生成原稿没有的费率；7.3.3争议数据活动暂停归类，应用集成不混入基础设施。
+    tags:
+    - ai-cost
+    - draft-standard
+    - cost-review
+  source_evidence:
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 7.3.1–7.3.3及式10（PDF 24–25）
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 4.3.3.2 / PDF 10、11
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 7.3.1、7.3.2.3注 / PDF 24、25
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 7.3.2.2–7.3.2.3 / PDF 24、25
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 7.3.2.3式10 / PDF 24、25
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 7.3.2.3 / PDF 25
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 4.3.3.2 b–c（PDF 11）；7.3.3 对应用集成的排除（PDF 25）
+  promotion:
+    destination: router
+    gate:
+      independent_intent: true
+      independent_contract: true
+      independent_run: true
+      independent_reuse: true
+      independent_eval: true
+    notes: V15：用户可单独提出该限定意图；独立输入/输出见契约；给定必要输入和边界即可完成，外部依赖不冒充已实现；可跨项目复用；W15已纸面演练且可设计近邻/缺输入实际评测。具备独立资格但用户明确选择single，本次全部served_by同一入口，不创建21个独立入口。
+  resources:
+  - resources/cost_calculator.py
+  - resources/calculator-guide.md
+  - resources/project-template.json
+  stage15_id: V15
+  task_ids:
+  - T17
+- capability_id: cap.ai-cost-draft.external-data-service
+  revision: 1
+  status: active
+  slug: external-data-service
+  title: 外购数据资源与服务取价
+  importance: high
+  importance_rationale: 对应T18；保留服务权利与实际承担边界。
+  one_liner: 按具体数据/服务、授权、质量、期间形成询价与可比成交记录，计开发期第三方费用并排除同活动内部人力。
+  intents:
+  - 外购数据资源与服务取价
+  keywords:
+  - external-data-service
+  - T18
+  - 外购数据资源与服务取价
+  also_read:
+  - cap.ai-cost-draft.external-model-service
+  card: cards/external-data-service.md
+  frontmatter:
+    description: 外购数据资源与服务取价：按具体数据/服务、授权、质量、期间形成询价与可比成交记录，计开发期第三方费用并排除同活动内部人力。 不适用：7.4未规定至少三家，不移植7.1/7.5强制数量；取价依据与授权仍须核实。
+    tags:
+    - ai-cost
+    - draft-standard
+    - cost-review
+  source_evidence:
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 4.3.4、7.4.1–7.4.3（PDF 11、25–26）
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 4.2.2.2a–c、4.3.4.2b、6.2.3.3 / PDF 8、11、16
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 4.3.4 / PDF 11
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 7.4 / PDF 25、26
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 4.2.2.2 c；4.3.4.2 b；6.2.3.3；7.4.3 a（PDF 8、11、16、26）
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 4.3.4.2 a（PDF 11）
+  promotion:
+    destination: router
+    gate:
+      independent_intent: true
+      independent_contract: true
+      independent_run: true
+      independent_reuse: true
+      independent_eval: true
+    notes: V16：用户可单独提出该限定意图；独立输入/输出见契约；给定必要输入和边界即可完成，外部依赖不冒充已实现；可跨项目复用；W16已纸面演练且可设计近邻/缺输入实际评测。具备独立资格但用户明确选择single，本次全部served_by同一入口，不创建21个独立入口。
+  resources:
+  - resources/cost_calculator.py
+  - resources/calculator-guide.md
+  - resources/project-template.json
+  stage15_id: V16
+  task_ids:
+  - T18
+- capability_id: cap.ai-cost-draft.external-model-service
+  revision: 2
+  status: active
+  slug: external-model-service
+  title: 外购模型服务授权与用量计价
+  importance: high
+  importance_rationale: 对应T18；避免套餐、按量与内部人力重复计费。
+  one_liner: 确认授权/API、期间、计费量纲与套餐超额规则；至少三家正式报价；内部被替代工作同步扣除。
+  intents:
+  - 外购模型服务授权与用量计价
+  keywords:
+  - external-model-service
+  - T18
+  - 外购模型服务授权与用量计价
+  also_read:
+  - cap.ai-cost-draft.external-data-service
+  card: cards/external-model-service.md
+  frontmatter:
+    description: 外购模型服务授权与用量计价：确认授权/API、期间、计费量纲与套餐超额规则；至少三家正式报价；内部被替代工作同步扣除。 不适用：用量和单价必须明确，不凭本稿预测token或使用当前价格；不同供应商套餐不能只比标价。
+    tags:
+    - ai-cost
+    - draft-standard
+    - cost-review
+  source_evidence:
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 4.3.5、7.5.1–7.5.3（PDF 11、26）
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 4.2.3.2c–e、6.3.3.3c / PDF 9、20
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 4.3.5 / PDF 11
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 7.5 / PDF 26
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 4.2.3.2 d；6.3.3.3 c（PDF 9、20）
+  promotion:
+    destination: router
+    gate:
+      independent_intent: true
+      independent_contract: true
+      independent_run: true
+      independent_reuse: true
+      independent_eval: true
+    notes: V17：用户可单独提出该限定意图；独立输入/输出见契约；给定必要输入和边界即可完成，外部依赖不冒充已实现；可跨项目复用；W17已纸面演练且可设计近邻/缺输入实际评测。具备独立资格但用户明确选择single，本次全部served_by同一入口，不创建21个独立入口。
+  resources:
+  - resources/cost_calculator.py
+  - resources/calculator-guide.md
+  - resources/project-template.json
+  stage15_id: V17
+  task_ids:
+  - T18
+- capability_id: cap.ai-cost-draft.other-costs
+  revision: 1
+  status: active
+  slug: other-costs
+  title: 其他直接非人力费用明细评估
+  importance: medium
+  importance_rationale: 对应T19；防止其他费成为无用途兜底金额。
+  one_liner: 限定开发期明确产品/服务，依据经委托方确认的业务要求选择经验、类推或方程依据并列明细。
+  intents:
+  - 其他直接非人力费用明细评估
+  keywords:
+  - other-costs
+  - T19
+  - 其他直接非人力费用明细评估
+  also_read:
+  - cap.ai-cost-draft.scope-check
+  card: cards/other-costs.md
+  frontmatter:
+    description: 其他直接非人力费用明细评估：限定开发期明确产品/服务，依据经委托方确认的业务要求选择经验、类推或方程依据并列明细。 不适用：金额须标明估算、核定上限或实际费用。核定上限不等于实际结算额；不自动按总造价百分比计取。其他费市场类推三家为“宜”，不改为全部路径硬门槛。
+    tags:
+    - ai-cost
+    - draft-standard
+    - cost-review
+  source_evidence:
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 4.3.6、7.6.1–7.6.3（PDF 11、26–27）
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 4.3.6 / PDF 11
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 7.6.2–7.6.3a / PDF 27
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 7.6.3b–e / PDF 27
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 4.3.6（PDF 11）；4.1 注 3（PDF 7）
+  promotion:
+    destination: router
+    gate:
+      independent_intent: true
+      independent_contract: true
+      independent_run: true
+      independent_reuse: true
+      independent_eval: true
+    notes: V18：用户可单独提出该限定意图；独立输入/输出见契约；给定必要输入和边界即可完成，外部依赖不冒充已实现；可跨项目复用；W18已纸面演练且可设计近邻/缺输入实际评测。具备独立资格但用户明确选择single，本次全部served_by同一入口，不创建21个独立入口。
+  resources:
+  - resources/cost_calculator.py
+  - resources/calculator-guide.md
+  - resources/project-template.json
+  stage15_id: V18
+  task_ids:
+  - T19
+- capability_id: cap.ai-cost-draft.cross-validation
+  revision: 1
+  status: active
+  slug: cross-validation
+  title: 多方法偏差复核与有条件合成
+  importance: high
+  importance_rationale: 对应T20；防止平均值掩盖来源分歧。
+  one_liner: 同范围单位比对多方法结果。数据工作量及费用按给定合理偏差判据检查，范围内才按给定权重平均；超范围回查重估。整体或模型费用差异较大时可整理专家评审材料，不把数据加权规则泛化。
+  intents:
+  - 多方法偏差复核与有条件合成
+  keywords:
+  - cross-validation
+  - T20
+  - 多方法偏差复核与有条件合成
+  also_read:
+  - cap.ai-cost-draft.cost-summary
+  card: cards/cross-validation.md
+  frontmatter:
+    description: 多方法偏差复核与有条件合成：同范围单位比对多方法结果。数据工作量及费用按给定合理偏差判据检查，范围内才按给定权重平均；超范围回查重估。整体或模型费用差异较大时可整理专家评审材料，不把数据加权规则泛化。 不适用：原稿无统一阈值、权重、数据费用占比或置信区间。未提供时仅输出差异和待补依据，不默认平均。
+    tags:
+    - ai-cost
+    - draft-standard
+    - cost-review
+  source_evidence:
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 5.5、6.2.1、6.3.1（PDF 13–14、16）
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 5.5 / PDF 13
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 6.2.1 / PDF 14
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 6.2.2c、6.2.3.3 / PDF 14、16
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 6.3.1 / PDF 16
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 6.2.1（PDF 14）；5.5、6.3.1（PDF 13、16）
+  promotion:
+    destination: router
+    gate:
+      independent_intent: true
+      independent_contract: true
+      independent_run: true
+      independent_reuse: true
+      independent_eval: true
+    notes: V19：用户可单独提出该限定意图；独立输入/输出见契约；给定必要输入和边界即可完成，外部依赖不冒充已实现；可跨项目复用；W19已纸面演练且可设计近邻/缺输入实际评测。具备独立资格但用户明确选择single，本次全部served_by同一入口，不创建21个独立入口。
+  resources:
+  - resources/cost_calculator.py
+  - resources/calculator-guide.md
+  - resources/project-template.json
+  stage15_id: V19
+  task_ids:
+  - T20
+- capability_id: cap.ai-cost-draft.cost-summary
+  revision: 1
+  status: active
+  slug: cost-summary
+  title: 费用区间汇总与完整性声明
+  importance: critical
+  importance_rationale: 对应T20,T02；使总价能够回查且不掩盖缺项。
+  one_liner: 三类人力、六类非人力逐行保存下/中/上限、单位、来源、已确认零/缺失状态；汇总已知项并列完整性与外部报告依赖。
+  intents:
+  - 费用区间汇总与完整性声明
+  keywords:
+  - cost-summary
+  - T20
+  - T02
+  - 费用区间汇总与完整性声明
+  also_read:
+  - cap.ai-cost-draft.cross-validation
+  card: cards/cost-summary.md
+  frontmatter:
+    description: 费用区间汇总与完整性声明：三类人力、六类非人力逐行保存下/中/上限、单位、来源、已确认零/缺失状态；汇总已知项并列完整性与外部报告依赖。 不适用：不从案例套±20%，不以缺失代替零；给定分项区间相加只代表该口径范围，不宣称统计置信区间。
+    tags:
+    - ai-cost
+    - draft-standard
+    - cost-review
+  source_evidence:
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 5.5、附录B、E.2.4–E.2.5（PDF 13、30、52）
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 5.5 / PDF 13
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 5.5e–f / PDF 13
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 7.2.3f–g / PDF 24
+  promotion:
+    destination: router
+    gate:
+      independent_intent: true
+      independent_contract: true
+      independent_run: true
+      independent_reuse: true
+      independent_eval: true
+    notes: V20：用户可单独提出该限定意图；独立输入/输出见契约；给定必要输入和边界即可完成，外部依赖不冒充已实现；可跨项目复用；W20已纸面演练且可设计近邻/缺输入实际评测。具备独立资格但用户明确选择single，本次全部served_by同一入口，不创建21个独立入口。
+  resources:
+  - resources/cost_calculator.py
+  - resources/calculator-guide.md
+  - resources/project-template.json
+  stage15_id: V20
+  task_ids:
+  - T20
+  - T02
+- capability_id: cap.ai-cost-draft.parameter-register
+  revision: 1
+  status: active
+  slug: parameter-register
+  title: 参数来源、适用性与更新准备登记
+  importance: critical
+  importance_rationale: 对应T21；阻止未经适用性确认的附录参数静默成为默认值。
+  one_liner: 登记参数名称、单位、作用范围/粒度、来源/版本、样本范围、适用证据、校正与更新记录；识别参考/已确认/待核状态。
+  intents:
+  - 参数来源、适用性与更新准备登记
+  keywords:
+  - parameter-register
+  - T21
+  - 参数来源、适用性与更新准备登记
+  also_read:
+  - cap.ai-cost-draft.model-task-effort
+  card: cards/parameter-register.md
+  frontmatter:
+    description: 参数来源、适用性与更新准备登记：登记参数名称、单位、作用范围/粒度、来源/版本、样本范围、适用证据、校正与更新记录；识别参考/已确认/待核状态。 不适用：这是记录和审查流程，不是本稿缺失的自动拟合、校准或预测效度验证算法；不规定原稿没有的更新周期。
+    tags:
+    - ai-cost
+    - draft-standard
+    - cost-review
+  source_evidence:
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 6.3.3.1、C.1/C.3、D.1（PDF 17–18、31、34）
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 6.3.3.1a–b / PDF 17
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 附录C.1、C.3、D.1 / PDF 31、34
+  - source_id: ai-cost-draft-20260818
+    version_id: 2026-08-18-draft
+    location: 附录 C.1、C.3；附录 D.1（PDF 31、34）
+  promotion:
+    destination: router
+    gate:
+      independent_intent: true
+      independent_contract: true
+      independent_run: true
+      independent_reuse: true
+      independent_eval: true
+    notes: V21：用户可单独提出该限定意图；独立输入/输出见契约；给定必要输入和边界即可完成，外部依赖不冒充已实现；可跨项目复用；W21已纸面演练且可设计近邻/缺输入实际评测。具备独立资格但用户明确选择single，本次全部served_by同一入口，不创建21个独立入口。
+  resources:
+  - resources/cost_calculator.py
+  - resources/calculator-guide.md
+  - resources/project-template.json
+  stage15_id: V21
+  task_ids:
+  - T21

@@ -1,0 +1,238 @@
+[
+  {
+    "name": "mixed_effort_units",
+    "expected_review": "Expected 0.65 person-months and 19200 yuan; PF affects money, not effort.",
+    "exit_code": 0,
+    "observed": {
+      "status": "computed_from_declared_inputs",
+      "operation": "labor_total",
+      "basis": "Independent synthetic audit inputs; no real quote or validation claim",
+      "source_status": "2026-08-18 consultation draft; no independent validation of inputs",
+      "rounding": "Decimal precision 40; no intermediate monetary rounding; display rounding belongs to the report",
+      "result": {
+        "items": [
+          {
+            "id": "hours",
+            "person_months": "0.05",
+            "cost_yuan": "800.00"
+          },
+          {
+            "id": "days",
+            "person_months": "0.1",
+            "cost_yuan": "2400.00"
+          },
+          {
+            "id": "months",
+            "person_months": "0.5",
+            "cost_yuan": "16000.0"
+          }
+        ],
+        "total_person_months": "0.65",
+        "total_cost_yuan": "19200.00",
+        "formula": "sum(effort converted to person_months * PF * UHC)"
+      }
+    }
+  },
+  {
+    "name": "missing_tf",
+    "expected_review": "Expected input_error; no implicit factor of 1.",
+    "exit_code": 2,
+    "observed": {
+      "status": "input_error",
+      "message": "missing: TF",
+      "result": null
+    }
+  },
+  {
+    "name": "duplicate_item_id",
+    "expected_review": "Expected input_error, not double counted cost.",
+    "exit_code": 2,
+    "observed": {
+      "status": "input_error",
+      "message": "items: unique nonempty item ids required",
+      "result": null
+    }
+  },
+  {
+    "name": "mismatched_rental_period",
+    "expected_review": "Expected input_error; no invented annual-to-monthly policy.",
+    "exit_code": 2,
+    "observed": {
+      "status": "input_error",
+      "message": "rental price_period and duration_unit must match explicitly",
+      "result": null
+    }
+  },
+  {
+    "name": "monthly_unused_quota",
+    "expected_review": "Expected 183 yuan: unused first-month quota is not transferred; fractional block explicitly proportional.",
+    "exit_code": 0,
+    "observed": {
+      "status": "computed_from_declared_inputs",
+      "operation": "model_service",
+      "basis": "Independent synthetic audit inputs; no real quote or validation claim",
+      "source_status": "2026-08-18 consultation draft; no independent validation of inputs",
+      "rounding": "Decimal precision 40; no intermediate monetary rounding; display rounding belongs to the report",
+      "result": {
+        "total_yuan": "183.0",
+        "months": [
+          {
+            "id": "m1",
+            "excess": "0",
+            "cost_yuan": "90"
+          },
+          {
+            "id": "m2",
+            "excess": "150",
+            "cost_yuan": "93.0"
+          }
+        ],
+        "note": "quote, license and internal-work deduction review remain necessary"
+      }
+    }
+  },
+  {
+    "name": "unsupported_rollover",
+    "expected_review": "Expected input_error; unsupported billing rules must not be guessed.",
+    "exit_code": 2,
+    "observed": {
+      "status": "input_error",
+      "message": "only explicitly non-rollover monthly plans supported",
+      "result": null
+    }
+  },
+  {
+    "name": "only_two_formal",
+    "expected_review": "Expected input_error: informal evidence must not satisfy the three-quote branch.",
+    "exit_code": 2,
+    "observed": {
+      "status": "input_error",
+      "message": "at least three formal comparable quotes required for this operation",
+      "result": null
+    }
+  },
+  {
+    "name": "three_revisions_one_supplier",
+    "expected_review": "Three rows from one supplier do not meet the cards three-distinct-supplier requirement. Record whether calculator detects this.",
+    "exit_code": 0,
+    "observed": {
+      "status": "computed_from_declared_inputs",
+      "operation": "quote_median",
+      "basis": "Independent synthetic audit inputs; no real quote or validation claim",
+      "source_status": "2026-08-18 consultation draft; no independent validation of inputs",
+      "rounding": "Decimal precision 40; no intermediate monetary rounding; display rounding belongs to the report",
+      "result": {
+        "unit_price_yuan": "100",
+        "total_yuan": "200",
+        "excluded_noncomparable_or_informal": [],
+        "scope": "market inquiry for purchase/rental/model service; not a mandatory data-service rule",
+        "formula": "explicitly selected middle quote * quantity"
+      }
+    }
+  },
+  {
+    "name": "missing_category_amount",
+    "expected_review": "Expected known subtotal [8,10,12] wan_yuan, incomplete true/complete false, project total null.",
+    "exit_code": 0,
+    "observed": {
+      "status": "computed_from_declared_inputs",
+      "operation": "range_total",
+      "basis": "Independent synthetic audit inputs; no real quote or validation claim",
+      "source_status": "2026-08-18 consultation draft; no independent validation of inputs",
+      "rounding": "Decimal precision 40; no intermediate monetary rounding; display rounding belongs to the report",
+      "result": {
+        "known_subtotal": [
+          "8",
+          "10",
+          "12"
+        ],
+        "currency_unit": "wan_yuan",
+        "items": [
+          {
+            "id": "main_function",
+            "status": "known",
+            "range": [
+              "8",
+              "10",
+              "12"
+            ]
+          },
+          {
+            "id": "data_processing",
+            "status": "unknown",
+            "range": null
+          },
+          {
+            "id": "model_building",
+            "status": "confirmed_zero",
+            "range": [
+              "0",
+              "0",
+              "0"
+            ]
+          },
+          {
+            "id": "purchase",
+            "status": "confirmed_zero",
+            "range": [
+              "0",
+              "0",
+              "0"
+            ]
+          },
+          {
+            "id": "rental",
+            "status": "confirmed_zero",
+            "range": [
+              "0",
+              "0",
+              "0"
+            ]
+          },
+          {
+            "id": "integration",
+            "status": "confirmed_zero",
+            "range": [
+              "0",
+              "0",
+              "0"
+            ]
+          },
+          {
+            "id": "data_services",
+            "status": "confirmed_zero",
+            "range": [
+              "0",
+              "0",
+              "0"
+            ]
+          },
+          {
+            "id": "model_services",
+            "status": "confirmed_zero",
+            "range": [
+              "0",
+              "0",
+              "0"
+            ]
+          },
+          {
+            "id": "other",
+            "status": "confirmed_zero",
+            "range": [
+              "0",
+              "0",
+              "0"
+            ]
+          }
+        ],
+        "unknown": [
+          "data_processing"
+        ],
+        "complete_project_total": null,
+        "complete": false,
+        "note": "not a statistical confidence interval"
+      }
+    }
+  }
+]

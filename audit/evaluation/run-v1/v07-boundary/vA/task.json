@@ -1,0 +1,7 @@
+{
+  "case_id": "v07-boundary",
+  "variant_label": "vA",
+  "prompt": "数据工时10人天，费率2万元/人月，PF1，但没有本项目人天到人月换算依据。能否默认21.75？输出default_21_75_allowed和cost_yuan。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+  "input_files": [],
+  "instruction": "按 prompt 实际完成任务，最终答案写同目录 output.md，其他交付物也放在本目录。不要读取相邻变体、映射表或预期答案。"
+}

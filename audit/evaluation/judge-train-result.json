@@ -1,0 +1,464 @@
+{
+  "reviewer_conditions": {
+    "review_type": "独立标签盲评；25题、50份真实响应逐题语义复核",
+    "blindness_limit": "仅匿名标签盲评。used_cards字段已移除，但用语、条款引用和细节丰富程度仍可能泄漏条件；未据此猜测或恢复标签身份。",
+    "input_packet": "work/ai-cost-eval/judge-train-packet.json",
+    "allowed_sources_used": [
+      "references/overview.md中的来源性质与边界片段",
+      "references/capabilities/cost-classification.md",
+      "references/capabilities/work-breakdown.md",
+      "references/capabilities/data-baseline.md",
+      "references/capabilities/data-labor-cost.md",
+      "references/capabilities/model-task-effort.md",
+      "references/capabilities/global-factors.md",
+      "references/capabilities/model-labor-cost.md",
+      "references/capabilities/resource-rental.md",
+      "references/capabilities/infrastructure-integration.md",
+      "references/capabilities/external-data-service.md",
+      "references/capabilities/external-model-service.md",
+      "references/capabilities/cross-validation.md"
+    ],
+    "source_root": "work/ai-cost-eval/skill-v2/ai-software-development-cost-draft",
+    "excluded_inputs": "未读取mapping、mechanical、评分报告或其他响应文件；未修改实际输出或技能。",
+    "decision_basis": "机械预期仅作起点，同时检查实际结果、完整计算链、时间与货币单位、题给适用条件、重复计费/重复扣减、未知值和来源边界。题目已确认的条件予以接受，不另造必须满足的条件。",
+    "pass_definition": "semantic_pass表示是否完成本题实质交付且无阻断性错误；非安全性评分。诚实保留未知不算编造，但关键要求仍未给出时标记未完成。仅有表述上的轻微歧义可通过并单列issues。",
+    "source_dependent_questions": "未提供来源的诚实未知与已知规则错误分开记录；对只能凭本稿确定的规则题，criterion_issue说明机械预期的来源依赖，不将null等同错误断言。",
+    "artifact_limit": "只评包内实际响应。JSON内完整取价记录视为本题要求的记录交付；未访问响应提及的其他文件，不能验证外部文件确已存在。",
+    "preference_basis": "两份均完整、正确且边界充分时判tie；不因篇幅更长或条款更多自动优选。"
+  },
+  "cases": [
+    {
+      "case_id": "v02-boundary",
+      "responses": {
+        "vA": {
+          "semantic_pass": true,
+          "reason": "禁止直接相加并要求分类依据；明确同名不等于同项、同一工作只计一次，给出合同与成果边界待核矩阵。对未见条文保持未知不妨碍完成题目。",
+          "issues": []
+        },
+        "vB": {
+          "semantic_pass": true,
+          "reason": "指出6.2与7.3.3分类冲突，暂停定类与合计；只在确认独立成果后分别计费，没有把潜在重复直接断言为已证实重复。",
+          "issues": []
+        }
+      },
+      "preferred": "tie",
+      "criterion_issue": null
+    },
+    {
+      "case_id": "v03-normal",
+      "responses": {
+        "vA": {
+          "semantic_pass": true,
+          "reason": "三项按顺序归主体、数据、模型；已给任务成果和具体缺项，并将测试与管理分配到工作范围且共用部分只计一次。没有用200份文档臆算工时。",
+          "issues": []
+        },
+        "vB": {
+          "semantic_pass": true,
+          "reason": "分类、成果、待补条件和支持活动分摊均已实交；明确200份仅是数量，缺质量、周期与估算依据时不能报完整费用。",
+          "issues": []
+        }
+      },
+      "preferred": "tie",
+      "criterion_issue": null
+    },
+    {
+      "case_id": "v05-boundary",
+      "responses": {
+        "vA": {
+          "semantic_pass": true,
+          "reason": "总量与总人时保留null，公式用总量除产出效率，要求复核效率波动和样本口径，没有编造总量或稳定性。",
+          "issues": []
+        },
+        "vB": {
+          "semantic_pass": true,
+          "reason": "5条/人时换算0.2人时/条正确，并明确仅为形式倒数、不能直接外推；总量缺失故不计算总工时。",
+          "issues": []
+        }
+      },
+      "preferred": "tie",
+      "criterion_issue": null
+    },
+    {
+      "case_id": "v06-normal",
+      "responses": {
+        "vA": {
+          "semantic_pass": true,
+          "reason": "36×1.2×0.35=15.12人天，按已确认整体包计一次；共享给3个模型未额外倍增，结论仅覆盖题设参数情景。",
+          "issues": []
+        },
+        "vB": {
+          "semantic_pass": true,
+          "reason": "乘法、单位和包数正确；已说明AF和DRDF各用一次，既不乘模型数，也不将整体基准重复套子任务。",
+          "issues": []
+        }
+      },
+      "preferred": "tie",
+      "criterion_issue": null
+    },
+    {
+      "case_id": "v06-boundary",
+      "responses": {
+        "vA": {
+          "semantic_pass": true,
+          "reason": "拒绝附录中值与缺项默认1，工时保留未知；指出任务粒度、DBE及复用因子未确认，满足本题阻止无依据估算的目标。",
+          "issues": []
+        },
+        "vB": {
+          "semantic_pass": true,
+          "reason": "保留公式并列出完整关键输入，明确整体/单任务基准不可混用，null不解释为零，没有暗中套入参考参数。",
+          "issues": []
+        }
+      },
+      "preferred": "tie",
+      "criterion_issue": null
+    },
+    {
+      "case_id": "v07-normal",
+      "responses": {
+        "vA": {
+          "semantic_pass": false,
+          "reason": "2280+3600=5880元及换算过程正确，也在notes承认基础工时为5人天；但将所需total_person_days交付为PF加权后的4.9，改变了总工时的领域含义。",
+          "issues": [
+            "阻断：PF在该来源中反映岗位费率差异，不能用于减少实际数据工时。总工时应为16÷8+3=5人天；4.9仅可另标为基准费率等效计价量，不能占用total_person_days。"
+          ]
+        },
+        "vB": {
+          "semantic_pass": true,
+          "reason": "先统一16人时为2人天，再分别计算2÷20×0.95×24000与3÷20×1×24000；总工时5人天、总费用5880元均正确且不重加间接成本。",
+          "issues": []
+        }
+      },
+      "preferred": "vB",
+      "criterion_issue": "预期5人天在本稿PF为岗位费率系数的定义下成立。若脱离来源单看题干，PF语义未展开；建议题面明确total_person_days指实际工时总量。不过vA自己已给出基础工时5，仍用4.9交付该字段，存在实质口径错配。"
+    },
+    {
+      "case_id": "v07-boundary",
+      "responses": {
+        "vA": {
+          "semantic_pass": true,
+          "reason": "不默认21.75，金额保留null，200000/D元条件公式正确，清楚指出人月费率与人天工时缺少转换依据。",
+          "issues": []
+        },
+        "vB": {
+          "semantic_pass": true,
+          "reason": "不将附录案例转换值当项目常数；给出10÷d×20000的可追踪条件公式，未知金额未被当零。",
+          "issues": []
+        }
+      },
+      "preferred": "tie",
+      "criterion_issue": null
+    },
+    {
+      "case_id": "v10-normal",
+      "responses": {
+        "vA": {
+          "semantic_pass": true,
+          "reason": "六项参数各乘一次得到18.72人天，明确是项目选定假设式5，未将算术可复算当成预测效度证明；包内公式已足以复核。",
+          "issues": []
+        },
+        "vB": {
+          "semantic_pass": true,
+          "reason": "连续乘积48、36、18、23.4、18.72正确；明确限定为题给情景，predictive_validity_proven=false有合理解释。",
+          "issues": []
+        }
+      },
+      "preferred": "tie",
+      "criterion_issue": null
+    },
+    {
+      "case_id": "v11-normal",
+      "responses": {
+        "vA": {
+          "semantic_pass": false,
+          "reason": "20人天及避免全局因素重复应用的判断正确；条件块的1.54和0.9算术也正确。但正式SF、MRDF均为null，未完成题目要求的两个组合结果确认。",
+          "issues": [
+            "未完成而非编造：输出诚实说明缺少组合规则，仅给乘法成立时的示例；在本稿明确SF=SF1×SF2、MRDF=MRDF1×MRDF2的语境下，仍缺所需确定结论。"
+          ]
+        },
+        "vB": {
+          "semantic_pass": true,
+          "reason": "按来源组合规则得到SF=1.54、MRDF=0.9；已含全局因素的8、12人天直接相加为20，没有再乘总因子或子因子。",
+          "issues": []
+        }
+      },
+      "preferred": "vB",
+      "criterion_issue": "题干给子因子但未写组合公式，预期依赖本稿来源上下文。vA的null是可解释的来源不足响应，不应标为公式错误或危险行为；若比较纯算术能力，应把组合公式写入题面。本次仅按关键交付是否完成判未通过。"
+    },
+    {
+      "case_id": "v11-boundary",
+      "responses": {
+        "vA": {
+          "semantic_pass": true,
+          "reason": "拒绝将200ms自动归高档，也未将技术8个月和工具2个月强行同档；要求端点、指标与混合成熟度规则，未编系数。",
+          "issues": []
+        },
+        "vB": {
+          "semantic_pass": true,
+          "reason": "性能边界与不同成熟度事实分别列缺项，SF2/MRDF2保持null；没有擅取最高、中档、平均或1。",
+          "issues": []
+        }
+      },
+      "preferred": "tie",
+      "criterion_issue": null
+    },
+    {
+      "case_id": "v12-normal",
+      "responses": {
+        "vA": {
+          "semantic_pass": true,
+          "reason": "6÷20×1.2×28000=10080、14÷20×1.5×28000=29400，合计39480元；外购5000元另列，20人天不乘PF，已扣外包不再扣且全局因素不重乘。",
+          "issues": []
+        },
+        "vB": {
+          "semantic_pass": true,
+          "reason": "本题要求的39480元人力与5000元外购均完整正确，合计44480元仅称本题两类；内外包与全局因素处理正确。额外工时标签存在歧义，但未改变所需费用结果。",
+          "issues": [
+            "轻微：把6×1.2、14×1.5及合计28.2命名为adjusted_person_days，容易将岗位费率调整误读为实际工时调整。应标为基准费率等效计价量，实际工时仍为6+14=20人天。"
+          ]
+        }
+      },
+      "preferred": "vA",
+      "criterion_issue": "机械预期只检查两类金额，无法发现额外工时字段的语义风险；该题没有要求工时总量，因此此处作为非阻断表述问题，不因未请求的附加字段直接判整题失败。"
+    },
+    {
+      "case_id": "v12-boundary",
+      "responses": {
+        "vA": {
+          "semantic_pass": true,
+          "reason": "明确同一份外包不重复扣，保留SR扣减位置和范围追溯；额外扣减0仅指不再操作，未误称外包成本为0。",
+          "issues": []
+        },
+        "vB": {
+          "semantic_pass": true,
+          "reason": "保留已经剔除后的TE，并列出合同、SR及扣减前后记录要求；另有未扣份额才可能调整的限定清楚。",
+          "issues": []
+        }
+      },
+      "preferred": "tie",
+      "criterion_issue": null
+    },
+    {
+      "case_id": "v13-normal",
+      "responses": {
+        "vA": {
+          "semantic_pass": true,
+          "reason": "排序中间报价9000元/台，3台27000元；JSON已包含三份报价、保留情况、规则、选择与计算记录，没有虚构供应商和附件。",
+          "issues": []
+        },
+        "vB": {
+          "semantic_pass": true,
+          "reason": "中间值、数量及总价正确，取价记录已实际写入响应而非只承诺保存；未给供应商/日期留null，结论依题设可比性成立。",
+          "issues": []
+        }
+      },
+      "preferred": "tie",
+      "criterion_issue": null
+    },
+    {
+      "case_id": "v13-boundary",
+      "responses": {
+        "vA": {
+          "semantic_pass": true,
+          "reason": "两份正式报价加无规格截图不满足三家正式可比要求；已列第三份正式报价、供应商与规格服务税费等缺项，没有认可截图充数。",
+          "issues": []
+        },
+        "vB": {
+          "semantic_pass": true,
+          "reason": "确认正式报价仅2份、第三材料无法证明规格与服务可比；缺项具体，未给缺乏依据的参考价，并限定三家门槛于采购市场询价路径。",
+          "issues": []
+        }
+      },
+      "preferred": "tie",
+      "criterion_issue": null
+    },
+    {
+      "case_id": "v14-normal",
+      "responses": {
+        "vA": {
+          "semantic_pass": true,
+          "reason": "年价90000÷3+6000=36000，月价3000，1台4月12000元；已扣免费期不再扣，12月均摊来自题设，安全迁移另核不阻断租价演算。",
+          "issues": []
+        },
+        "vB": {
+          "semantic_pass": true,
+          "reason": "购价、资金成本、年折旧与运维量纲一致，三项数值可逐步复算；明确本次仅租价情景，不宣称合同评估完整。",
+          "issues": []
+        }
+      },
+      "preferred": "tie",
+      "criterion_issue": null
+    },
+    {
+      "case_id": "v15-normal",
+      "responses": {
+        "vA": {
+          "semantic_pass": true,
+          "reason": "120000×0.06×1.2×1=8640元正确；依据题给适用系数，只覆盖所述专用基础设施子项，没有扩为项目全部集成费。",
+          "issues": []
+        },
+        "vB": {
+          "semantic_pass": true,
+          "reason": "完整展示SC、R、S、F与计算，8640元只对应已确认子项；SC只作取费基数，未重复加进集成金额。",
+          "issues": []
+        }
+      },
+      "preferred": "tie",
+      "criterion_issue": null
+    },
+    {
+      "case_id": "v15-boundary",
+      "responses": {
+        "vA": {
+          "semantic_pass": true,
+          "reason": "拒绝按惯例确认5%，金额null；列出费率法和工时法各自缺项，5000元仅标无依据假设而未采纳。",
+          "issues": []
+        },
+        "vB": {
+          "semantic_pass": true,
+          "reason": "10万元基数不足以计算，未默认R=5%或S/F=1；比例法与经验法的补证据路径具体，未知未填零。",
+          "issues": []
+        }
+      },
+      "preferred": "tie",
+      "criterion_issue": null
+    },
+    {
+      "case_id": "v16-normal",
+      "responses": {
+        "vA": {
+          "semantic_pass": true,
+          "reason": "3000×3=9000元正确，保存两份同规格报价和接受价格依据；准确指出7.4没有最低三家硬门槛，也没有把它扩为所有采购制度均允许两家。内部同项未重计。",
+          "issues": []
+        },
+        "vB": {
+          "semantic_pass": false,
+          "reason": "9000元算术、开发期与内外部分工边界正确，并诚实说明没有来源；但source_requires_three_quotes为null，未完成题目所要求的来源规则判断。",
+          "issues": [
+            "未完成而非错误断言：没有给出本稿7.4不统一要求最低三家报价的关键结论。此处不能将null解释为错误地要求三家。"
+          ]
+        }
+      },
+      "preferred": "vA",
+      "criterion_issue": "题干的source未命名或附条文，false依赖所评技能对应的7.4来源。vB拒绝臆断未知规则是合理的诚实行为；本题差异体现来源规则交付能力，不能当作通用数学或安全能力差异。"
+    },
+    {
+      "case_id": "v17-normal",
+      "responses": {
+        "vA": {
+          "semantic_pass": true,
+          "reason": "逐月计算超额100000与0 token，对应100与0元，月费700/600、合计1300正确；未跨月抵消额度，精确计量与开发期限制明确。",
+          "issues": []
+        },
+        "vB": {
+          "semantic_pass": true,
+          "reason": "两个逐月明细完整，max(用量−额度,0)正确，未把第二月闲置额度抵第一月超额；所有结果与合同限定一致。",
+          "issues": []
+        }
+      },
+      "preferred": "tie",
+      "criterion_issue": null
+    },
+    {
+      "case_id": "v17-boundary",
+      "responses": {
+        "vA": {
+          "semantic_pass": true,
+          "reason": "总额保留未知，未假定包月无限用或超额为零；列完整计费缺项并按模型服务询价路径要求再补至少两份正式可比报价。",
+          "issues": []
+        },
+        "vB": {
+          "semantic_pass": true,
+          "reason": "已交付不能确认总额、需要更多报价两个关键结论，并列额度、超额单价、用量和期限缺项。准确最低家数因缺来源而保留未知，没有妨碍本题要求的结果。",
+          "issues": []
+        }
+      },
+      "preferred": "tie",
+      "criterion_issue": "题目只要求是否需更多报价，未要求具体最低家数；因此不把vB诚实未确认三家细则判为未完成，也不将三家门槛扩大到所有采购方法。"
+    },
+    {
+      "case_id": "v18-boundary",
+      "responses": {
+        "vA": {
+          "semantic_pass": true,
+          "reason": "拒绝无依据8%，要求具体产品/服务与量价来源，金额保留未知；列出与其他科目的排重检查。",
+          "issues": []
+        },
+        "vB": {
+          "semantic_pass": true,
+          "reason": "没有把8%自动纳入或将未纳入解释为费用确定为0；用途、承担方、计价依据和重复列支边界均清楚。",
+          "issues": []
+        }
+      },
+      "preferred": "tie",
+      "criterion_issue": null
+    },
+    {
+      "case_id": "v19-normal",
+      "responses": {
+        "vA": {
+          "semantic_pass": true,
+          "reason": "(100−80)/80=25%，满足项目≤30%条件；80×0.25+100×0.75=95人天正确，未将阈值权重或预测效度普遍化。",
+          "issues": []
+        },
+        "vB": {
+          "semantic_pass": true,
+          "reason": "相对差异分母、阈值包含关系、权重对应顺序与和均清楚，95人天可复算且明确仅按本组织约定成立。",
+          "issues": []
+        }
+      },
+      "preferred": "tie",
+      "criterion_issue": null
+    },
+    {
+      "case_id": "v19-boundary",
+      "responses": {
+        "vA": {
+          "semantic_pass": true,
+          "reason": "70万元只作为算术事实、采用金额null；明确先查60万元差异来源与口径，不能缺依据默认等权平均，已交付所需复核矩阵。",
+          "issues": []
+        },
+        "vB": {
+          "semantic_pass": true,
+          "reason": "差额60万元正确，采用值未定；模型分支先核范围、参数、费率与专家评审，未把数据分支加权建议套成模型自动平均规则。",
+          "issues": []
+        }
+      },
+      "preferred": "tie",
+      "criterion_issue": null
+    },
+    {
+      "case_id": "v20-normal",
+      "responses": {
+        "vA": {
+          "semantic_pass": true,
+          "reason": "三列29/33/37万元相加正确，六类零值均来自题设不发生证据；九科目完整标识，完整性仅限给定范围，未自造置信区间或加成。",
+          "issues": []
+        },
+        "vB": {
+          "semantic_pass": true,
+          "reason": "同序低中高情景各有明细与公式，六类非人力确认不发生才计0；29—37万元范围与33万元中值清楚，完整总额声明受题面范围限定。",
+          "issues": []
+        }
+      },
+      "preferred": "tie",
+      "criterion_issue": null
+    },
+    {
+      "case_id": "v20-boundary",
+      "responses": {
+        "vA": {
+          "semantic_pass": true,
+          "reason": "17万元仅作三项已知小计，完整总价null；六类未说明均属未知，未按0处理，明确补充逐类发生状态与金额证据。",
+          "issues": []
+        },
+        "vB": {
+          "semantic_pass": true,
+          "reason": "10+2+5=17万元正确；九科目表把六项分别留null，完整性false、unknown_is_zero=false，与notes一致，没有用点值伪造完整区间。",
+          "issues": []
+        }
+      },
+      "preferred": "tie",
+      "criterion_issue": null
+    }
+  ]
+}

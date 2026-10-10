@@ -1,0 +1,162 @@
+{
+  "mechanical": {
+    "new_skill": {
+      "train": {
+        "passed": 25,
+        "total": 25,
+        "assertion_pass": 51,
+        "assertion_total": 51
+      },
+      "validation": {
+        "passed": 17,
+        "total": 17,
+        "assertion_pass": 35,
+        "assertion_total": 35
+      }
+    },
+    "without_skill": {
+      "train": {
+        "passed": 22,
+        "total": 25,
+        "assertion_pass": 47,
+        "assertion_total": 51
+      },
+      "validation": {
+        "passed": 16,
+        "total": 17,
+        "assertion_pass": 34,
+        "assertion_total": 35
+      }
+    }
+  },
+  "semantic": {
+    "release_accepted": true,
+    "scope": "21 bounded capabilities from the user-supplied 2026-08-18 draft",
+    "semantic": {
+      "new_skill": {
+        "passed": 42,
+        "total": 42,
+        "issues": [
+          {
+            "case_id": "v10-boundary",
+            "issues": [
+              "轻微来源定位问题：冲突表把0.26来源写成“附录D.1”。overview p85定位为附录D.2的表D.1；题干同样只写D.1，宜补全表/节层级。此问题未改变停止计算的正确结论。"
+            ]
+          }
+        ]
+      },
+      "without_skill": {
+        "passed": 38,
+        "total": 42,
+        "issues": [
+          {
+            "case_id": "v07-normal",
+            "issues": [
+              "阻断：PF在该来源中反映岗位费率差异，不能用于减少实际数据工时。总工时应为16÷8+3=5人天；4.9仅可另标为基准费率等效计价量，不能占用total_person_days。"
+            ]
+          },
+          {
+            "case_id": "v11-normal",
+            "issues": [
+              "未完成而非编造：输出诚实说明缺少组合规则，仅给乘法成立时的示例；在本稿明确SF=SF1×SF2、MRDF=MRDF1×MRDF2的语境下，仍缺所需确定结论。"
+            ]
+          },
+          {
+            "case_id": "v12-normal",
+            "issues": [
+              "轻微：把6×1.2、14×1.5及合计28.2命名为adjusted_person_days，容易将岗位费率调整误读为实际工时调整。应标为基准费率等效计价量，实际工时仍为6+14=20人天。"
+            ]
+          },
+          {
+            "case_id": "v16-normal",
+            "issues": [
+              "未完成而非错误断言：没有给出本稿7.4不统一要求最低三家报价的关键结论。此处不能将null解释为错误地要求三家。"
+            ]
+          },
+          {
+            "case_id": "v10-boundary",
+            "issues": [
+              "轻微但实际的参数语义问题：unresolved_factor.name为TF且candidates列0.26/0.25，容易将两者误作TF本身。overview p85中它们是TF5=1+(评分和)×k的乘数k，最终TF还取决于评分。",
+              "required_evidence中的优先顺序/更正说明是可能的补证方式，不应解读为必须等待原稿更正；本回答同时允许项目书面采用依据，故不据此判未完成。"
+            ]
+          },
+          {
+            "case_id": "v21-boundary",
+            "issues": [
+              "关键交付未完成：default_appendix_value_allowed应就题设现有证据明确为false，却因未见正文保留null。",
+              "这是有解释的保守未知，不是编造或擅自套中值；失败仅指未完成所要求的默认采用判断，不能汇报成已错误估价或已虚构可靠行业定额。"
+            ]
+          }
+        ]
+      }
+    },
+    "coordinator_review": "Primary agent read every flagged response/criterion issue, the five v2 regression outputs and all nine route decisions; no human adjudication claimed.",
+    "decisions": [
+      {
+        "case": "v07-normal",
+        "variant": "without_skill",
+        "decision": "retain_failure",
+        "reason": "PF changes fee equivalence, not actual work; requested total_person_days was 4.9 instead of 5, although cost was correct."
+      },
+      {
+        "case": "v11-normal;v16-normal;v21-boundary",
+        "variant": "without_skill",
+        "decision": "retain_incomplete_not_false_assertion",
+        "reason": "Source-dependent required fields remain null. This is honest missing-source behavior, not invented rules or unsafe pricing; baseline did not receive the book."
+      },
+      {
+        "case": "v12-normal",
+        "variant": "without_skill",
+        "decision": "retain_pass_with_minor_label_issue",
+        "reason": "Requested costs are correct; unsolicited adjusted_person_days ambiguously mixes fee weight with actual effort."
+      },
+      {
+        "case": "v10-boundary",
+        "variant": "new_skill",
+        "decision": "retain_pass_with_minor_source_locator_issue",
+        "reason": "Output correctly stops and preserves both coefficients. It calls the source Appendix D.1; precise locator is table D.1 in Appendix D.2. The frozen prompt also abbreviates this. Bundle reference overview is precise; no computational decision affected. Original output retained."
+      },
+      {
+        "case": "v10-boundary",
+        "variant": "without_skill",
+        "decision": "retain_pass_with_minor_parameter_label_issue",
+        "reason": "0.25/0.26 are multipliers k within the TF5 formula, not full TF values. Response did not choose or calculate either, so requested stop remains correct."
+      },
+      {
+        "case": "v13-normal;v17-normal",
+        "variant": "new_skill_v2_regression",
+        "decision": "conditional_arithmetic_pass",
+        "reason": "Given quoted prices/selected contract support arithmetic, not independent verification of three distinct suppliers. Missing supplier names/formal records remain documentary evidence to collect; these answers do not independently prove market-inquiry compliance."
+      }
+    ],
+    "prompt_limitations": [
+      "Several prompts rely on the named-source context; the no-skill baseline has no book.",
+      "PF meaning is not expanded in v07.",
+      "v10 abbreviates table D.1 and its coefficient; future suites should name table/section and distinguish k from TF.",
+      "v21 default-use condition concerns present evidence, not a permanent ban on appendix values."
+    ],
+    "expectations_changed": false,
+    "outputs_modified": false,
+    "runtime_changed_after_holdout": false,
+    "regression_review": {
+      "cases": 5,
+      "passed": 5,
+      "scope": "actual answers and arithmetic/units/boundaries read by coordinator"
+    },
+    "route_review": {
+      "cases": 9,
+      "passed": 9,
+      "scope": "explicit-load intent routing only, not host auto-discovery"
+    },
+    "unresolved_blocking_skill_defects": 0,
+    "remaining_source_review_groups": 14,
+    "generalization": "No statistical noninferiority, predictive cost validity, cross-model portability or current formal-standard status claim."
+  },
+  "calculator_pass": 37,
+  "calculator_total": 37,
+  "regression_pass": 5,
+  "regression_total": 5,
+  "route_pass": 9,
+  "route_total": 9,
+  "digest_cjk_characters": 6947
+}

@@ -1,0 +1,22 @@
+{
+  "operation": "rental_total",
+  "basis": "Independent synthetic audit inputs; no real quote or validation claim",
+  "items": [
+    {
+      "id": "same",
+      "unit_price_yuan": "10",
+      "quantity": "1",
+      "duration": "2",
+      "price_period": "day",
+      "duration_unit": "day"
+    },
+    {
+      "id": "same",
+      "unit_price_yuan": "10",
+      "quantity": "1",
+      "duration": "2",
+      "price_period": "day",
+      "duration_unit": "day"
+    }
+  ]
+}

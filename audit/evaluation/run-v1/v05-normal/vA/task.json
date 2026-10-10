@@ -1,0 +1,7 @@
+{
+  "case_id": "v05-normal",
+  "variant_label": "vA",
+  "prompt": "代表性同口径样本120条共18人时，效率稳定并验收通过，目标3600条含样本。计算unit_hours、total_hours和remaining_hours。 返回一个JSON对象，另用notes说明依据与边界；不要只描述将如何做。",
+  "input_files": [],
+  "instruction": "按 prompt 实际完成任务，最终答案写同目录 output.md，其他交付物也放在本目录。不要读取相邻变体、映射表或预期答案。"
+}

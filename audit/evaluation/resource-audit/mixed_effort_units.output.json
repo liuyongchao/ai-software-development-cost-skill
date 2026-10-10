@@ -1,0 +1,29 @@
+{
+  "status": "computed_from_declared_inputs",
+  "operation": "labor_total",
+  "basis": "Independent synthetic audit inputs; no real quote or validation claim",
+  "source_status": "2026-08-18 consultation draft; no independent validation of inputs",
+  "rounding": "Decimal precision 40; no intermediate monetary rounding; display rounding belongs to the report",
+  "result": {
+    "items": [
+      {
+        "id": "hours",
+        "person_months": "0.05",
+        "cost_yuan": "800.00"
+      },
+      {
+        "id": "days",
+        "person_months": "0.1",
+        "cost_yuan": "2400.00"
+      },
+      {
+        "id": "months",
+        "person_months": "0.5",
+        "cost_yuan": "16000.0"
+      }
+    ],
+    "total_person_months": "0.65",
+    "total_cost_yuan": "19200.00",
+    "formula": "sum(effort converted to person_months * PF * UHC)"
+  }
+}

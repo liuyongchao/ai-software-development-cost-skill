@@ -1,0 +1,170 @@
+{
+  "v01-normal": {
+    "vB": "new_skill",
+    "vA": "without_skill"
+  },
+  "v01-boundary": {
+    "vB": "new_skill",
+    "vA": "without_skill"
+  },
+  "v02-normal": {
+    "vA": "new_skill",
+    "vB": "without_skill"
+  },
+  "v02-boundary": {
+    "vB": "new_skill",
+    "vA": "without_skill"
+  },
+  "v03-normal": {
+    "vB": "new_skill",
+    "vA": "without_skill"
+  },
+  "v03-boundary": {
+    "vB": "new_skill",
+    "vA": "without_skill"
+  },
+  "v04-normal": {
+    "vB": "new_skill",
+    "vA": "without_skill"
+  },
+  "v04-boundary": {
+    "vB": "new_skill",
+    "vA": "without_skill"
+  },
+  "v05-normal": {
+    "vA": "new_skill",
+    "vB": "without_skill"
+  },
+  "v05-boundary": {
+    "vB": "new_skill",
+    "vA": "without_skill"
+  },
+  "v06-normal": {
+    "vB": "new_skill",
+    "vA": "without_skill"
+  },
+  "v06-boundary": {
+    "vB": "new_skill",
+    "vA": "without_skill"
+  },
+  "v07-normal": {
+    "vB": "new_skill",
+    "vA": "without_skill"
+  },
+  "v07-boundary": {
+    "vB": "new_skill",
+    "vA": "without_skill"
+  },
+  "v08-normal": {
+    "vB": "new_skill",
+    "vA": "without_skill"
+  },
+  "v08-boundary": {
+    "vB": "new_skill",
+    "vA": "without_skill"
+  },
+  "v09-normal": {
+    "vA": "new_skill",
+    "vB": "without_skill"
+  },
+  "v09-boundary": {
+    "vB": "new_skill",
+    "vA": "without_skill"
+  },
+  "v10-normal": {
+    "vA": "new_skill",
+    "vB": "without_skill"
+  },
+  "v10-boundary": {
+    "vA": "new_skill",
+    "vB": "without_skill"
+  },
+  "v11-normal": {
+    "vB": "new_skill",
+    "vA": "without_skill"
+  },
+  "v11-boundary": {
+    "vB": "new_skill",
+    "vA": "without_skill"
+  },
+  "v12-normal": {
+    "vA": "new_skill",
+    "vB": "without_skill"
+  },
+  "v12-boundary": {
+    "vA": "new_skill",
+    "vB": "without_skill"
+  },
+  "v13-normal": {
+    "vA": "new_skill",
+    "vB": "without_skill"
+  },
+  "v13-boundary": {
+    "vB": "new_skill",
+    "vA": "without_skill"
+  },
+  "v14-normal": {
+    "vB": "new_skill",
+    "vA": "without_skill"
+  },
+  "v14-boundary": {
+    "vA": "new_skill",
+    "vB": "without_skill"
+  },
+  "v15-normal": {
+    "vB": "new_skill",
+    "vA": "without_skill"
+  },
+  "v15-boundary": {
+    "vB": "new_skill",
+    "vA": "without_skill"
+  },
+  "v16-normal": {
+    "vA": "new_skill",
+    "vB": "without_skill"
+  },
+  "v16-boundary": {
+    "vB": "new_skill",
+    "vA": "without_skill"
+  },
+  "v17-normal": {
+    "vA": "new_skill",
+    "vB": "without_skill"
+  },
+  "v17-boundary": {
+    "vA": "new_skill",
+    "vB": "without_skill"
+  },
+  "v18-normal": {
+    "vA": "new_skill",
+    "vB": "without_skill"
+  },
+  "v18-boundary": {
+    "vB": "new_skill",
+    "vA": "without_skill"
+  },
+  "v19-normal": {
+    "vA": "new_skill",
+    "vB": "without_skill"
+  },
+  "v19-boundary": {
+    "vB": "new_skill",
+    "vA": "without_skill"
+  },
+  "v20-normal": {
+    "vA": "new_skill",
+    "vB": "without_skill"
+  },
+  "v20-boundary": {
+    "vB": "new_skill",
+    "vA": "without_skill"
+  },
+  "v21-normal": {
+    "vA": "new_skill",
+    "vB": "without_skill"
+  },
+  "v21-boundary": {
+    "vA": "new_skill",
+    "vB": "without_skill"
+  }
+}
